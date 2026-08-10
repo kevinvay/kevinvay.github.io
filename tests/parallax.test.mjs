@@ -1,0 +1,16 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import { parallaxOffset, revealDelay } from "../app/components/parallax-math.js";
+
+test("parallax offset scales and stays within its depth limit", () => {
+  assert.equal(parallaxOffset(200, 0.05, 20), 10);
+  assert.equal(parallaxOffset(1000, 0.05, 20), 20);
+  assert.equal(parallaxOffset(-1000, 0.05, 20), -20);
+  assert.equal(parallaxOffset(200, 0.05, 20, 0.5), 5);
+});
+
+test("reveal delay staggers nearby elements without growing forever", () => {
+  assert.equal(revealDelay(0), 0);
+  assert.equal(revealDelay(3), 255);
+  assert.equal(revealDelay(20), 425);
+});

@@ -1,0 +1,8 @@
+{
+  "frames": [
+    { "active": [0, 3, 8, 13, 18, 25, 29], "duration": 3200 },
+    { "active": [3, 6, 9, 16, 20, 27], "duration": 3200 },
+    { "active": [0, 6, 10, 18, 23, 29], "duration": 4000 }
+  ],
+  "staggerMs": 40
+}
