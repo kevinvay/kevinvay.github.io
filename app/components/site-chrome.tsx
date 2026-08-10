@@ -47,7 +47,7 @@ export function SiteHeader() {
         className="brand"
         href="/"
         aria-label="Kevin Wu home"
-        onPointerEnter={() => !window.matchMedia("(prefers-reduced-motion: reduce)").matches && setHovering(true)}
+        onPointerEnter={() => setHovering(true)}
         onPointerLeave={() => setHovering(false)}
       >
         <span className="brand-logo" aria-hidden="true"><img src={logoAnimation.frames[frame]} alt="" /></span>
