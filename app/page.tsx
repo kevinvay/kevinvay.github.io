@@ -114,14 +114,17 @@ export default function Home() {
     if (!page || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const panel = page.querySelector<HTMLElement>(".works-panel");
-    if (!panel) return;
+    const hero = page.querySelector<HTMLElement>(".hero");
+    if (!panel || !hero) return;
 
     let frame = 0;
     const updateHeroTransition = () => {
       frame = 0;
       const viewportHeight = window.innerHeight;
-      const overlap = viewportHeight - panel.getBoundingClientRect().top;
-      const progress = Math.min(1, Math.max(0, overlap / (viewportHeight * 0.2)));
+      const heroRect = hero.getBoundingClientRect();
+      const overlap = heroRect.bottom - panel.getBoundingClientRect().top;
+      const transitionDistance = Math.min(viewportHeight * 0.2, heroRect.height * 0.35);
+      const progress = Math.min(1, Math.max(0, overlap / transitionDistance));
       page.style.setProperty("--home-hero-progress", progress.toFixed(3));
     };
     const schedule = () => {

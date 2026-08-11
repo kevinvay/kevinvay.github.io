@@ -1,10 +1,47 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import { PortfolioNav, SiteFooter, SiteHeader, SiteLoader } from "../components/site-chrome";
 import { FrameAnimation } from "../components/frame-animation";
 import { projects } from "../projects";
 
 export default function WorksPage() {
+  const pageRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const page = pageRef.current;
+    if (!page || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const hero = page.querySelector<HTMLElement>(".inner-hero");
+    const directory = page.querySelector<HTMLElement>(".project-directory");
+    if (!hero || !directory) return;
+
+    let frame = 0;
+    const updateHeroTransition = () => {
+      frame = 0;
+      const heroRect = hero.getBoundingClientRect();
+      const overlap = heroRect.bottom - directory.getBoundingClientRect().top;
+      const transitionDistance = Math.min(window.innerHeight * 0.2, heroRect.height * 0.35);
+      const progress = Math.min(1, Math.max(0, overlap / transitionDistance));
+      page.style.setProperty("--works-hero-progress", progress.toFixed(3));
+    };
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateHeroTransition);
+    };
+
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    updateHeroTransition();
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      page.style.removeProperty("--works-hero-progress");
+    };
+  }, []);
+
   return (
-    <main className="inner-page works-page">
+    <main className="inner-page works-page" ref={pageRef}>
       <SiteLoader />
       <SiteHeader />
       <section className="inner-hero">
