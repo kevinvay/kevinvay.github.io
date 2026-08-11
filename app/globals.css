@@ -3466,6 +3466,32 @@ footer nav img {
   }
 }
 
+/* Keep the project-type controls readable on phones; the desktop scale rule
+   makes the labels effectively disappear below the 620px breakpoint. */
+@media (max-width: 620px) {
+  .contact-page .scope-tabs {
+    min-height: auto;
+    padding: 20px 12px 48px;
+  }
+
+  .contact-page .scope-tabs button {
+    font-size: 16px;
+    min-width: 0;
+    padding: 12px 8px 20px;
+  }
+
+  .contact-page .scope-tabs button span {
+    font-size: clamp(14px, 4.1vw, 18px);
+    white-space: nowrap;
+  }
+
+  .contact-page .scope-tabs button small {
+    font-size: 11px;
+    margin-top: 8px;
+    white-space: nowrap;
+  }
+}
+
 /* Keep Plans edge-to-edge throughout the 821–1133px tablet range. */
 @media (min-width: 821px) and (max-width: 1133px) {
   .contact-page .project-scope,

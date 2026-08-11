@@ -2,10 +2,14 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { PortfolioNav, SiteFooter, SiteHeader, SiteLoader } from "../../components/site-chrome";
-import { getProject } from "../../projects";
+import { getProject, projects } from "../../projects";
 import { AirlineComparison } from "./airline-comparison";
 
 type ProjectPageProps = { params: Promise<{ slug: string }> };
+
+export function generateStaticParams() {
+  return projects.map(({ slug }) => ({ slug }));
+}
 const media = "/figma-assets/cases/mould-ui";
 const southwestMedia = "/figma-assets/cases/southwest-kaia";
 const airlineMedia = "/figma-assets/cases/greater-bay-air";
