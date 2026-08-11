@@ -797,8 +797,8 @@ main {
 
 .service-card-back {
   align-items: flex-start;
-  background: #fff;
-  border: 2px solid white;
+  background: #e1e1e1 url("/figma-assets/service-back-bg.png") center / 100% 100% no-repeat;
+  border: 0;
   color: #0e0e0e;
   display: flex;
   flex-direction: column;
@@ -808,41 +808,6 @@ main {
   padding: 20px 62px;
   text-align: left;
   transform: rotateY(180deg);
-}
-
-.service-card-back::before,
-.service-card-back::after {
-  content: "";
-  inset: 0;
-  pointer-events: none;
-  position: absolute;
-}
-
-.service-card-back::before {
-  background: conic-gradient(from 90deg at 80.6% 11.6%,
-    #fff 0%, #dfdfdf 1.6%, #9f9f9f 3.2%, #404040 4.7%, #080808 5.8%,
-    #606060 10.4%, #bfbfbf 15.1%, #fff 18.2%,
-    #bfbfbf 21.6%, #606060 26.7%, #080808 31.7%,
-    #606060 35.9%, #bfbfbf 40.2%, #fff 43.1%,
-    #9f9f9f 49%, #303030 55.8%, #080808 58.8%,
-    #606060 63.9%, #dfdfdf 70.7%, #fff 72.4%,
-    #808080 77.3%, #101010 81.6%, #080808 82.2%,
-    #808080 87.7%, #dfdfdf 91.8%, #fff 93.2%, #606060 100%);
-  display: block;
-  filter: blur(8px);
-  inset: -24px;
-  mix-blend-mode: difference;
-  opacity: .52;
-  transform: scale(1.05);
-}
-
-.service-card-back::after {
-  background:
-    radial-gradient(circle at 80.6% 11.6%, rgba(255,255,255,.92) 0 3%, transparent 19%),
-    linear-gradient(128deg, rgba(255,255,255,.72), transparent 42%, rgba(255,255,255,.38));
-  filter: blur(3px);
-  mix-blend-mode: screen;
-  opacity: .8;
 }
 
 .service-card-heading,
