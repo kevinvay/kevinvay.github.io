@@ -43,7 +43,9 @@ export function ParallaxController() {
 
     const items = new Map<HTMLElement, Layer>();
     const active = new Set<HTMLElement>();
-    const revealItems = Array.from(document.querySelectorAll<HTMLElement>(revealSelector));
+    const revealItems = Array.from(document.querySelectorAll<HTMLElement>(revealSelector)).filter(
+      (element) => !element.closest(".home-page .hero, .works-page .inner-hero"),
+    );
     let frame = 0;
     let revealTimer = 0;
 
@@ -62,6 +64,7 @@ export function ParallaxController() {
 
     layers.forEach((layer) => {
       document.querySelectorAll<HTMLElement>(layer.selector).forEach((element) => {
+        if (element.closest(".home-page .hero, .works-page")) return;
         if (items.has(element)) return;
         items.set(element, layer);
         element.classList.add("parallax-layer");

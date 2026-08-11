@@ -102,11 +102,42 @@ function FlipLine({ children, offset = 0 }: { children: string; offset?: number 
 }
 
 export default function Home() {
+  const pageRef = useRef<HTMLElement | null>(null);
   const [serviceIndex, setServiceIndex] = useState(1);
   const [serviceMotion, setServiceMotion] = useState({ direction: "next", tick: 0 });
   const [serviceFlipped, setServiceFlipped] = useState(false);
   const serviceSwipeStart = useRef<{ x: number; y: number } | null>(null);
   const serviceSwipeHandled = useRef(false);
+
+  useEffect(() => {
+    const page = pageRef.current;
+    if (!page || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const panel = page.querySelector<HTMLElement>(".works-panel");
+    if (!panel) return;
+
+    let frame = 0;
+    const updateHeroTransition = () => {
+      frame = 0;
+      const viewportHeight = window.innerHeight;
+      const overlap = viewportHeight - panel.getBoundingClientRect().top;
+      const progress = Math.min(1, Math.max(0, overlap / (viewportHeight * 0.2)));
+      page.style.setProperty("--home-hero-progress", progress.toFixed(3));
+    };
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateHeroTransition);
+    };
+
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    updateHeroTransition();
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      page.style.removeProperty("--home-hero-progress");
+    };
+  }, []);
 
   const changeService = (nextIndex: number, direction: "previous" | "next") => {
     setServiceFlipped(false);
@@ -140,7 +171,7 @@ export default function Home() {
   };
 
   return (
-    <main>
+    <main className="home-page" ref={pageRef}>
       <SiteLoader />
 
       <SiteHeader />

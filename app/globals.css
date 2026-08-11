@@ -274,6 +274,37 @@ main {
   z-index: 0;
 }
 
+/* Home follows the Framer stack: the hero stays underneath while Works rises over it. */
+.home-page {
+  --home-hero-progress: 0;
+  isolation: isolate;
+}
+
+.home-page > .site-header {
+  background: var(--black);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.home-page > .hero {
+  min-height: calc(100svh - 100px);
+  position: sticky;
+  top: 100px;
+}
+
+.home-page > .hero .hero-content,
+.home-page > .hero .hero-animation {
+  opacity: calc(1 - var(--home-hero-progress));
+  translate: 0 calc(var(--home-hero-progress) * -36px);
+  will-change: opacity, translate;
+}
+
+.home-page > .works-panel {
+  position: relative;
+  z-index: 2;
+}
+
 .hero-content {
   align-content: flex-end;
   align-items: flex-end;
@@ -1904,6 +1935,14 @@ footer nav img {
   color: #1c1c1c;
   padding: 64px var(--pad);
 }
+
+/* The Works index uses a normal document flow in the Framer reference. */
+.works-page .inner-hero,
+.works-page .inner-hero-copy,
+.works-page .inner-frame-media,
+.works-page .project-directory {
+  translate: none;
+}
 .project-grid {
   display: grid;
   gap: 40px;
@@ -2533,6 +2572,12 @@ footer nav img {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .home-page > .hero .hero-content,
+  .home-page > .hero .hero-animation {
+    opacity: 1;
+    translate: none;
+  }
+
   .inner-frame-media img,
   .hello-track { animation: none; }
   .stat,
