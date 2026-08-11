@@ -1152,7 +1152,7 @@ footer nav img {
 
 .nav-menu {
   align-items: center;
-  background: rgba(255,255,255,.1);
+  background: rgba(255,255,255,.4);
   border: 1px solid rgba(255,255,255,.72);
   border-radius: 999px;
   display: flex;
