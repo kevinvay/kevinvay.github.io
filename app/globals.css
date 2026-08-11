@@ -1356,7 +1356,7 @@ footer nav img {
 .mould-more-mask { background: #0e0e0e; border-radius: 0 0 64px 64px; height: 100px; }
 .mould-more > h2 { font: 72px/96px "FK Display Alt", sans-serif; padding: 100px 64px 40px; text-align: center; }
 .mould-more > h2 > span { font-size: 80px; }
-.mould-more > div:last-child { display: grid; gap: 40px; grid-template-columns: 1fr 1fr; padding: 0 64px; }
+.mould-more > div:last-child { display: grid; gap: 40px; grid-template-columns: 1fr 1fr; margin: 0 auto; max-width: 1660px; padding: 0 64px; }
 .mould-more a { aspect-ratio: 504/458.18; border-radius: 24px; display: block; overflow: hidden; }
 .mould-more a img { height: 100%; object-fit: cover; width: 100%; }
 
