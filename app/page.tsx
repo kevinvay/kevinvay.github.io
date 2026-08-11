@@ -26,7 +26,7 @@ const serviceCards = [
     items: [["Design Token", "设计指令"], ["UI Component", "界面组件库"], ["Style Guidelines", "样式指南"], ["Assets Guides", "组件指南"], ["System Application", "系统应用"]],
   },
   {
-    image: "/figma-assets/service-branding.png",
+    image: "/figma-assets/service-product.png",
     title: "Product design",
     backTitle: "Product Design",
     items: [["Interaction Design", "交互设计"], ["Interface Design", "界面设计"], ["Prototyping", "原型设计"], ["Usability Testing", "可用性测试"], ["Design Handoff", "设计交付"]],
