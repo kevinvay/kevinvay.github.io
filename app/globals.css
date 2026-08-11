@@ -1110,7 +1110,7 @@ footer nav img {
   position: fixed;
   transition: transform .35s cubic-bezier(.22, 1, .36, 1);
   transform: translateX(-50%);
-  width: 466px;
+  width: 474px;
   z-index: 100;
 }
 
@@ -1150,6 +1150,7 @@ footer nav img {
   background: #111;
   border-radius: 999px;
   display: flex;
+  flex-shrink: 0;
   font-family: "FK Display Alt", sans-serif;
   font-size: 16px;
   gap: 16px;
@@ -1178,7 +1179,8 @@ footer nav img {
   border: 1px solid rgba(255,255,255,.72);
   border-radius: 999px;
   display: flex;
-  gap: 0;
+  flex-shrink: 0;
+  gap: 4px;
   height: 68px;
   overflow: hidden;
   padding: 8px;
@@ -1190,6 +1192,7 @@ footer nav img {
   color: #111;
   font-family: "FK Display Alt", sans-serif;
   font-size: 16px;
+  flex-shrink: 0;
   padding: 16px 24px;
   position: relative;
   isolation: isolate;
@@ -1228,6 +1231,8 @@ footer nav img {
   transform: scale(1.06);
   z-index: 1;
 }
+
+.nav-menu a.is-active { transform: none; }
 
 /* Mould UI case — Figma frame 8983:11606 (1133px base) */
 .mould-page { background: #0e0e0e; }
@@ -2880,13 +2885,13 @@ footer nav img {
   .contact-page .principles-track article { height: 640px; min-height: 0; padding: 56px 40px; }
 
   .floating-nav-shell { bottom: 48px; }
-  .floating-nav { width: 466px; }
+  .floating-nav { width: 474px; }
 }
 
 @media (max-width: 516px) {
   .floating-nav-shell,
   .floating-nav-shell.is-docked {
-    transform: translateX(-50%) scale(calc((100vw - 48px) / 466px));
+    transform: translateX(-50%) scale(calc((100vw - 48px) / 474px));
     transform-origin: center bottom;
   }
 }
