@@ -1346,7 +1346,7 @@ footer nav img {
   .mould-system-cards article { height: auto; min-height: 260px; }
   .mould-hero { padding: 64px 24px 40px; }
   .mould-body { padding: 40px 16px 64px; }
-  .mould-hero h1 { font-size: 40px; line-height: 48px; white-space: normal; }
+  .mould-hero h1 { font-size: 32px; line-height: 40px; white-space: normal; }
   .mould-hero p { font-size: 14px; line-height: 22px; }
   .mould-text p { font-size: 14px; line-height: 40px; }
   .mould-hero-meta { grid-template-columns: 1fr; }
@@ -1470,7 +1470,7 @@ footer nav img {
   .case-hero { padding: 64px 24px 40px; }
   .case-hero-copy { min-width: 0; }
   .case-body { padding: 40px 16px 64px; }
-  .case-hero h1 { font-size: 40px; line-height: 48px; white-space: normal; }
+  .case-hero h1 { font-size: 32px; line-height: 40px; white-space: normal; }
   .case-hero p { font-size: 14px; line-height: 22px; }
   .case-text p { font-size: 14px; line-height: 40px; }
   .case-hero-meta { grid-template-columns: 1fr; }
