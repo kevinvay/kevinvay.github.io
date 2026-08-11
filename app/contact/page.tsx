@@ -27,6 +27,7 @@ const plans = {
 
 export default function ContactPage() {
   const [planType, setPlanType] = useState<keyof typeof plans>("branding");
+  const [activePrinciple, setActivePrinciple] = useState<string | null>(null);
   const [wechatFlipped, setWechatFlipped] = useState(false);
   const planViewportRef = useRef<HTMLDivElement>(null);
 
@@ -89,7 +90,27 @@ export default function ContactPage() {
       <section className="principles-section">
         <h2>What I stick to 🎗️</h2>
         <div className="principles-track">
-          {principles.map(([icon, title, copy, cn]) => <article key={title} tabIndex={0}><img className="principle-icon" src={icon} alt="" /><h3>{title}</h3><p>{copy}</p><small>{cn}</small></article>)}
+          {principles.map(([icon, title, copy, cn]) => (
+            <article
+              key={title}
+              className={activePrinciple === title ? "is-active" : ""}
+              role="button"
+              tabIndex={0}
+              aria-pressed={activePrinciple === title}
+              onClick={() => setActivePrinciple((active) => active === title ? null : title)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  setActivePrinciple((active) => active === title ? null : title);
+                }
+              }}
+            >
+              <img className="principle-icon" src={icon} alt="" />
+              <h3>{title}</h3>
+              <p>{copy}</p>
+              <small>{cn}</small>
+            </article>
+          ))}
         </div>
       </section>
       <SiteFooter />
