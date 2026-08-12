@@ -755,20 +755,25 @@ main {
 }
 
 .service-card-inner {
+  -webkit-transform-style: preserve-3d;
   display: block;
   height: 100%;
   position: relative;
+  transform: translateZ(0) rotateY(0deg);
   transform-style: preserve-3d;
   transition: transform .65s cubic-bezier(.22, 1, .36, 1);
   width: 100%;
 }
 
 .service-card-face {
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   border-radius: 24px;
   inset: 0;
   overflow: hidden;
   position: absolute;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .service-card-front {
@@ -776,6 +781,7 @@ main {
   display: flex;
   flex-direction: column;
   padding: 0 64px 20px;
+  transform: rotateY(0deg) translateZ(1px);
 }
 
 .service-card-art {
@@ -848,7 +854,7 @@ main {
 }
 
 .service-card.active.is-flipped .service-card-inner {
-  transform: rotateY(180deg);
+  transform: translateZ(0) rotateY(180deg);
 }
 
 .service-card-back {
@@ -863,7 +869,7 @@ main {
   isolation: isolate;
   padding: 20px 62px;
   text-align: left;
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) translateZ(1px);
 }
 
 .service-card-heading,
@@ -4301,3 +4307,21 @@ footer nav img {
     width: auto;
   }
 }
+
+/* Service artwork files already contain the complete front face. Rendering the
+   artwork and the caption as two separate layers exposed a compositor seam
+   during the 3D flip, so keep the front as one continuous raster surface. */
+.services .service-card-front { padding: 0; }
+.services .service-card-art {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  width: 100%;
+}
+.services .service-card-art img {
+  height: 100%;
+  object-fit: fill;
+  width: 100%;
+}
+.services .service-front-divider,
+.services .service-front-title { display: none; }
