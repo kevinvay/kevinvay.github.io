@@ -89,6 +89,18 @@ export function PortfolioNav({ active = "home" }: { active?: "home" | "works" | 
 
   const nav = (
     <nav className="floating-nav" aria-label="Portfolio navigation">
+      <svg className="liquid-glass-filter" aria-hidden="true">
+        <defs>
+          <filter id="portfolio-nav-liquid-glass" x="-20%" y="-30%" width="140%" height="160%" colorInterpolationFilters="sRGB">
+            <feTurbulence type="fractalNoise" baseFrequency="0.012 0.05" numOctaves="2" seed="8" result="noise" />
+            <feGaussianBlur in="noise" stdDeviation="1.25" result="softNoise" />
+            <feDisplacementMap in="SourceGraphic" in2="softNoise" scale="18" xChannelSelector="R" yChannelSelector="G" result="refracted" />
+            <feColorMatrix in="refracted" type="saturate" values="1.28" />
+          </filter>
+        </defs>
+      </svg>
+      <span className="liquid-glass-surface" aria-hidden="true" />
+      <span className="liquid-glass-shine" aria-hidden="true" />
       <a className={`home-link ${active === "home" ? "is-active" : ""}`} href="/">Home <span>/</span></a>
       <div className="nav-menu">
         <a className={active === "works" ? "is-active" : ""} href="/works">Works</a>
