@@ -10,7 +10,9 @@ export function FrameAnimation({ name }: { name: MediaName }) {
 
   return (
     <span className={`inner-frame-media inner-frame-media-${name}`} aria-hidden="true">
-      <img src={image.src} alt="" />
+      <span className="inner-frame-reveal">
+        <img src={image.src} alt="" />
+      </span>
     </span>
   );
 }

@@ -1927,6 +1927,14 @@ footer nav img {
   will-change: transform;
 }
 
+.inner-frame-reveal {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
 .project-directory {
   background: var(--panel);
   border-radius: 64px;
@@ -2933,10 +2941,10 @@ footer nav img {
    the About/Contact hero entrance with an independent transform animation. */
 .motion-ready .home-page > .hero .hero-content > h1,
 .motion-ready .home-page > .hero .hero-content > p,
-.motion-ready .home-page > .hero .hero-animation,
+.motion-ready .home-page > .hero .hero-animation-stage,
 .motion-ready .works-page > .inner-hero .inner-hero-copy > h1,
 .motion-ready .works-page > .inner-hero .inner-hero-copy > p,
-.motion-ready .works-page > .inner-hero .inner-frame-media {
+.motion-ready .works-page > .inner-hero .inner-frame-reveal {
   opacity: 0;
   transform: translate3d(0, 150px, 0);
   animation-duration: 1.35s;
@@ -2947,10 +2955,10 @@ footer nav img {
 
 .motion-ready .home-page > .hero.is-hero-revealed .hero-content > h1,
 .motion-ready .home-page > .hero.is-hero-revealed .hero-content > p,
-.motion-ready .home-page > .hero.is-hero-revealed .hero-animation,
+.motion-ready .home-page > .hero.is-hero-revealed .hero-animation-stage,
 .motion-ready .works-page > .inner-hero.is-hero-revealed .inner-hero-copy > h1,
 .motion-ready .works-page > .inner-hero.is-hero-revealed .inner-hero-copy > p,
-.motion-ready .works-page > .inner-hero.is-hero-revealed .inner-frame-media {
+.motion-ready .works-page > .inner-hero.is-hero-revealed .inner-frame-reveal {
   animation-name: hero-appear;
 }
 
@@ -2964,8 +2972,8 @@ footer nav img {
   animation-delay: 680ms;
 }
 
-.motion-ready .home-page > .hero .hero-animation,
-.motion-ready .works-page > .inner-hero .inner-frame-media {
+.motion-ready .home-page > .hero .hero-animation-stage,
+.motion-ready .works-page > .inner-hero .inner-frame-reveal {
   animation-delay: 820ms;
 }
 
@@ -2998,10 +3006,10 @@ footer nav img {
   .motion-ready .reveal-layer,
   .motion-ready .home-page > .hero .hero-content > h1,
   .motion-ready .home-page > .hero .hero-content > p,
-  .motion-ready .home-page > .hero .hero-animation,
+  .motion-ready .home-page > .hero .hero-animation-stage,
   .motion-ready .works-page > .inner-hero .inner-hero-copy > h1,
   .motion-ready .works-page > .inner-hero .inner-hero-copy > p,
-  .motion-ready .works-page > .inner-hero .inner-frame-media {
+  .motion-ready .works-page > .inner-hero .inner-frame-reveal {
     translate: none !important;
     transform: none !important;
     opacity: 1 !important;
