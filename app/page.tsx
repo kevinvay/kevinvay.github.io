@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties, type TouchEvent } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type PointerEvent, type TouchEvent } from "react";
 import heroMedia from "./hero-media.json";
 import contactFlip from "./contact-flip.json";
 import { PortfolioNav, SiteFooter, SiteHeader, SiteLoader } from "./components/site-chrome";
@@ -173,6 +173,26 @@ export default function Home() {
     }
   };
 
+  const tiltServiceCard = (event: PointerEvent<HTMLButtonElement>) => {
+    if (event.pointerType !== "mouse" || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    const card = event.currentTarget;
+    const bounds = card.getBoundingClientRect();
+    const x = (event.clientX - bounds.left) / bounds.width;
+    const y = (event.clientY - bounds.top) / bounds.height;
+    card.style.setProperty("--service-tilt-x", `${((.5 - y) * 14).toFixed(2)}deg`);
+    card.style.setProperty("--service-tilt-y", `${((x - .5) * 18).toFixed(2)}deg`);
+    card.style.setProperty("--service-glare-x", `${(x * 100).toFixed(1)}%`);
+    card.style.setProperty("--service-glare-y", `${(y * 100).toFixed(1)}%`);
+  };
+
+  const resetServiceCardTilt = (event: PointerEvent<HTMLButtonElement>) => {
+    const card = event.currentTarget;
+    card.style.removeProperty("--service-tilt-x");
+    card.style.removeProperty("--service-tilt-y");
+    card.style.removeProperty("--service-glare-x");
+    card.style.removeProperty("--service-glare-y");
+  };
+
   return (
     <main className="home-page" ref={pageRef}>
       <SiteLoader />
@@ -282,6 +302,8 @@ export default function Home() {
                   aria-hidden={offset !== 0}
                   aria-pressed={offset === 0 ? serviceFlipped : undefined}
                   aria-label={offset === 0 ? `${card.title}: reveal details` : undefined}
+                  onPointerMove={offset === 0 ? tiltServiceCard : undefined}
+                  onPointerLeave={offset === 0 ? resetServiceCardTilt : undefined}
                   onClick={offset === 0 ? () => {
                     if (serviceSwipeHandled.current) {
                       serviceSwipeHandled.current = false;

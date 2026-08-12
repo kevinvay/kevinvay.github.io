@@ -736,6 +736,10 @@ main {
 }
 
 .service-card {
+  --service-glare-x: 50%;
+  --service-glare-y: 50%;
+  --service-tilt-x: 0deg;
+  --service-tilt-y: 0deg;
   appearance: none;
   background: transparent;
   border: 0;
@@ -745,6 +749,7 @@ main {
   opacity: .6;
   padding: 0;
   perspective: 1400px;
+  position: relative;
   transition: opacity .35s ease, transform .35s ease;
   width: 480px;
 }
@@ -806,6 +811,35 @@ main {
 .service-card.active {
   cursor: pointer;
   opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .service-card.active {
+    transform: perspective(1050px) rotateX(var(--service-tilt-x)) rotateY(var(--service-tilt-y)) scale3d(1.035, 1.035, 1.035);
+    transform-style: preserve-3d;
+    transition: opacity .35s ease, transform 90ms linear;
+    will-change: transform;
+  }
+
+  .service-card.active::after {
+    background: radial-gradient(circle at var(--service-glare-x) var(--service-glare-y), rgba(255,255,255,.34), rgba(255,255,255,0) 38%);
+    border-radius: 24px;
+    content: "";
+    inset: 0;
+    opacity: .7;
+    pointer-events: none;
+    position: absolute;
+    transition: opacity .28s ease;
+    z-index: 3;
+  }
+
+  .service-card.active:not(:hover) {
+    transform: perspective(1050px) rotateX(0) rotateY(0) scale3d(1, 1, 1);
+    transition-duration: .65s;
+    transition-timing-function: cubic-bezier(.22, 1, .36, 1);
+  }
+
+  .service-card.active:not(:hover)::after { opacity: 0; }
 }
 
 .service-card.side-card {
