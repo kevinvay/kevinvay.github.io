@@ -2929,6 +2929,39 @@ footer nav img {
   to { opacity: 1; translate: 0 var(--parallax-y, 0px); }
 }
 
+/* Keep the Home and Works scroll transitions on `translate`, while matching
+   the About/Contact hero entrance with an independent transform animation. */
+.motion-ready .home-page > .hero .hero-content > h1,
+.motion-ready .home-page > .hero .hero-content > p,
+.motion-ready .home-page > .hero .hero-animation,
+.motion-ready .works-page > .inner-hero .inner-hero-copy > h1,
+.motion-ready .works-page > .inner-hero .inner-hero-copy > p,
+.motion-ready .works-page > .inner-hero .inner-frame-media {
+  opacity: 0;
+  animation: hero-appear 1.35s cubic-bezier(.22, 1, .36, 1) both;
+  will-change: opacity, transform;
+}
+
+.motion-ready .home-page > .hero .hero-content > h1,
+.motion-ready .works-page > .inner-hero .inner-hero-copy > h1 {
+  animation-delay: 540ms;
+}
+
+.motion-ready .home-page > .hero .hero-content > p,
+.motion-ready .works-page > .inner-hero .inner-hero-copy > p {
+  animation-delay: 680ms;
+}
+
+.motion-ready .home-page > .hero .hero-animation,
+.motion-ready .works-page > .inner-hero .inner-frame-media {
+  animation-delay: 820ms;
+}
+
+@keyframes hero-appear {
+  from { opacity: 0; transform: translate3d(0, 150px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
 /* Project detail pages keep reveal timing without scroll-driven displacement. */
 .case-page .parallax-layer,
 .case-page .reveal-layer,
@@ -2950,8 +2983,15 @@ footer nav img {
 
 @media (prefers-reduced-motion: reduce) {
   .parallax-layer,
-  .motion-ready .reveal-layer {
+  .motion-ready .reveal-layer,
+  .motion-ready .home-page > .hero .hero-content > h1,
+  .motion-ready .home-page > .hero .hero-content > p,
+  .motion-ready .home-page > .hero .hero-animation,
+  .motion-ready .works-page > .inner-hero .inner-hero-copy > h1,
+  .motion-ready .works-page > .inner-hero .inner-hero-copy > p,
+  .motion-ready .works-page > .inner-hero .inner-frame-media {
     translate: none !important;
+    transform: none !important;
     opacity: 1 !important;
     animation: none !important;
     will-change: auto;
