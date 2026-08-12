@@ -43,6 +43,7 @@ export function ParallaxController() {
 
     const items = new Map<HTMLElement, Layer>();
     const active = new Set<HTMLElement>();
+    const matchedHero = document.querySelector<HTMLElement>(".home-page > .hero, .works-page > .inner-hero");
     const revealItems = Array.from(document.querySelectorAll<HTMLElement>(revealSelector)).filter(
       (element) => !element.closest(".home-page .hero, .works-page .inner-hero"),
     );
@@ -107,6 +108,7 @@ export function ParallaxController() {
 
     items.forEach((_, element) => observer.observe(element));
     revealTimer = window.setTimeout(() => {
+      matchedHero?.classList.add("is-hero-revealed");
       revealItems.forEach((element) => {
         const rect = element.getBoundingClientRect();
         if (rect.top < window.innerHeight * 0.96 && rect.bottom > 0) element.classList.add("is-revealed");
@@ -124,6 +126,7 @@ export function ParallaxController() {
       window.clearTimeout(revealTimer);
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
+      matchedHero?.classList.remove("is-hero-revealed");
       items.forEach((_, element) => {
         element.classList.remove("parallax-layer");
         element.style.removeProperty("--parallax-y");

@@ -2938,8 +2938,20 @@ footer nav img {
 .motion-ready .works-page > .inner-hero .inner-hero-copy > p,
 .motion-ready .works-page > .inner-hero .inner-frame-media {
   opacity: 0;
-  animation: hero-appear 1.35s cubic-bezier(.22, 1, .36, 1) both;
+  transform: translate3d(0, 150px, 0);
+  animation-duration: 1.35s;
+  animation-timing-function: cubic-bezier(.22, 1, .36, 1);
+  animation-fill-mode: both;
   will-change: opacity, transform;
+}
+
+.motion-ready .home-page > .hero.is-hero-revealed .hero-content > h1,
+.motion-ready .home-page > .hero.is-hero-revealed .hero-content > p,
+.motion-ready .home-page > .hero.is-hero-revealed .hero-animation,
+.motion-ready .works-page > .inner-hero.is-hero-revealed .inner-hero-copy > h1,
+.motion-ready .works-page > .inner-hero.is-hero-revealed .inner-hero-copy > p,
+.motion-ready .works-page > .inner-hero.is-hero-revealed .inner-frame-media {
+  animation-name: hero-appear;
 }
 
 .motion-ready .home-page > .hero .hero-content > h1,
