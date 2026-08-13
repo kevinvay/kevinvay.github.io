@@ -1661,6 +1661,212 @@ footer nav img {
   transform: rotate(8deg);
 }
 
+.airline-dark-mode {
+  aspect-ratio: 1360 / 1080;
+  border-radius: 24px;
+  color: #1c1c1c;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.airline-dark-mode > img {
+  height: 100%;
+  object-fit: cover;
+  transition: opacity .22s ease;
+  width: 100%;
+}
+
+.airline-dark-mode-copy {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  left: 50%;
+  position: absolute;
+  scale: 1;
+  text-align: center;
+  top: 14.8148%;
+  transform: translateX(-50%);
+  width: min(376px, 44%);
+}
+
+.airline-dark-mode-title {
+  align-items: center;
+  display: flex;
+  font: 500 32px/40px MiSans, sans-serif;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.airline-dark-mode-switch {
+  background: rgba(28,28,28,.2);
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  flex: 0 0 44px;
+  height: 26px;
+  margin-inline: 8px;
+  padding: 0;
+  position: relative;
+  width: 44px;
+}
+
+.airline-dark-mode-switch span {
+  background: white;
+  border-radius: 999px;
+  box-shadow: 0 1px 2px rgba(17,24,39,.05);
+  height: 18px;
+  left: 4px;
+  position: absolute;
+  top: 4px;
+  transition: left .22s ease;
+  width: 18px;
+}
+
+.airline-dark-mode-copy p {
+  color: rgba(28,28,28,.8);
+  font: 20px/28px MiSans, sans-serif;
+  margin: 0;
+}
+
+.airline-dark-mode.is-dark { color: white; }
+.airline-dark-mode.is-dark .airline-dark-mode-switch { background: #1e9bba; }
+.airline-dark-mode.is-dark .airline-dark-mode-switch span { left: 22px; }
+.airline-dark-mode.is-dark .airline-dark-mode-copy p { color: rgba(255,255,255,.8); }
+
+@media (max-width: 720px) {
+  .airline-dark-mode { border-radius: 18px; }
+  .airline-dark-mode-copy { gap: 3px; top: 12%; width: 70%; }
+  .airline-dark-mode-title { font-size: clamp(11px, 3.25vw, 18px); line-height: 1.25; }
+  .airline-dark-mode-switch { flex-basis: 28px; height: 17px; margin-inline: 5px; width: 28px; }
+  .airline-dark-mode-switch span { height: 11px; left: 3px; top: 3px; width: 11px; }
+  .airline-dark-mode.is-dark .airline-dark-mode-switch span { left: 14px; }
+  .airline-dark-mode-copy p { font-size: clamp(8px, 2.2vw, 12px); line-height: 1.35; }
+}
+
+/* React Bits-style circular card orbit for the Contact principles. */
+.contact-page .principles-section {
+  overflow: hidden;
+}
+
+.principles-rotator {
+  /* Figma 7467:4585 uses a 640 × 654 card (1 : 1.022). */
+  --principle-card-height: clamp(327px, 31.7vw, 429px);
+  --principle-card-width: clamp(320px, 31vw, 420px);
+  /* Eight 45deg-spaced rectangles need enough radius for their corners too. */
+  --principle-radius: clamp(660px, 60vw, 820px);
+  cursor: grab;
+  height: clamp(650px, 55vw, 760px);
+  margin-top: clamp(96px, 8vw, 130px);
+  overflow: visible;
+  perspective: 1200px;
+  position: relative;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.principles-rotator.is-dragging { cursor: grabbing; }
+
+.principles-orbit {
+  --principles-rotation: 0deg;
+  height: 0;
+  left: 50%;
+  position: absolute;
+  /* Keep the first card's top edge fixed while the orbit radius responds. */
+  top: calc(var(--principle-radius) + (var(--principle-card-height) / 2));
+  transform: rotate(var(--principles-rotation));
+  transform-style: preserve-3d;
+  width: 0;
+  will-change: transform;
+}
+
+.principles-orbit article {
+  --principle-hover-scale: 1;
+  align-items: center;
+  background: transparent;
+  border: 2px solid white;
+  border-radius: 24px;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 1.2vw, 16px);
+  height: var(--principle-card-height);
+  justify-content: center;
+  left: calc(var(--principle-card-width) / -2);
+  overflow: hidden;
+  padding: clamp(32px, 3.2vw, 42px) clamp(20px, 2vw, 26px);
+  position: absolute;
+  text-align: center;
+  top: calc(var(--principle-card-height) / -2);
+  transform:
+    rotate(calc(var(--principle-index) * 45deg))
+    translateY(calc(var(--principle-radius) * -1))
+    scale(var(--principle-hover-scale));
+  transform-origin: center;
+  transition: transform 280ms cubic-bezier(.22, 1, .36, 1);
+  width: var(--principle-card-width);
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .principles-orbit article:hover {
+    z-index: 2;
+  }
+}
+
+.principles-orbit .principle-icon {
+  height: clamp(50px, 4.9vw, 66px);
+  margin: 0;
+  mix-blend-mode: normal;
+  object-fit: contain;
+  pointer-events: none;
+  width: clamp(50px, 4.9vw, 66px);
+}
+
+.principles-orbit h3 {
+  font-size: clamp(24px, 2.35vw, 32px);
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.principles-orbit p {
+  align-items: center;
+  display: flex;
+  font-size: clamp(14px, 1.35vw, 18px);
+  justify-content: center;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.principles-orbit small {
+  display: block;
+  font: clamp(12px, 1.15vw, 16px)/1.72 MiSans, sans-serif;
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .principles-rotator {
+    --principle-card-height: min(73.6vw, 286px);
+    --principle-card-width: min(72vw, 280px);
+    --principle-radius: 525px;
+    height: 540px;
+    margin-top: 72px;
+  }
+
+  .principles-orbit article { border-radius: 18px; gap: 10px; padding: 28px 18px; }
+  .principles-orbit .principle-icon { height: 44px; width: 44px; }
+  .principles-orbit h3 { font-size: 21px; line-height: 1.15; }
+  .principles-orbit p { font-size: 12px; line-height: 1.7; }
+  .principles-orbit small { font-size: 11px; line-height: 1.65; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .principles-orbit { transform: none; }
+  .principles-orbit article { transition: none; }
+}
+
 @media (max-width: 720px) {
   .case-hero { flex-direction: column; gap: 40px; }
   .case-hero-copy { flex-basis: auto; width: 100%; }
@@ -2623,6 +2829,7 @@ footer nav img {
 
 .stat strong { font: 400 88px/1 "FK Display Alt", sans-serif; transition: font-size .72s cubic-bezier(.22,1,.36,1); }
 .stat span { font-size: 28px; line-height: 40px; }
+.stat-6 span { font-size: clamp(22px, 1.75vw, 28px); white-space: nowrap; }
 .stat-1 { background: #acadff; left: 146.5px; top: 110px; z-index: 1; }
 .stat-2 { background: #00e9ba; left: 353.5px; top: 40px; width: 426px; z-index: 2; }
 .stat-3 { background: #5a53fe; left: 106.5px; top: 280px; z-index: 3; }

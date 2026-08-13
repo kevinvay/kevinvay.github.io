@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent } from "react";
 import { PortfolioNav, SiteFooter, SiteHeader, SiteLoader } from "../components/site-chrome";
 
 const principles = [
@@ -25,9 +25,83 @@ const plans = {
   ],
 } as const;
 
+function RotatingPrinciples() {
+  const rotatingPrinciples = [...principles, ...principles];
+  const orbitRef = useRef<HTMLDivElement>(null);
+  const rotationRef = useRef(0);
+  const dragRef = useRef<{ pointerId: number; startX: number; startRotation: number } | null>(null);
+  const pausedRef = useRef(false);
+
+  useEffect(() => {
+    let frame = 0;
+    let previous = performance.now();
+
+    const tick = (now: number) => {
+      const delta = Math.min(now - previous, 48);
+      previous = now;
+      if (!pausedRef.current && !dragRef.current) rotationRef.current += delta * .012;
+      orbitRef.current?.style.setProperty("--principles-rotation", `${rotationRef.current}deg`);
+      frame = requestAnimationFrame(tick);
+    };
+
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
+  const startDrag = (event: PointerEvent<HTMLDivElement>) => {
+    dragRef.current = { pointerId: event.pointerId, startX: event.clientX, startRotation: rotationRef.current };
+    event.currentTarget.setPointerCapture(event.pointerId);
+    event.currentTarget.classList.add("is-dragging");
+  };
+
+  const moveDrag = (event: PointerEvent<HTMLDivElement>) => {
+    const drag = dragRef.current;
+    if (!drag || drag.pointerId !== event.pointerId) return;
+    rotationRef.current = drag.startRotation + (event.clientX - drag.startX) * .18;
+  };
+
+  const endDrag = (event: PointerEvent<HTMLDivElement>) => {
+    if (dragRef.current?.pointerId !== event.pointerId) return;
+    dragRef.current = null;
+    event.currentTarget.classList.remove("is-dragging");
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
+  };
+
+  return (
+    <div
+      className="principles-rotator"
+      onPointerDown={startDrag}
+      onPointerMove={moveDrag}
+      onPointerUp={endDrag}
+      onPointerCancel={endDrag}
+    >
+      <div className="principles-orbit" ref={orbitRef}>
+        {rotatingPrinciples.map(([icon, title, copy, cn], index) => (
+          <article
+            key={`${title}-${index}`}
+            onMouseEnter={(event) => {
+              pausedRef.current = true;
+              event.currentTarget.style.setProperty("--principle-hover-scale", "1.045");
+            }}
+            onMouseLeave={(event) => {
+              pausedRef.current = false;
+              event.currentTarget.style.setProperty("--principle-hover-scale", "1");
+            }}
+            style={{ "--principle-index": index } as CSSProperties}
+          >
+            <img className="principle-icon" src={icon} alt="" />
+            <h3>{title}</h3>
+            <p>{copy}</p>
+            <small>{cn}</small>
+          </article>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function ContactPage() {
   const [planType, setPlanType] = useState<keyof typeof plans>("branding");
-  const [activePrinciple, setActivePrinciple] = useState<string | null>(null);
   const [wechatFlipped, setWechatFlipped] = useState(false);
   const planViewportRef = useRef<HTMLDivElement>(null);
 
@@ -89,29 +163,7 @@ export default function ContactPage() {
       </section>
       <section className="principles-section">
         <h2>What I stick to 🎗️</h2>
-        <div className="principles-track">
-          {principles.map(([icon, title, copy, cn]) => (
-            <article
-              key={title}
-              className={activePrinciple === title ? "is-active" : ""}
-              role="button"
-              tabIndex={0}
-              aria-pressed={activePrinciple === title}
-              onClick={() => setActivePrinciple((active) => active === title ? null : title)}
-              onKeyDown={(event) => {
-                if (event.key === "Enter" || event.key === " ") {
-                  event.preventDefault();
-                  setActivePrinciple((active) => active === title ? null : title);
-                }
-              }}
-            >
-              <img className="principle-icon" src={icon} alt="" />
-              <h3>{title}</h3>
-              <p>{copy}</p>
-              <small>{cn}</small>
-            </article>
-          ))}
-        </div>
+        <RotatingPrinciples />
       </section>
       <SiteFooter />
       <PortfolioNav active="contact" />

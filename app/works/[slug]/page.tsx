@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { PortfolioNav, SiteFooter, SiteHeader, SiteLoader } from "../../components/site-chrome";
 import { getProject, projects } from "../../projects";
 import { AirlineComparison } from "./airline-comparison";
+import { AirlineDarkMode } from "./airline-dark-mode";
 
 type ProjectPageProps = { params: Promise<{ slug: string }> };
 
@@ -203,8 +204,8 @@ function GreaterBayAirPage() {
           <figure className="case-media"><img src={`${airlineMedia}/block-03-01.jpg`} alt="大湾区航空移动应用核心界面" /></figure>
           <figure className="case-media"><img src={`${airlineMedia}/block-04-01.jpg`} alt="大湾区航空移动应用视觉设计" /></figure>
           <figure className="case-media case-media-stack">{[1, 2, 3].map(n => <img key={n} src={`${airlineMedia}/block-05-0${n}.jpg`} alt={`大湾区航空移动应用界面 ${n}`} />)}</figure>
-          <figure className="case-media"><img src={`${airlineMedia}/block-06-01.png`} alt="大湾区航空移动应用体验展示" /></figure>
-          <figure className="case-media case-media-stack">{[1, 2].map(n => <img key={n} src={`${airlineMedia}/block-07-0${n}.jpg`} alt={`大湾区航空移动应用设计展示 ${n}`} />)}</figure>
+          <AirlineDarkMode />
+          <figure className="case-media case-media-stack">{[1, 2].map(n => <img key={n} src={`${airlineMedia}/block-07-0${n}.png`} alt={`大湾区航空移动应用设计展示 ${n}`} />)}</figure>
           <CaseCta />
         </section>
         <CaseMore>
