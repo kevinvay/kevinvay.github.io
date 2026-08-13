@@ -105,13 +105,15 @@ function MobileServiceItem({ children, index, x }: { children: ReactNode; index:
 }
 
 function MobileServiceCarousel({ initialIndex = 1 }: { initialIndex?: number }) {
-  const renderedCards = useMemo(() => [serviceCards[serviceCards.length - 1], ...serviceCards, serviceCards[0]], []);
-  const [position, setPosition] = useState(initialIndex + 1);
-  const positionRef = useRef(initialIndex + 1);
+  const renderedCards = useMemo(() => [...serviceCards, ...serviceCards, ...serviceCards], []);
+  const middleStart = serviceCards.length;
+  const initialPosition = middleStart + initialIndex;
+  const [position, setPosition] = useState(initialPosition);
+  const positionRef = useRef(initialPosition);
   const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
   const [isJumping, setIsJumping] = useState(false);
-  const x = useMotionValue(-(initialIndex + 1) * MOBILE_SERVICE_STEP);
-  const activeIndex = (position - 1 + serviceCards.length) % serviceCards.length;
+  const x = useMotionValue(-(initialPosition * MOBILE_SERVICE_STEP));
+  const activeIndex = ((position % serviceCards.length) + serviceCards.length) % serviceCards.length;
 
   const moveTo = (nextPosition: number) => {
     positionRef.current = nextPosition;
@@ -120,10 +122,10 @@ function MobileServiceCarousel({ initialIndex = 1 }: { initialIndex?: number }) 
 
   const finishLoop = () => {
     const current = positionRef.current;
-    const target = current === renderedCards.length - 1
-      ? 1
-      : current === 0
-        ? serviceCards.length
+    const target = current >= middleStart * 2
+      ? current - middleStart
+      : current < middleStart
+        ? current + middleStart
         : null;
     if (target === null) return;
 
@@ -139,7 +141,7 @@ function MobileServiceCarousel({ initialIndex = 1 }: { initialIndex?: number }) 
     const direction = info.offset.x < 0 || info.velocity.x < -500 ? 1 : info.offset.x > 0 || info.velocity.x > 500 ? -1 : 0;
     if (!direction || isJumping) return;
     setFlippedIndex(null);
-    moveTo(Math.max(0, Math.min(positionRef.current + direction, renderedCards.length - 1)));
+    moveTo(positionRef.current + direction);
   };
 
   return (
@@ -155,7 +157,7 @@ function MobileServiceCarousel({ initialIndex = 1 }: { initialIndex?: number }) 
           onDragEnd={endDrag}
         >
           {renderedCards.map((card, index) => {
-            const logicalIndex = (index - 1 + serviceCards.length) % serviceCards.length;
+            const logicalIndex = index % serviceCards.length;
             const active = index === position;
             return (
               <MobileServiceItem index={index} key={`${card.title}-${index}`} x={x}>
@@ -181,7 +183,7 @@ function MobileServiceCarousel({ initialIndex = 1 }: { initialIndex?: number }) 
             key={card.title}
             aria-label={`Show ${card.title}`}
             aria-pressed={index === activeIndex}
-            onClick={() => { setFlippedIndex(null); moveTo(index + 1); }}
+            onClick={() => { setFlippedIndex(null); moveTo(middleStart + index); }}
           />
         ))}
       </div>

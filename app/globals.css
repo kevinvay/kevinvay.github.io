@@ -4675,6 +4675,93 @@ footer nav img {
   }
 }
 
+/* Mobile typography and About spacing corrections. */
+@media (max-width: 669px) {
+  .home-page .contact h2 {
+    line-height: 1.08;
+    padding-block: .08em .14em;
+  }
+
+  .home-page .contact .flip-line {
+    align-items: flex-start;
+    height: 1.18em;
+    overflow: visible;
+  }
+
+  .home-page .contact .flip-char {
+    height: 1.22em;
+    margin-block: -.04em;
+    padding-block: .04em;
+  }
+
+  .home-page .contact .flip-glyphs > span {
+    height: 1.22em;
+    line-height: 1.22;
+  }
+
+  .home-page .contact .flip-char.is-flipping .flip-glyphs {
+    animation-name: flip-up-mobile;
+  }
+
+  .about-page .about-story {
+    padding-bottom: 28px;
+  }
+
+  .about-page .about-story > img {
+    margin-top: 36px;
+  }
+
+  .about-page .stats-stack,
+  .about-page .stats-stack.is-expanded {
+    gap: 20px;
+    margin-top: 56px;
+  }
+
+  .about-page .experience-panel {
+    margin-top: 64px;
+  }
+
+  .about-page .pixel-bird {
+    aspect-ratio: 1;
+    height: auto;
+    width: calc(100px * var(--about-experience-scale, 1));
+  }
+}
+
+@keyframes flip-up-mobile {
+  from { transform: translateY(0); }
+  to { transform: translateY(-1.22em); }
+}
+
+/* Final stacked-layout overrides: the in-app mobile preview may report a
+   tablet-sized CSS viewport, so keep these valid through the 912px stack. */
+@media (max-width: 912px) {
+  .about-page .about-story {
+    padding-bottom: 36px;
+  }
+
+  .about-page .about-story > img {
+    margin-bottom: 0;
+    margin-top: 40px;
+  }
+
+  .about-page .stats-stack,
+  .about-page .stats-stack.is-expanded {
+    gap: 20px;
+    margin-top: 64px;
+  }
+
+  .about-page .experience-panel {
+    margin-top: 72px;
+  }
+
+  .about-page .pixel-bird {
+    aspect-ratio: 1 / 1 !important;
+    height: calc(100px * var(--about-experience-scale, 1)) !important;
+    width: calc(100px * var(--about-experience-scale, 1)) !important;
+  }
+}
+
 /* Service artwork files already contain the complete front face. Rendering the
    artwork and the caption as two separate layers exposed a compositor seam
    during the 3D flip, so keep the front as one continuous raster surface. */
