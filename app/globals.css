@@ -709,34 +709,87 @@ main {
 }
 
 .service-cards {
+  --service-drag-x: 0px;
+  --service-drag-progress: 0;
+  --service-side-opacity: 0;
+  --service-active-rotate: 0deg;
+  --service-active-depth: 0px;
+  --service-active-scale: 1;
+  --service-previous-rotate: 90deg;
+  --service-previous-depth: -180px;
+  --service-next-rotate: -90deg;
+  --service-next-depth: -180px;
   align-items: center;
   display: flex;
   column-gap: 240px;
   justify-content: center;
+  transform:
+    perspective(900px)
+    translate3d(var(--service-drag-x), 0, 0);
+  transform-style: preserve-3d;
+  user-select: none;
+  will-change: transform;
 }
 
-.service-cards.slide-next {
+.service-cards.is-dragging {
+  cursor: grabbing;
+  transition: none;
+}
+
+.service-cards.is-settling {
+  transition: transform .32s cubic-bezier(.2, .7, .2, 1);
+}
+
+.service-cards.is-committing {
+  transition: transform .32s cubic-bezier(.2, .7, .2, 1);
+}
+
+.service-cards.slide-next.motion-0 {
   animation: cards-slide-next .62s cubic-bezier(.22, 1, .36, 1);
 }
 
-.service-cards.slide-previous {
+.service-cards.slide-next.motion-1 {
+  animation: cards-slide-next-alt .62s cubic-bezier(.22, 1, .36, 1);
+}
+
+.service-cards.slide-previous.motion-0 {
   animation: cards-slide-previous .62s cubic-bezier(.22, 1, .36, 1);
 }
 
+.service-cards.slide-previous.motion-1 {
+  animation: cards-slide-previous-alt .62s cubic-bezier(.22, 1, .36, 1);
+}
+
 @keyframes cards-slide-next {
-  0% { filter: blur(5px); opacity: .15; transform: translateX(90px) scale(.94); }
-  62% { filter: blur(0); opacity: 1; transform: translateX(-14px) scale(1.015); }
-  100% { transform: translateX(0) scale(1); }
+  0% { filter: blur(3px); opacity: .32; transform: perspective(900px) translate3d(180px, 0, 0) rotateY(-16deg); }
+  68% { filter: blur(0); opacity: 1; transform: perspective(900px) translate3d(-22px, 0, 0) rotateY(3deg); }
+  100% { transform: perspective(900px) translate3d(0, 0, 0) rotateY(0); }
 }
 
 @keyframes cards-slide-previous {
-  0% { filter: blur(5px); opacity: .15; transform: translateX(-90px) scale(.94); }
-  62% { filter: blur(0); opacity: 1; transform: translateX(14px) scale(1.015); }
-  100% { transform: translateX(0) scale(1); }
+  0% { filter: blur(3px); opacity: .32; transform: perspective(900px) translate3d(-180px, 0, 0) rotateY(16deg); }
+  68% { filter: blur(0); opacity: 1; transform: perspective(900px) translate3d(22px, 0, 0) rotateY(-3deg); }
+  100% { transform: perspective(900px) translate3d(0, 0, 0) rotateY(0); }
+}
+
+@keyframes cards-slide-next-alt {
+  0% { filter: blur(3px); opacity: .32; transform: perspective(900px) translate3d(180px, 0, 0) rotateY(-16deg); }
+  68% { filter: blur(0); opacity: 1; transform: perspective(900px) translate3d(-22px, 0, 0) rotateY(3deg); }
+  100% { transform: perspective(900px) translate3d(0, 0, 0) rotateY(0); }
+}
+
+@keyframes cards-slide-previous-alt {
+  0% { filter: blur(3px); opacity: .32; transform: perspective(900px) translate3d(-180px, 0, 0) rotateY(16deg); }
+  68% { filter: blur(0); opacity: 1; transform: perspective(900px) translate3d(22px, 0, 0) rotateY(-3deg); }
+  100% { transform: perspective(900px) translate3d(0, 0, 0) rotateY(0); }
 }
 
 .service-card {
+  --service-flip-angle: 180deg;
+  --service-flip-duration: .36s;
+  --service-flip-ease: cubic-bezier(.3, .7, .3, 1);
   --service-glare-x: 50%;
+  --service-flip-perspective: 2000px;
   --service-glare-y: 50%;
   --service-tilt-x: 0deg;
   --service-tilt-y: 0deg;
@@ -748,7 +801,7 @@ main {
   height: 514px;
   opacity: .6;
   padding: 0;
-  perspective: 1400px;
+  perspective: var(--service-flip-perspective);
   position: relative;
   transition: opacity .35s ease, transform .35s ease;
   width: 480px;
@@ -761,8 +814,28 @@ main {
   position: relative;
   transform: translateZ(0) rotateY(0deg);
   transform-style: preserve-3d;
-  transition: transform .65s cubic-bezier(.22, 1, .36, 1);
+  transition: transform var(--service-flip-duration) var(--service-flip-ease);
   width: 100%;
+}
+
+/* Keep click-to-flip motion identical inside desktop and mobile carousels. */
+.service-card.active.is-flipped {
+  perspective: var(--service-flip-perspective);
+}
+
+.service-card-tilt {
+  display: block;
+  height: 100%;
+  transform: perspective(1100px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);
+  transform-style: preserve-3d;
+  width: 100%;
+}
+
+.service-card-hit-area {
+  border-radius: inherit;
+  inset: 0;
+  position: absolute;
+  z-index: 10;
 }
 
 .service-card-face {
@@ -821,13 +894,17 @@ main {
 
 @media (hover: hover) and (pointer: fine) {
   .service-card.active {
-    transform: perspective(1050px) rotateX(var(--service-tilt-x)) rotateY(var(--service-tilt-y)) scale3d(1.035, 1.035, 1.035);
-    transform-style: preserve-3d;
-    transition: opacity .35s ease, transform 90ms linear;
+    transform: none;
+    transition: opacity .35s ease;
+  }
+
+  .service-card.active .service-card-tilt {
+    transform: perspective(1100px) rotateX(var(--service-tilt-x)) rotateY(var(--service-tilt-y)) scale3d(1.025, 1.025, 1.025);
+    transition: transform 150ms cubic-bezier(.2, .75, .2, 1);
     will-change: transform;
   }
 
-  .service-card.active::after {
+  .service-card.active .service-card-front::after {
     background: radial-gradient(circle at var(--service-glare-x) var(--service-glare-y), rgba(255,255,255,.34), rgba(255,255,255,0) 38%);
     border-radius: 24px;
     content: "";
@@ -840,12 +917,16 @@ main {
   }
 
   .service-card.active:not(:hover) {
-    transform: perspective(1050px) rotateX(0) rotateY(0) scale3d(1, 1, 1);
-    transition-duration: .65s;
+    transform: none;
+  }
+
+  .service-card.active:not(:hover) .service-card-tilt {
+    transform: perspective(1100px) rotateX(0) rotateY(0) scale3d(1, 1, 1);
+    transition-duration: .55s;
     transition-timing-function: cubic-bezier(.22, 1, .36, 1);
   }
 
-  .service-card.active:not(:hover)::after { opacity: 0; }
+  .service-card.active:not(:hover) .service-card-front::after { opacity: 0; }
 }
 
 .service-card.side-card {
@@ -854,8 +935,31 @@ main {
 }
 
 .service-card.active.is-flipped .service-card-inner {
-  transform: translateZ(0) rotateY(180deg);
+  transform: translateZ(0) rotateY(var(--service-flip-angle));
 }
+
+.service-card.active.is-flipped .service-card-tilt {
+  transform: perspective(2400px) rotateX(var(--service-tilt-x)) rotateY(var(--service-tilt-y)) scale3d(1, 1, 1);
+}
+
+.service-card-handoff {
+  border: 0;
+  border-radius: 24px;
+  height: var(--handoff-height);
+  left: var(--handoff-left);
+  margin: 0;
+  opacity: 1;
+  padding: 0;
+  pointer-events: none;
+  position: fixed;
+  top: var(--handoff-top);
+  transform: none;
+  transition: opacity 90ms linear;
+  width: var(--handoff-width);
+  z-index: 9999;
+}
+
+.service-card-handoff.is-released { opacity: 0; }
 
 .service-card-back {
   align-items: flex-start;
@@ -960,6 +1064,36 @@ main {
 .carousel-arrow.previous { left: calc(50% - 400px); }
 .carousel-arrow.next { right: calc(50% - 400px); }
 .service-dots { display: none; }
+
+.mobile-service-carousel { display: none; }
+
+.mobile-service-viewport {
+  overflow: visible;
+  padding: 0;
+  width: 480px;
+}
+
+.mobile-service-track {
+  display: flex;
+  touch-action: pan-y;
+  transform-style: preserve-3d;
+  width: 480px;
+}
+
+.mobile-service-item {
+  flex: 0 0 480px;
+  height: 514px;
+  /* Flatten the carousel plane before the card starts its own 3D flip. */
+  transform-style: flat;
+  will-change: transform;
+}
+
+.mobile-service-card {
+  opacity: 1;
+  pointer-events: none;
+}
+
+.mobile-service-card.active { pointer-events: auto; }
 
 .contact {
   background: linear-gradient(180deg, #000 0%, #000 48%, var(--blue) 100%);
@@ -1163,8 +1297,10 @@ footer nav img {
 .floating-nav {
   align-items: center;
   animation: nav-arrive .55s cubic-bezier(.22, 1, .36, 1) 2.1s both;
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(255,255,255,.52);
+  -webkit-backdrop-filter: blur(26px) saturate(165%);
+  backdrop-filter: blur(26px) saturate(165%);
+  background: linear-gradient(135deg, rgba(255,255,255,.3), rgba(255,255,255,.12));
+  border: 1px solid rgba(255,255,255,.42);
   border-radius: 999px;
   display: flex;
   gap: 4px;
@@ -1172,56 +1308,7 @@ footer nav img {
   justify-content: center;
   padding: 4px;
   pointer-events: auto;
-  isolation: isolate;
-  overflow: hidden;
-  position: relative;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.72),
-    inset 0 -1px 0 rgba(255,255,255,.14),
-    0 12px 32px rgba(0,0,0,.24);
-}
-
-.liquid-glass-filter {
-  height: 0;
-  pointer-events: none;
-  position: absolute;
-  width: 0;
-}
-
-.liquid-glass-surface,
-.liquid-glass-shine {
-  border-radius: inherit;
-  inset: 0;
-  pointer-events: none;
-  position: absolute;
-}
-
-.liquid-glass-surface {
-  -webkit-backdrop-filter: blur(22px) saturate(185%) contrast(108%);
-  backdrop-filter: blur(22px) saturate(185%) contrast(108%);
-  background:
-    radial-gradient(130% 100% at 14% 0%, rgba(255,255,255,.42), transparent 47%),
-    linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.04) 52%, rgba(255,255,255,.2));
-  filter: url(#portfolio-nav-liquid-glass);
-  z-index: -2;
-}
-
-.liquid-glass-shine {
-  box-shadow:
-    inset 0 1.5px 1px rgba(255,255,255,.9),
-    inset 1px 0 1px rgba(255,255,255,.46),
-    inset 0 -1.5px 1px rgba(0,0,0,.14),
-    inset -1px 0 1px rgba(255,255,255,.28);
-  background: linear-gradient(110deg, rgba(255,255,255,.18), transparent 28%, transparent 68%, rgba(255,255,255,.12));
-  z-index: 3;
-}
-
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .liquid-glass-surface { background: rgba(242,242,242,.88); filter: none; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .liquid-glass-surface { filter: none; }
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.72), inset 0 -1px 0 rgba(255,255,255,.14), 0 12px 32px rgba(0,0,0,.24);
 }
 
 @keyframes nav-arrive {
@@ -1243,8 +1330,6 @@ footer nav img {
   padding: 24px 32px;
   white-space: nowrap;
   transition: background-color .3s cubic-bezier(.22, 1, .36, 1);
-  position: relative;
-  z-index: 4;
 }
 
 .home-link:hover,
@@ -1271,8 +1356,6 @@ footer nav img {
   overflow: hidden;
   padding: 8px;
   box-shadow: none;
-  position: relative;
-  z-index: 4;
 }
 
 .nav-menu a {
@@ -3920,10 +4003,28 @@ footer nav img {
   }
 }
 
+/* Give the desktop card flip enough room below the 514px stage. */
+@media (min-width: 1001px) {
+  .services { height: 1440px; }
+}
+
 /* At 1000px and below, use the single-card 820px carousel layout. */
 @media (max-width: 1000px) {
+  .desktop-service-cards,
+  .desktop-service-dots,
+  .carousel-arrow { display: none !important; }
+
+  .mobile-service-carousel {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 480px;
+  }
+
   .services {
     height: clamp(1000px, calc(813px + 52vw), 1160px);
+    overflow: visible;
   }
 
   .service-stage {
@@ -3934,13 +4035,81 @@ footer nav img {
     width: 100%;
   }
 
+  .mobile-service-carousel,
+  .mobile-service-viewport,
+  .mobile-service-track,
+  .mobile-service-item {
+    overflow: visible;
+  }
+
   .service-cards {
-    column-gap: 0;
+    column-gap: 64px;
+    cursor: grab;
+    perspective: 1100px;
+    perspective-origin: center;
     touch-action: pan-y;
     width: min(480px, calc(100vw - 48px));
   }
 
-  .service-card.side-card { display: none; }
+  .service-card.side-card {
+    backface-visibility: hidden;
+    display: block;
+    opacity: 0;
+    transform-style: preserve-3d;
+    visibility: hidden;
+    will-change: transform, opacity;
+  }
+
+  .service-card-tilt,
+  .service-card-inner,
+  .service-card-face {
+    will-change: transform;
+  }
+
+  .service-card.side-previous {
+    transform: translateZ(var(--service-previous-depth)) rotateY(var(--service-previous-rotate));
+    transform-origin: right center;
+    z-index: 1;
+  }
+
+  .service-card.side-next {
+    transform: translateZ(var(--service-next-depth)) rotateY(var(--service-next-rotate));
+    transform-origin: left center;
+    z-index: 1;
+  }
+
+  .service-card.active {
+    backface-visibility: hidden;
+    transform: translateZ(var(--service-active-depth)) rotateY(var(--service-active-rotate)) scale(var(--service-active-scale));
+    transform-style: preserve-3d;
+    will-change: transform;
+    z-index: 2;
+  }
+
+  .service-cards.drag-previous .service-card.side-previous,
+  .service-cards.drag-next .service-card.side-next {
+    opacity: var(--service-side-opacity);
+    visibility: visible;
+    z-index: 4;
+  }
+
+  .service-cards.is-dragging .service-card.side-card,
+  .service-cards.is-dragging .service-card.active {
+    transition: none;
+  }
+
+  .service-cards.is-settling .service-card.side-card,
+  .service-cards.is-settling .service-card.active,
+  .service-cards.is-committing .service-card.side-card,
+  .service-cards.is-committing .service-card.active {
+    transition: transform .32s cubic-bezier(.2, .7, .2, 1);
+  }
+
+  .service-cards.is-rebasing,
+  .service-cards.is-rebasing .service-card {
+    animation: none !important;
+    transition: none !important;
+  }
 
   .service-card {
     flex-basis: min(480px, calc(100vw - 48px));
@@ -3999,8 +4168,12 @@ footer nav img {
   }
 }
 
-/* Keep 24px gutters until the complete service card reaches its 480px cap. */
-@media (max-width: 910px) {
+/* Keep the capped 480px card's typography consistent across the mobile/tablet carousel. */
+@media (max-width: 1000px) {
+  .mobile-service-carousel {
+    zoom: min(1, calc((max(400px, 100vw) - 48px) / 480px));
+  }
+
   .service-cards {
     width: 480px;
     zoom: min(1, calc((max(400px, 100vw) - 48px) / 480px));
@@ -4077,19 +4250,6 @@ footer nav img {
     position: relative;
     visibility: visible;
     z-index: 9;
-  }
-
-  .service-dots button {
-    background: rgba(255,255,255,.5);
-    height: 10px;
-    width: 10px;
-  }
-
-  .service-dots button.is-active {
-    background: white;
-    height: 13px;
-    transform: none;
-    width: 13px;
   }
 }
 
