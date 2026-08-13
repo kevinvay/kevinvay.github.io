@@ -107,33 +107,39 @@ function MobileServiceItem({ children, index, x }: { children: ReactNode; index:
 function MobileServiceCarousel({ initialIndex = 1 }: { initialIndex?: number }) {
   const renderedCards = useMemo(() => [serviceCards[serviceCards.length - 1], ...serviceCards, serviceCards[0]], []);
   const [position, setPosition] = useState(initialIndex + 1);
+  const positionRef = useRef(initialIndex + 1);
   const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
   const [isJumping, setIsJumping] = useState(false);
   const x = useMotionValue(-(initialIndex + 1) * MOBILE_SERVICE_STEP);
   const activeIndex = (position - 1 + serviceCards.length) % serviceCards.length;
 
+  const moveTo = (nextPosition: number) => {
+    positionRef.current = nextPosition;
+    setPosition(nextPosition);
+  };
+
   const finishLoop = () => {
-    if (position === renderedCards.length - 1) {
+    const current = positionRef.current;
+    const target = current === renderedCards.length - 1
+      ? 1
+      : current === 0
+        ? serviceCards.length
+        : null;
+    if (target === null) return;
+
+    flushSync(() => {
       setIsJumping(true);
-      setPosition(1);
-      x.set(-MOBILE_SERVICE_STEP);
-      requestAnimationFrame(() => setIsJumping(false));
-      return;
-    }
-    if (position === 0) {
-      setIsJumping(true);
-      setPosition(serviceCards.length);
-      x.set(-serviceCards.length * MOBILE_SERVICE_STEP);
-      requestAnimationFrame(() => setIsJumping(false));
-      return;
-    }
+      moveTo(target);
+    });
+    x.set(-(target * MOBILE_SERVICE_STEP));
+    requestAnimationFrame(() => requestAnimationFrame(() => setIsJumping(false)));
   };
 
   const endDrag = (_event: MouseEvent | TouchEvent | globalThis.PointerEvent, info: PanInfo) => {
     const direction = info.offset.x < 0 || info.velocity.x < -500 ? 1 : info.offset.x > 0 || info.velocity.x > 500 ? -1 : 0;
-    if (!direction) return;
+    if (!direction || isJumping) return;
     setFlippedIndex(null);
-    setPosition((current) => Math.max(0, Math.min(current + direction, renderedCards.length - 1)));
+    moveTo(Math.max(0, Math.min(positionRef.current + direction, renderedCards.length - 1)));
   };
 
   return (
@@ -175,7 +181,7 @@ function MobileServiceCarousel({ initialIndex = 1 }: { initialIndex?: number }) 
             key={card.title}
             aria-label={`Show ${card.title}`}
             aria-pressed={index === activeIndex}
-            onClick={() => { setFlippedIndex(null); setPosition(index + 1); }}
+            onClick={() => { setFlippedIndex(null); moveTo(index + 1); }}
           />
         ))}
       </div>
