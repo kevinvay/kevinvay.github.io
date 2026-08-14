@@ -4770,6 +4770,11 @@ footer nav img {
    overlaps the strip, and share one responsive radius across the full stacked
    About layout. */
 @media (max-width: 1104px) {
+  .home-page .contact .flip-char {
+    margin-inline: -.08em;
+    padding-inline: .08em;
+  }
+
   .about-page {
     --about-hello-overlap: clamp(24px, 4vw, 44px);
     --about-hello-pad: clamp(18px, 2.9vw, 32px);
