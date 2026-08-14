@@ -4766,6 +4766,40 @@ footer nav img {
   }
 }
 
+/* Keep the greeting's visible top/bottom inset balanced while its lower cap
+   overlaps the strip, and share one responsive radius across the full stacked
+   About layout. */
+@media (max-width: 1104px) {
+  .about-page {
+    --about-hello-overlap: clamp(24px, 4vw, 44px);
+    --about-hello-pad: clamp(18px, 2.9vw, 32px);
+    --about-hello-radius: clamp(24px, 5.8vw, 64px);
+  }
+
+  .about-page .hello-strip {
+    border-radius: var(--about-hello-radius) var(--about-hello-radius) 0 0;
+    font-size: clamp(24px, 3.625vw, 40px);
+    height: auto;
+    min-height: 0;
+    padding-bottom: calc(var(--about-hello-pad) + var(--about-hello-overlap));
+    padding-top: var(--about-hello-pad);
+  }
+
+  .about-page .hello-track {
+    height: auto;
+    line-height: 1.15;
+  }
+
+  .about-page .about-story {
+    margin-top: calc(-1 * var(--about-hello-overlap));
+  }
+
+  .about-page .about-story::before {
+    border-radius: var(--about-hello-radius) var(--about-hello-radius) 0 0;
+    height: max(calc(100px * var(--about-hello-scale)), var(--about-hello-overlap));
+  }
+}
+
 /* Service artwork files already contain the complete front face. Rendering the
    artwork and the caption as two separate layers exposed a compositor seam
    during the 3D flip, so keep the front as one continuous raster surface. */
