@@ -62,7 +62,7 @@ export default function WorksPage() {
             >
               {project.slug === "mould-ui" ? (
                 <picture>
-                  <source media="(max-width: 912px)" srcSet="/figma-assets/work-mould-mobile-square.png" />
+                  <source media="(max-width: 729px)" srcSet="/figma-assets/work-mould-mobile-square.png" />
                   <img src={project.coverImage} alt="" />
                 </picture>
               ) : (

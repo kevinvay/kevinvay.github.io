@@ -101,7 +101,8 @@ const MOBILE_SERVICE_SPRING = { type: "spring" as const, stiffness: 300, damping
 function MobileServiceItem({ children, index, x }: { children: ReactNode; index: number; x: MotionValue<number> }) {
   const range = [-(index + 1) * MOBILE_SERVICE_STEP, -index * MOBILE_SERVICE_STEP, -(index - 1) * MOBILE_SERVICE_STEP];
   const rotateY = useTransform(x, range, [90, 0, -90], { clamp: false });
-  return <motion.div className="mobile-service-item" style={{ rotateY }}>{children}</motion.div>;
+  const opacity = useTransform(x, range, [0, 1, 0]);
+  return <motion.div className="mobile-service-item" style={{ opacity, rotateY }}>{children}</motion.div>;
 }
 
 function MobileServiceCarousel({ initialIndex = 1 }: { initialIndex?: number }) {
@@ -557,7 +558,7 @@ export default function Home() {
               >
                 {index === 2 ? (
                   <picture>
-                    <source media="(max-width: 912px)" srcSet="/figma-assets/work-mould-mobile-square.png" />
+                    <source media="(max-width: 729px)" srcSet="/figma-assets/work-mould-mobile-square.png" />
                     <img src={work.coverImage} alt="" />
                   </picture>
                 ) : (
