@@ -2,6 +2,10 @@
 
 import { useEffect, useState, type CSSProperties } from "react";
 import logoAnimation from "../logo-frames.json";
+import {
+  DEFAULT_LIQUID_GLASS_CONFIG,
+  LiquidGlass,
+} from "./liquid-glass";
 
 const socials = [
   ["Dribbble", "https://dribbble.com/kevin-vay", "/figma-assets/dribbble.svg"],
@@ -73,8 +77,15 @@ export function SiteFooter() {
   );
 }
 
-export function PortfolioNav({ active = "home" }: { active?: "home" | "works" | "about" | "contact" | null }) {
+export function PortfolioNav({
+  active = "home",
+  liquidGlass = true,
+}: {
+  active?: "home" | "works" | "about" | "contact" | null;
+  liquidGlass?: boolean;
+}) {
   const [docked, setDocked] = useState(false);
+  const glassConfig = DEFAULT_LIQUID_GLASS_CONFIG;
 
   useEffect(() => {
     const update = () => setDocked(window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2);
@@ -87,8 +98,15 @@ export function PortfolioNav({ active = "home" }: { active?: "home" | "works" | 
     };
   }, []);
 
+  const navStyle = liquidGlass ? {
+    "--glass-tint-opacity": glassConfig.tintOpacity,
+    "--glass-tint-soft": glassConfig.tintOpacity * 0.36,
+    "--glass-menu-opacity": Math.min(0.7, glassConfig.tintOpacity + 0.02),
+  } as CSSProperties : undefined;
+
   const nav = (
-    <nav className="floating-nav" aria-label="Portfolio navigation">
+    <nav className={`floating-nav${liquidGlass ? " has-liquid-glass" : ""}`} style={navStyle} aria-label="Portfolio navigation">
+        {liquidGlass ? <LiquidGlass config={glassConfig} /> : null}
         <a className={`home-link ${active === "home" ? "is-active" : ""}`} href="/">Home <span>/</span></a>
         <div className="nav-menu">
           <a className={active === "works" ? "is-active" : ""} href="/works">Works</a>

@@ -1296,7 +1296,7 @@ footer nav img {
 
 .floating-nav {
   align-items: center;
-  animation: nav-arrive .55s cubic-bezier(.22, 1, .36, 1) 2.1s both;
+  animation: nav-arrive .55s cubic-bezier(.22, 1, .36, 1) 2.1s backwards;
   -webkit-backdrop-filter: blur(26px) saturate(165%);
   backdrop-filter: blur(26px) saturate(165%);
   background: linear-gradient(135deg, rgba(255,255,255,.3), rgba(255,255,255,.12));
@@ -1309,6 +1309,134 @@ footer nav img {
   padding: 4px;
   pointer-events: auto;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.72), inset 0 -1px 0 rgba(255,255,255,.14), 0 12px 32px rgba(0,0,0,.24);
+}
+
+.liquid-glass-definitions {
+  height: 0;
+  left: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  width: 0;
+  z-index: -1;
+}
+
+.floating-nav.has-liquid-glass {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background: linear-gradient(135deg, rgba(255,255,255,var(--glass-tint-opacity, .22)), rgba(255,255,255,var(--glass-tint-soft, .08)));
+  position: relative;
+}
+
+.floating-nav.has-liquid-glass > .nav-menu {
+  background: rgba(255,255,255,var(--glass-menu-opacity, .24));
+}
+
+.liquid-glass-surface {
+  border-radius: inherit;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  will-change: backdrop-filter;
+  z-index: 0;
+}
+
+.floating-nav.has-liquid-glass > .home-link,
+.floating-nav.has-liquid-glass > .nav-menu {
+  position: relative;
+  z-index: 1;
+}
+
+.glass-controls {
+  background: rgba(20,20,22,.92);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 20px;
+  bottom: 0;
+  box-shadow: 0 18px 56px rgba(0,0,0,.32);
+  color: white;
+  font-family: Avenir, sans-serif;
+  left: calc(100% + 20px);
+  overflow: hidden;
+  pointer-events: auto;
+  position: absolute;
+  width: 292px;
+}
+
+.glass-controls-header {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  justify-content: space-between;
+  padding: 16px 18px;
+  text-align: left;
+  width: 100%;
+}
+
+.glass-controls-header span { align-items: center; display: flex; gap: 9px; }
+.glass-controls-header i {
+  background: #8c86ff;
+  border-radius: 50%;
+  box-shadow: 0 0 14px rgba(140,134,255,.8);
+  height: 8px;
+  width: 8px;
+}
+.glass-controls-header b { font-size: 20px; font-weight: 400; }
+
+.glass-controls-body {
+  border-top: 1px solid rgba(255,255,255,.1);
+  display: grid;
+  gap: 14px;
+  padding: 16px 18px 18px;
+}
+
+.glass-enabled,
+.glass-control > span {
+  align-items: center;
+  display: flex;
+  font-size: 12px;
+  justify-content: space-between;
+}
+
+.glass-enabled { cursor: pointer; }
+.glass-enabled input { accent-color: #8c86ff; height: 17px; width: 17px; }
+.glass-control { display: grid; gap: 7px; }
+.glass-control output { color: rgba(255,255,255,.62); font-variant-numeric: tabular-nums; }
+.glass-control input[type="range"] {
+  accent-color: #8c86ff;
+  cursor: ew-resize;
+  margin: 0;
+  width: 100%;
+}
+
+.glass-control-actions { display: grid; gap: 8px; grid-template-columns: 1fr 1fr; }
+.glass-control-actions .glass-rebuild-button { grid-column: 1 / -1; }
+.glass-control-actions button {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  padding: 9px 8px;
+}
+.glass-control-actions button:hover { background: rgba(255,255,255,.18); }
+.glass-controls-body p { color: rgba(255,255,255,.52); font-size: 10px; line-height: 1.5; margin: 0; }
+.glass-controls.is-collapsed { width: 220px; }
+
+@media (max-width: 1300px) {
+  .glass-controls {
+    bottom: 96px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes nav-arrive {

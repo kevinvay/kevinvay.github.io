@@ -678,7 +678,7 @@ export default function Home() {
       </section>
 
       <SiteFooter />
-      <PortfolioNav />
+      <PortfolioNav liquidGlass />
     </main>
   );
 }
