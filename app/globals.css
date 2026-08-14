@@ -3119,6 +3119,10 @@ footer nav img {
     width: 140px;
   }
 
+  .home-page .hero-animation {
+    overflow: visible;
+  }
+
   .hero-animation-stage { height: 140px; top: 16px; width: 140px; }
   .hero-animation-stage img { height: 140px; width: 140px; }
   .inner-frame-media img { height: 140px; width: 140px; }
