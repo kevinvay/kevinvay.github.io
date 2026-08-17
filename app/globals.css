@@ -1322,14 +1322,28 @@ footer nav img {
 }
 
 .floating-nav.has-liquid-glass {
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-  background: linear-gradient(135deg, rgba(255,255,255,var(--glass-tint-opacity, .22)), rgba(255,255,255,var(--glass-tint-soft, .08)));
   position: relative;
 }
 
-.floating-nav.has-liquid-glass > .nav-menu {
+.floating-nav.has-liquid-glass.glass-svg {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background: linear-gradient(135deg, rgba(255,255,255,var(--glass-tint-opacity, .22)), rgba(255,255,255,var(--glass-tint-soft, .08)));
+}
+
+.floating-nav.has-liquid-glass.glass-svg > .nav-menu {
   background: rgba(255,255,255,var(--glass-menu-opacity, .24));
+}
+
+.floating-nav.has-liquid-glass.glass-fallback {
+  -webkit-backdrop-filter: blur(24px) saturate(170%) brightness(1.06) contrast(1.03);
+  backdrop-filter: blur(24px) saturate(170%) brightness(1.06) contrast(1.03);
+  background: linear-gradient(135deg, rgba(255,255,255,.34), rgba(255,255,255,.15));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.78), inset 0 -1px 0 rgba(255,255,255,.16), 0 12px 32px rgba(0,0,0,.24);
+}
+
+.floating-nav.has-liquid-glass.glass-fallback > .nav-menu {
+  background: rgba(255,255,255,.28);
 }
 
 .liquid-glass-surface {

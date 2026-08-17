@@ -14,6 +14,23 @@ const socials = [
   ["LinkedIn", "https://www.linkedin.com/in/kevin-vay/details/experience/", "/figma-assets/linkedin.svg"],
 ];
 
+type GlassRenderingMode = "fallback" | "svg";
+
+function supportsSvgBackdropRefraction() {
+  if (typeof window === "undefined") return false;
+
+  const userAgent = window.navigator.userAgent;
+  const isIOS = /iPad|iPhone|iPod/.test(userAgent)
+    || (window.navigator.platform === "MacIntel" && window.navigator.maxTouchPoints > 1);
+  const isFirefox = /Firefox|FxiOS/.test(userAgent);
+  const isChromium = /Chrome|Chromium|Edg|OPR|SamsungBrowser/.test(userAgent);
+
+  return !isIOS
+    && !isFirefox
+    && isChromium
+    && window.CSS.supports("backdrop-filter", "url(#liquid-glass-support-test)");
+}
+
 export function SiteLoader() {
   return (
     <div className="site-loader" aria-hidden="true">
@@ -85,7 +102,13 @@ export function PortfolioNav({
   liquidGlass?: boolean;
 }) {
   const [docked, setDocked] = useState(false);
+  const [glassMode, setGlassMode] = useState<GlassRenderingMode>("fallback");
   const glassConfig = DEFAULT_LIQUID_GLASS_CONFIG;
+
+  useEffect(() => {
+    if (!liquidGlass) return;
+    setGlassMode(supportsSvgBackdropRefraction() ? "svg" : "fallback");
+  }, [liquidGlass]);
 
   useEffect(() => {
     const update = () => setDocked(window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2);
@@ -105,8 +128,13 @@ export function PortfolioNav({
   } as CSSProperties : undefined;
 
   const nav = (
-    <nav className={`floating-nav${liquidGlass ? " has-liquid-glass" : ""}`} style={navStyle} aria-label="Portfolio navigation">
-        {liquidGlass ? <LiquidGlass config={glassConfig} /> : null}
+    <nav
+      className={`floating-nav${liquidGlass ? ` has-liquid-glass glass-${glassMode}` : ""}`}
+      data-glass-mode={liquidGlass ? glassMode : undefined}
+      style={navStyle}
+      aria-label="Portfolio navigation"
+    >
+        {liquidGlass && glassMode === "svg" ? <LiquidGlass config={glassConfig} /> : null}
         <a className={`home-link ${active === "home" ? "is-active" : ""}`} href="/">Home <span>/</span></a>
         <div className="nav-menu">
           <a className={active === "works" ? "is-active" : ""} href="/works">Works</a>
