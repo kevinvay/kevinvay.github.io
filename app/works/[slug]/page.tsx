@@ -120,10 +120,17 @@ function CaseCta() {
   return <a className="mould-cta" href="/contact"><span className="mould-button-label">Start a project</span><span className="mould-button-arrow">→</span></a>;
 }
 
-function ProjectCard({ slug, image, eyebrow, title, wide = false }: { slug: string; image: string; eyebrow: string; title: string; wide?: boolean }) {
+function ProjectCard({ slug, image, mobileImage, eyebrow, title, wide = false }: { slug: string; image: string; mobileImage?: string; eyebrow: string; title: string; wide?: boolean }) {
   return (
     <a className={`directory-card${wide ? " wide" : ""}`} href={`/works/${slug}`} aria-label={`View project: ${title}`}>
-      <img src={image} alt="" />
+      {mobileImage ? (
+        <picture>
+          <source media="(max-width: 729px)" srcSet={mobileImage} />
+          <img src={image} alt="" />
+        </picture>
+      ) : (
+        <img src={image} alt="" />
+      )}
       <div><p>{eyebrow}</p><h2>{title} <span>↗</span></h2></div>
     </a>
   );
@@ -169,7 +176,7 @@ function SouthwestKaiaPage() {
           <CaseCta />
         </section>
         <CaseMore>
-          <ProjectCard wide slug="mould-ui" image="/figma-assets/work-mould.png" eyebrow="公益设计系统产品设计" title="Mould UI｜设计系统" />
+          <ProjectCard wide slug="mould-ui" image="/figma-assets/work-mould.png" mobileImage="/figma-assets/work-mould-mobile-square.png" eyebrow="公益设计系统产品设计" title="Mould UI｜设计系统" />
           <ProjectCard slug="greater-bay-airlines" image="/figma-assets/work-airline.png" eyebrow="大湾区航空机票预订移动端设计" title="大湾区航空｜移动应用" />
           <ProjectCard slug="kaiya-academy" image="/figma-assets/work-academy.png" eyebrow="凯亚学院品牌与产品设计" title="凯亚学院｜品牌设计" />
         </CaseMore>
@@ -310,7 +317,7 @@ function ZentaoPage() {
           <CaseCta />
         </section>
         <CaseMore>
-          <ProjectCard wide slug="mould-ui" image="/figma-assets/work-mould.png" eyebrow="一套激发创造力、打破传统束缚的设计系统" title="Mould UI｜设计系统" />
+          <ProjectCard wide slug="mould-ui" image="/figma-assets/work-mould.png" mobileImage="/figma-assets/work-mould-mobile-square.png" eyebrow="一套激发创造力、打破传统束缚的设计系统" title="Mould UI｜设计系统" />
           <ProjectCard slug="greater-bay-airlines" image="/figma-assets/work-airline.png" eyebrow="大湾区航空机票预订移动端设计" title="大湾区航空｜移动应用" />
           <ProjectCard slug="kaiya-academy" image="/figma-assets/work-academy.png" eyebrow="凯亚学院官方品牌塑造" title="凯亚学院｜品牌VI" />
         </CaseMore>
