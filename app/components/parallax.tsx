@@ -32,8 +32,8 @@ const revealSelector = [
   ".service-stage", ".contact-content > *",
   ".wechat-card", ".project-plan",
   ".principles-section > h2",
-  ".case-hero > *", ".case-text", ".case-media",
-  ".mould-hero > *", ".mould-text", ".mould-rounded", ".mould-platform",
+  ".case-hero > *", ".case-text", ".case-media", ".airline-task-cards > article",
+  ".mould-hero > *", ".mould-text", ".mould-system-cards > article", ".mould-rounded", ".mould-platform",
   "footer",
 ].join(", ");
 

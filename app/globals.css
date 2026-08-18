@@ -1,6 +1,6 @@
 @font-face {
   font-family: "FK Display";
-  src: url("/fonts/FKDisplay-Regular.ttf") format("truetype");
+  src: url("/fonts/FKDisplay-Regular.woff2") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "FK Display Alt";
-  src: url("/fonts/FKDisplay-RegularAlt.ttf") format("truetype");
+  src: url("/fonts/FKDisplay-RegularAlt.woff2") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: "MiSans";
-  src: url("/fonts/MiSans-Regular.ttf") format("truetype");
+  src: url("/fonts/MiSans-Regular.woff2") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -24,7 +24,7 @@
 
 @font-face {
   font-family: "Silver";
-  src: url("/fonts/Silver.ttf") format("truetype");
+  src: url("/fonts/Silver.woff2") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -32,7 +32,7 @@
 
 @font-face {
   font-family: "MiSans";
-  src: url("/fonts/MiSans-Demibold.ttf") format("truetype");
+  src: url("/fonts/MiSans-Demibold.woff2") format("woff2");
   font-style: normal;
   font-weight: 600;
   font-display: swap;
@@ -40,7 +40,7 @@
 
 @font-face {
   font-family: "MiSans";
-  src: url("/fonts/MiSans-Semibold.ttf") format("truetype");
+  src: url("/fonts/MiSans-Semibold.woff2") format("woff2");
   font-style: normal;
   font-weight: 700;
   font-display: swap;
@@ -963,7 +963,7 @@ main {
 
 .service-card-back {
   align-items: flex-start;
-  background: #e1e1e1 url("/figma-assets/service-back-bg.png") center / 100% 100% no-repeat;
+  background: #e1e1e1 url("/figma-assets/service-back-bg.webp") center / 100% 100% no-repeat;
   border: 0;
   color: #0e0e0e;
   display: flex;
@@ -1877,6 +1877,15 @@ footer nav img {
 .airline-dark-mode.is-dark .airline-dark-mode-switch span { left: 22px; }
 .airline-dark-mode.is-dark .airline-dark-mode-copy p { color: rgba(255,255,255,.8); }
 
+@media (min-width: 720px) and (max-width: 1080px) {
+  .airline-dark-mode-copy { gap: 5px; top: 13%; width: 52%; }
+  .airline-dark-mode-title { font-size: clamp(20px, 2.4vw, 26px); line-height: 1.25; }
+  .airline-dark-mode-switch { flex-basis: 36px; height: 22px; margin-inline: 6px; width: 36px; }
+  .airline-dark-mode-switch span { height: 14px; left: 4px; top: 4px; width: 14px; }
+  .airline-dark-mode.is-dark .airline-dark-mode-switch span { left: 18px; }
+  .airline-dark-mode-copy p { font-size: clamp(13px, 1.6vw, 17px); line-height: 1.4; }
+}
+
 @media (max-width: 720px) {
   .airline-dark-mode { border-radius: 18px; }
   .airline-dark-mode-copy { gap: 3px; top: 12%; width: 70%; }
@@ -1885,6 +1894,11 @@ footer nav img {
   .airline-dark-mode-switch span { height: 11px; left: 3px; top: 3px; width: 11px; }
   .airline-dark-mode.is-dark .airline-dark-mode-switch span { left: 14px; }
   .airline-dark-mode-copy p { font-size: clamp(8px, 2.2vw, 12px); line-height: 1.35; }
+}
+
+@media (min-width: 720px) and (max-width: 1060px) {
+  .airline-page .airline-task-cards { gap: 32px; grid-template-columns: 1fr; }
+  .airline-page .airline-task-cards article { height: auto; min-height: 260px; }
 }
 
 /* React Bits-style circular card orbit for the Contact principles. */
@@ -2051,7 +2065,7 @@ footer nav img {
 .experience-panel {
   animation: experience-scroll 4.8s linear infinite;
   aspect-ratio: 2 / 1;
-  background: #f1f1f1 url("/figma-assets/inner/experience-bg.png") 0 0 / 300% 100% no-repeat;
+  background: #f1f1f1 url("/figma-assets/inner/experience-bg.webp") 0 0 / 300% 100% no-repeat;
   border-radius: 12px;
   color: #1c1c1c;
   margin: 50px auto 0;
@@ -2133,7 +2147,7 @@ footer nav img {
 .pixel-bird,
 .game-bird {
   animation: bird-frames .4s steps(1, end) infinite;
-  background-image: url("/figma-assets/inner/bird-sprite.png");
+  background-image: url("/figma-assets/inner/bird-sprite.webp");
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: 400% 100%;
@@ -2167,7 +2181,7 @@ footer nav img {
 
 .experience-device {
   aspect-ratio: 4 / 3;
-  background: center / 100% 100% no-repeat url("/figma-assets/inner/experience-shell.png");
+  background: center / 100% 100% no-repeat url("/figma-assets/inner/experience-shell.webp");
   max-height: calc(100vh - 48px);
   max-width: calc(100vw - 48px);
   position: relative;
@@ -2209,7 +2223,7 @@ footer nav img {
 
 .game-ground {
   background-color: #fff;
-  background-image: url("/figma-assets/inner/game-ground-stripe.png");
+  background-image: url("/figma-assets/inner/game-ground-stripe.webp");
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: 100% 75%;
@@ -2242,6 +2256,7 @@ footer nav img {
 .experience-stop:last-child .game-scene-title { font-size: 3.3333cqw; }
 .game-date { border-bottom: max(1px, .3472cqw) solid #1d1f20; color: #1d1f20; font-size: 3.3333cqw; left: 50%; line-height: 1.25; text-align: center; top: 19.1667%; transform: translateX(-50%); }
 .game-scene-description { color: rgba(28,28,28,.4); font-size: 3.3333cqw; left: 50%; line-height: 1.25; text-align: center; top: 95.5556%; transform: translate(-50%, -50%); }
+.game-touch-instruction { display: none; }
 .game-back {
   display: block;
   height: 13.8889%;
@@ -2381,6 +2396,9 @@ footer nav img {
   .pixel-bird { height: 18%; width: 9%; }
   .experience-game-page { padding: 8px; }
   .experience-device { max-height: calc(100vh - 16px); max-width: calc(100vw - 16px); }
+  .experience-screen { touch-action: pan-y; }
+  .game-desktop-instruction { display: none; }
+  .game-touch-instruction { display: inline; }
 }
 
 @media (prefers-reduced-motion: reduce) {

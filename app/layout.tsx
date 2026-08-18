@@ -9,14 +9,14 @@ export const metadata: Metadata = {
     title: "Kevin Wu — Portfolio",
     description:
       "Branding, product design, and design systems by Kevin Wu.",
-    images: ["/og.png"],
+    images: ["/og.webp"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Kevin Wu — Portfolio",
     description:
       "Branding, product design, and design systems by Kevin Wu.",
-    images: ["/og.png"],
+    images: ["/og.webp"],
   },
   icons: {
     icon: "/favicon.svg",

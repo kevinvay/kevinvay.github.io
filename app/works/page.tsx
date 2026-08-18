@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { PortfolioNav, SiteFooter, SiteHeader, SiteLoader } from "../components/site-chrome";
 import { FrameAnimation } from "../components/frame-animation";
 import { projects } from "../projects";
+import { OptimizedImage } from "../components/optimized-image";
 
 export default function WorksPage() {
   const pageRef = useRef<HTMLElement | null>(null);
@@ -46,7 +47,7 @@ export default function WorksPage() {
       <SiteHeader />
       <section className="inner-hero">
         <div className="inner-hero-copy">
-          <h1><span>MY <span className="title-media title-media-b"><img src="/figma-assets/inner/title-b.png" alt="B" /></span>EST</span><span>PORTFOLIO.</span></h1>
+          <h1><span>MY <span className="title-media title-media-b"><OptimizedImage src="/figma-assets/inner/title-b.webp" alt="B" loading="eager" /></span>EST</span><span>PORTFOLIO.</span></h1>
           <p>Purpose driven, strategy-led<br /><span>that people care about ↓<i aria-hidden="true" /></span></p>
         </div>
         <FrameAnimation name="works" />
@@ -62,11 +63,11 @@ export default function WorksPage() {
             >
               {project.slug === "mould-ui" ? (
                 <picture>
-                  <source media="(max-width: 729px)" srcSet="/figma-assets/work-mould-mobile-square.png" />
-                  <img src={project.coverImage} alt="" />
+                  <source media="(max-width: 729px)" srcSet="/figma-assets/work-mould-mobile-square.webp" />
+                  <OptimizedImage src={project.coverImage} alt="" sizes="(max-width: 729px) calc(100vw - 48px), 42vw" />
                 </picture>
               ) : (
-                <img src={project.coverImage} alt="" />
+                <OptimizedImage src={project.coverImage} alt="" sizes="(max-width: 729px) calc(100vw - 48px), 42vw" />
               )}
               <div><p>{project.description}</p><h2>{project.title} <span>↗</span></h2></div>
             </a>

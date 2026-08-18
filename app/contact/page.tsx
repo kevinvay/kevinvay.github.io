@@ -2,12 +2,13 @@
 
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent } from "react";
 import { PortfolioNav, SiteFooter, SiteHeader, SiteLoader } from "../components/site-chrome";
+import { OptimizedImage } from "../components/optimized-image";
 
 const principles = [
-  ["/figma-assets/inner/principle-business.png", "Business Value", "As designers, we are connecting what users need with what companies can offer for sustainable long-term value.", "作为设计师，我们将用户的需求与公司能够提供的可持续长期价值联系起来。"],
-  ["/figma-assets/inner/principle-purpose.png", "With Purpose", "I ask a lot of questions. I listen and learn. I am eager to discover as much as possible about challenges, motivations, and goals.", "我渴望尽可能多地发现挑战、动机和目标；我愿意倾听和学习，并提出许多问题。"],
-  ["/figma-assets/inner/principle-simple.png", "Keep It Simple", "Less is more. I keep things clear even when the challenge appears complex.", "少即是多，即使面对复杂问题也保持清晰。"],
-  ["/figma-assets/inner/principle-emotion.png", "Emotional Design", "According to Maslow's theory, human needs and decisions ultimately follow emotions, and we design for emotions.", "根据马斯洛理论，人的需求和决定最终都遵循情感，而我们为情感而设计。"],
+  ["/figma-assets/inner/principle-business.webp", "Business Value", "As designers, we are connecting what users need with what companies can offer for sustainable long-term value.", "作为设计师，我们将用户的需求与公司能够提供的可持续长期价值联系起来。"],
+  ["/figma-assets/inner/principle-purpose.webp", "With Purpose", "I ask a lot of questions. I listen and learn. I am eager to discover as much as possible about challenges, motivations, and goals.", "我渴望尽可能多地发现挑战、动机和目标；我愿意倾听和学习，并提出许多问题。"],
+  ["/figma-assets/inner/principle-simple.webp", "Keep It Simple", "Less is more. I keep things clear even when the challenge appears complex.", "少即是多，即使面对复杂问题也保持清晰。"],
+  ["/figma-assets/inner/principle-emotion.webp", "Emotional Design", "According to Maslow's theory, human needs and decisions ultimately follow emotions, and we design for emotions.", "根据马斯洛理论，人的需求和决定最终都遵循情感，而我们为情感而设计。"],
 ];
 
 const plans = {
@@ -89,7 +90,7 @@ function RotatingPrinciples() {
             }}
             style={{ "--principle-index": index } as CSSProperties}
           >
-            <img className="principle-icon" src={icon} alt="" />
+            <OptimizedImage className="principle-icon" src={icon} alt="" />
             <h3>{title}</h3>
             <p>{copy}</p>
             <small>{cn}</small>
@@ -131,13 +132,13 @@ export default function ContactPage() {
       <SiteHeader />
       <section className="inner-hero contact-hero">
         <div className="inner-hero-copy">
-          <h1><span>LE<span className="title-media title-media-t"><img src="/figma-assets/inner/title-t.png" alt="T" /></span>&apos;S</span><span>COLLAB.</span></h1>
+          <h1><span>LE<span className="title-media title-media-t"><OptimizedImage src="/figma-assets/inner/title-t.webp" alt="T" loading="eager" /></span>&apos;S</span><span>COLLAB.</span></h1>
           <p>Thanks for visiting.<br /><span>And that&apos;s the way I work ↓<i aria-hidden="true" /></span></p>
         </div>
         <button type="button" className={`wechat-card${wechatFlipped ? " is-flipped" : ""}`} aria-label="Flip WeChat contact card" aria-pressed={wechatFlipped} onClick={() => setWechatFlipped((flipped) => !flipped)}>
           <span className="wechat-card-inner">
-            <span className="wechat-card-face wechat-card-front"><img src="/figma-assets/inner/wechat-front-figma.svg" alt="" /><b>WECHAT ↗</b></span>
-            <span className="wechat-card-face wechat-card-back"><span><img src="/figma-assets/inner/wechat-qr-figma.png" alt="Contact QR code" /></span></span>
+            <span className="wechat-card-face wechat-card-front"><OptimizedImage src="/figma-assets/inner/wechat-front-figma.svg" alt="" /><b>WECHAT ↗</b></span>
+            <span className="wechat-card-face wechat-card-back"><span><OptimizedImage src="/figma-assets/inner/wechat-qr-figma.webp" alt="Contact QR code" /></span></span>
           </span>
         </button>
       </section>
@@ -146,7 +147,7 @@ export default function ContactPage() {
           <div className="plan-track">
             {(["branding", "digital"] as const).map((type) => (
               <div className={`plan-panel plan-panel-${type}${planType === type ? " is-active" : ""}`} key={type} aria-hidden={planType !== type}>
-                <div className="plan-heading"><h2>Plans</h2><img src={type === "branding" ? "/figma-assets/inner/plan-crystal.svg" : "/figma-assets/inner/plan-crystal-digital.svg"} alt="" /></div>
+                <div className="plan-heading"><h2>Plans</h2><OptimizedImage src={type === "branding" ? "/figma-assets/inner/plan-crystal.svg" : "/figma-assets/inner/plan-crystal-digital.svg"} alt="" /></div>
                 <div className="plan-grid">
                   {plans[type].map(([title, subtitle, lines]) => (
                     <article key={title}><h3>{title}<small>{subtitle}</small></h3><p>{lines.map((line) => <span key={line}>{line}</span>)}</p></article>

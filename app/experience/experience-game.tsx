@@ -1,6 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import type { TouchEvent } from "react";
+import { OptimizedImage } from "../components/optimized-image";
+import { swipeStep } from "../components/parallax-math.js";
 
 const stops = [
   { title: "Experience.", description: "请使用键盘左右方向键控制", cloud: "cloud-top", pipe: "pipe-short" },
@@ -16,6 +19,7 @@ export function ExperienceGame() {
   const [soundOn, setSoundOn] = useState(false);
   const audioRef = useRef<AudioContext | null>(null);
   const melodyTimerRef = useRef<number | null>(null);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
 
   const stopMusic = () => {
     if (melodyTimerRef.current !== null) window.clearInterval(melodyTimerRef.current);
@@ -65,20 +69,41 @@ export function ExperienceGame() {
 
   useEffect(() => () => stopMusic(), []);
 
+  const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    const touch = event.changedTouches[0];
+    touchStartRef.current = { x: touch.clientX, y: touch.clientY };
+  };
+
+  const handleTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
+    const start = touchStartRef.current;
+    touchStartRef.current = null;
+    if (!start) return;
+
+    const touch = event.changedTouches[0];
+    const deltaX = touch.clientX - start.x;
+    const deltaY = touch.clientY - start.y;
+    setStep((value) => swipeStep(value, deltaX, deltaY, stops.length));
+  };
+
   return (
     <main className="experience-game-page">
       <section className="experience-device" aria-label="Kevin Wu experience timeline">
-        <div className="experience-screen">
+        <div
+          className="experience-screen"
+          onTouchCancel={() => { touchStartRef.current = null; }}
+          onTouchEnd={handleTouchEnd}
+          onTouchStart={handleTouchStart}
+        >
           <div className="experience-world" style={{ transform: `translateX(-${step * (100 / stops.length)}%)` }}>
             {stops.map((stop, index) => (
               <article className="experience-stop" key={stop.title}>
                 <div className="game-ground" aria-hidden="true" />
                 {index === 0 && (
                   <a className="game-back" href="/about" aria-label="Back to about">
-                    <img src="/figma-assets/inner/game-back.png" alt="" />
+                    <OptimizedImage src="/figma-assets/inner/game-back.webp" alt="" />
                   </a>
                 )}
-                {stop.cloud && <img className={`game-cloud ${stop.cloud}`} src="/figma-assets/inner/game-cloud.png" alt="" aria-hidden="true" />}
+                {stop.cloud && <OptimizedImage className={`game-cloud ${stop.cloud}`} src="/figma-assets/inner/game-cloud.webp" alt="" aria-hidden="true" />}
                 {stop.pipe && <div className={`game-layout-pipe ${stop.pipe}`} aria-hidden="true"><i /><b /></div>}
                 {stop.date && <div className="game-date">{stop.date}</div>}
                 {index === stops.length - 1 && (
@@ -90,7 +115,9 @@ export function ExperienceGame() {
                   </a>
                 )}
                 <h2 className={index === 0 ? "game-intro-title" : "game-scene-title"}>{stop.title}</h2>
-                <p className="game-scene-description">{stop.description}</p>
+                <p className="game-scene-description">
+                  {index === 0 ? <><span className="game-desktop-instruction">请使用键盘左右方向键控制</span><span className="game-touch-instruction">请左右滑动屏幕控制</span></> : stop.description}
+                </p>
               </article>
             ))}
           </div>
@@ -102,11 +129,11 @@ export function ExperienceGame() {
             aria-pressed={soundOn}
             onClick={toggleMusic}
           >
-            <img
+            <OptimizedImage
               className="game-sound-icon"
               src={soundOn
-                ? "/figma-assets/inner/game-sound-on.gif"
-                : "/figma-assets/inner/game-sound-off.png"}
+                ? "/figma-assets/inner/game-sound-on.webp"
+                : "/figma-assets/inner/game-sound-off.webp"}
               alt=""
             />
           </button>

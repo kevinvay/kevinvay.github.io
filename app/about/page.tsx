@@ -1,6 +1,7 @@
 import { PortfolioNav, SiteFooter, SiteHeader, SiteLoader } from "../components/site-chrome";
 import { FrameAnimation } from "../components/frame-animation";
 import { StatsStack } from "../components/stats-stack";
+import { OptimizedImage } from "../components/optimized-image";
 
 const greeting = "Hello! I’m Kevin Wu. 👋🏻";
 
@@ -11,7 +12,7 @@ export default function AboutPage() {
       <SiteHeader />
       <section className="inner-hero">
         <div className="inner-hero-copy">
-          <h1><span>THE NEXT</span><span>CO<span className="title-media title-media-o"><img src="/figma-assets/inner/title-o.png" alt="O" /></span>L THING.</span></h1>
+          <h1><span>THE NEXT</span><span>CO<span className="title-media title-media-o"><OptimizedImage src="/figma-assets/inner/title-o.webp" alt="O" loading="eager" /></span>L THING.</span></h1>
           <p>Why Don&apos;t We Try is my motto<br /><span>and this is my experiences ↓<i aria-hidden="true" /></span></p>
         </div>
         <FrameAnimation name="about" />
@@ -27,7 +28,7 @@ export default function AboutPage() {
             <p>With more than ten years of experience in digital experience design, I turn meaningful problems into simple, memorable solutions. I stay curious—always exploring new ways of working, building new skills and learning from new industries.</p>
             <p>我拥有十余年数字体验设计经验，致力于将有意义的问题转化为简单、清晰且令人难忘的解决方案。我始终保持好奇，持续探索新的工作方式、拓展专业技能，并从不同行业中汲取灵感。</p>
           </div>
-          <img src="/figma-assets/about-photo-figma.png" alt="Kevin Wu" />
+          <OptimizedImage src="/figma-assets/about-photo-figma.webp" alt="Kevin Wu" />
         </section>
       </div>
       <StatsStack />

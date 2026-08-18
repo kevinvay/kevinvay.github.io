@@ -6,6 +6,7 @@ import {
   DEFAULT_LIQUID_GLASS_CONFIG,
   LiquidGlass,
 } from "./liquid-glass";
+import { OptimizedImage } from "./optimized-image";
 
 const socials = [
   ["Dribbble", "https://dribbble.com/kevin-vay", "/figma-assets/dribbble.svg"],
@@ -71,7 +72,7 @@ export function SiteHeader() {
         onPointerEnter={() => setHovering(true)}
         onPointerLeave={() => setHovering(false)}
       >
-        <span className="brand-logo" aria-hidden="true"><img src={logoAnimation.frames[frame]} alt="" /></span>
+        <span className="brand-logo" aria-hidden="true"><OptimizedImage src={logoAnimation.frames[frame]} alt="" loading="eager" /></span>
         <span className="brand-copy"><b>Kevin Wu</b><span className="brand-comma">,</span><em>a creative designer</em></span>
       </a>
       <a className="connect-button" href="/contact">
@@ -87,7 +88,7 @@ export function SiteFooter() {
       <span>Copyright ⓒ 2026 K-STUDIO.</span>
       <nav aria-label="Social links">
         {socials.map(([label, href, icon]) => (
-          <a href={href} target="_blank" rel="noreferrer" aria-label={label} key={label}><img src={icon} alt="" /></a>
+          <a href={href} target="_blank" rel="noreferrer" aria-label={label} key={label}><OptimizedImage src={icon} alt="" /></a>
         ))}
       </nav>
     </footer>

@@ -1,9 +1,9 @@
 {
   "itemDurationMs": 2600,
   "frames": [
-    "/figma-assets/k-logo-a.png",
-    "/figma-assets/k-logo-b.png",
-    "/figma-assets/k-logo-c.png",
-    "/figma-assets/k-logo-d.png"
+    "/figma-assets/k-logo-a.webp",
+    "/figma-assets/k-logo-b.webp",
+    "/figma-assets/k-logo-c.webp",
+    "/figma-assets/k-logo-d.webp"
   ]
 }

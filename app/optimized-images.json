@@ -1,0 +1,2022 @@
+{
+  "/figma-assets/about-photo-figma.webp": {
+    "width": 925,
+    "height": 992,
+    "variants": [
+      {
+        "src": "/figma-assets/about-photo-figma-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/about-photo-figma.webp",
+        "width": 925
+      }
+    ]
+  },
+  "/figma-assets/cases/greater-bay-air/block-01-render.webp": {
+    "width": 1005,
+    "height": 315,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-01-render-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-01-render.webp",
+        "width": 1005
+      }
+    ]
+  },
+  "/figma-assets/cases/greater-bay-air/block-02-render.webp": {
+    "width": 1005,
+    "height": 586,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-02-render-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-02-render.webp",
+        "width": 1005
+      }
+    ]
+  },
+  "/figma-assets/cases/greater-bay-air/block-03-01.webp": {
+    "width": 2010,
+    "height": 1271,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-03-01-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-03-01-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-03-01.webp",
+        "width": 2010
+      }
+    ]
+  },
+  "/figma-assets/cases/greater-bay-air/block-03-render.webp": {
+    "width": 1005,
+    "height": 636,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-03-render-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-03-render.webp",
+        "width": 1005
+      }
+    ]
+  },
+  "/figma-assets/cases/greater-bay-air/block-04-01.webp": {
+    "width": 2720,
+    "height": 2160,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-04-01-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-04-01-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-04-01.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/greater-bay-air/block-04-render.webp": {
+    "width": 1005,
+    "height": 799,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-04-render-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-04-render.webp",
+        "width": 1005
+      }
+    ]
+  },
+  "/figma-assets/cases/greater-bay-air/block-05-01.webp": {
+    "width": 2720,
+    "height": 2532,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-05-01-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-05-01-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-05-01.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/greater-bay-air/block-05-02.webp": {
+    "width": 2720,
+    "height": 2532,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-05-02-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-05-02-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-05-02.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/greater-bay-air/block-05-03.webp": {
+    "width": 2720,
+    "height": 2532,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-05-03-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-05-03-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-05-03.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/greater-bay-air/block-05-render.webp": {
+    "width": 1005,
+    "height": 2807,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-05-render-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-05-render.webp",
+        "width": 1005
+      }
+    ]
+  },
+  "/figma-assets/cases/greater-bay-air/block-06-01.webp": {
+    "width": 2720,
+    "height": 2160,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-06-01-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-06-01-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-06-01.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/greater-bay-air/block-06-dark.webp": {
+    "width": 2720,
+    "height": 2160,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-06-dark-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-06-dark-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-06-dark.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/greater-bay-air/block-06-render.webp": {
+    "width": 1005,
+    "height": 799,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-06-render-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-06-render.webp",
+        "width": 1005
+      }
+    ]
+  },
+  "/figma-assets/cases/greater-bay-air/block-07-01.webp": {
+    "width": 1360,
+    "height": 1500,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-07-01-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-07-01.webp",
+        "width": 1360
+      }
+    ]
+  },
+  "/figma-assets/cases/greater-bay-air/block-07-02.webp": {
+    "width": 1360,
+    "height": 1500,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-07-02-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-07-02.webp",
+        "width": 1360
+      }
+    ]
+  },
+  "/figma-assets/cases/greater-bay-air/block-07-render.webp": {
+    "width": 1005,
+    "height": 2244,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-07-render-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-07-render.webp",
+        "width": 1005
+      }
+    ]
+  },
+  "/figma-assets/cases/greater-bay-air/comparison-action-1.5x.webp": {
+    "width": 2720,
+    "height": 1440,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/greater-bay-air/comparison-action-1.5x-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/comparison-action-1.5x-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/comparison-action-1.5x.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/greater-bay-air/comparison-default-1.5x.webp": {
+    "width": 2720,
+    "height": 1440,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/greater-bay-air/comparison-default-1.5x-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/comparison-default-1.5x-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/comparison-default-1.5x.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/greater-bay-air/hero-1.5x.webp": {
+    "width": 2720,
+    "height": 1440,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/greater-bay-air/hero-1.5x-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/hero-1.5x-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/hero-1.5x.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/kaia-academy/content-01.webp": {
+    "width": 2720,
+    "height": 1280,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-01-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-01-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-01.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/kaia-academy/content-02.webp": {
+    "width": 2720,
+    "height": 1440,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-02-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-02-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-02.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/kaia-academy/content-03.webp": {
+    "width": 2720,
+    "height": 1440,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-03-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-03-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-03.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/kaia-academy/content-04.webp": {
+    "width": 2010,
+    "height": 1507,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-04-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-04-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-04.webp",
+        "width": 2010
+      }
+    ]
+  },
+  "/figma-assets/cases/kaia-academy/content-05.webp": {
+    "width": 2720,
+    "height": 1280,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-05-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-05-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-05.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/kaia-academy/content-06.webp": {
+    "width": 2010,
+    "height": 996,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-06-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-06-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-06.webp",
+        "width": 2010
+      }
+    ]
+  },
+  "/figma-assets/cases/kaia-academy/content-07.webp": {
+    "width": 2010,
+    "height": 1918,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-07-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-07-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-07.webp",
+        "width": 2010
+      }
+    ]
+  },
+  "/figma-assets/cases/kaia-academy/content-08.webp": {
+    "width": 2814,
+    "height": 1364,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-08-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-08-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-08.webp",
+        "width": 2814
+      }
+    ]
+  },
+  "/figma-assets/cases/kaia-academy/content-09.webp": {
+    "width": 2720,
+    "height": 1440,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-09-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-09-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-09.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/kaia-academy/content-10.webp": {
+    "width": 2720,
+    "height": 1440,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-10-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-10-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-10.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/kaia-academy/content-11.webp": {
+    "width": 1320,
+    "height": 1364,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-11-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-11.webp",
+        "width": 1320
+      }
+    ]
+  },
+  "/figma-assets/cases/kaia-academy/content-12.webp": {
+    "width": 1320,
+    "height": 1364,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-12-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-12.webp",
+        "width": 1320
+      }
+    ]
+  },
+  "/figma-assets/cases/kaia-academy/content-13.webp": {
+    "width": 2720,
+    "height": 1600,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-13-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-13-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/content-13.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/kaia-academy/hero.webp": {
+    "width": 1080,
+    "height": 571,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/kaia-academy/hero-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/kaia-academy/hero.webp",
+        "width": 1080
+      }
+    ]
+  },
+  "/figma-assets/cases/manbangbao/content-01.webp": {
+    "width": 2722,
+    "height": 1532,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/manbangbao/content-01-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/manbangbao/content-01-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/manbangbao/content-01.webp",
+        "width": 2722
+      }
+    ]
+  },
+  "/figma-assets/cases/manbangbao/content-02.webp": {
+    "width": 2724,
+    "height": 1532,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/manbangbao/content-02-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/manbangbao/content-02-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/manbangbao/content-02.webp",
+        "width": 2724
+      }
+    ]
+  },
+  "/figma-assets/cases/manbangbao/content-03.webp": {
+    "width": 2724,
+    "height": 1532,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/manbangbao/content-03-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/manbangbao/content-03-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/manbangbao/content-03.webp",
+        "width": 2724
+      }
+    ]
+  },
+  "/figma-assets/cases/manbangbao/content-04.webp": {
+    "width": 2724,
+    "height": 1532,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/manbangbao/content-04-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/manbangbao/content-04-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/manbangbao/content-04.webp",
+        "width": 2724
+      }
+    ]
+  },
+  "/figma-assets/cases/manbangbao/content-05.webp": {
+    "width": 2724,
+    "height": 1532,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/manbangbao/content-05-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/manbangbao/content-05-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/manbangbao/content-05.webp",
+        "width": 2724
+      }
+    ]
+  },
+  "/figma-assets/cases/manbangbao/content-06.webp": {
+    "width": 2724,
+    "height": 1532,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/manbangbao/content-06-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/manbangbao/content-06-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/manbangbao/content-06.webp",
+        "width": 2724
+      }
+    ]
+  },
+  "/figma-assets/cases/manbangbao/content-07.webp": {
+    "width": 2724,
+    "height": 1532,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/manbangbao/content-07-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/manbangbao/content-07-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/manbangbao/content-07.webp",
+        "width": 2724
+      }
+    ]
+  },
+  "/figma-assets/cases/manbangbao/content-08.webp": {
+    "width": 2724,
+    "height": 1532,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/manbangbao/content-08-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/manbangbao/content-08-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/manbangbao/content-08.webp",
+        "width": 2724
+      }
+    ]
+  },
+  "/figma-assets/cases/manbangbao/content-09.webp": {
+    "width": 2724,
+    "height": 1532,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/manbangbao/content-09-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/manbangbao/content-09-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/manbangbao/content-09.webp",
+        "width": 2724
+      }
+    ]
+  },
+  "/figma-assets/cases/manbangbao/hero.webp": {
+    "width": 1360,
+    "height": 720,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/manbangbao/hero-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/manbangbao/hero.webp",
+        "width": 1360
+      }
+    ]
+  },
+  "/figma-assets/cases/mould-ui/content-01.webp": {
+    "width": 2010,
+    "height": 1005,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/mould-ui/content-01-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/mould-ui/content-01-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/mould-ui/content-01.webp",
+        "width": 2010
+      }
+    ]
+  },
+  "/figma-assets/cases/mould-ui/content-02.webp": {
+    "width": 2720,
+    "height": 2320,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/mould-ui/content-02-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/mould-ui/content-02-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/mould-ui/content-02.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/mould-ui/content-03.webp": {
+    "width": 2720,
+    "height": 2320,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/mould-ui/content-03-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/mould-ui/content-03-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/mould-ui/content-03.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/mould-ui/content-04.webp": {
+    "width": 2720,
+    "height": 2320,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/mould-ui/content-04-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/mould-ui/content-04-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/mould-ui/content-04.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/mould-ui/content-05.webp": {
+    "width": 1024,
+    "height": 753,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/mould-ui/content-05-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/mould-ui/content-05.webp",
+        "width": 1024
+      }
+    ]
+  },
+  "/figma-assets/cases/mould-ui/content-06.webp": {
+    "width": 2010,
+    "height": 1300,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/mould-ui/content-06-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/mould-ui/content-06-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/mould-ui/content-06.webp",
+        "width": 2010
+      }
+    ]
+  },
+  "/figma-assets/cases/mould-ui/content-07.webp": {
+    "width": 2720,
+    "height": 1760,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/mould-ui/content-07-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/mould-ui/content-07-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/mould-ui/content-07.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/mould-ui/content-08.webp": {
+    "width": 2720,
+    "height": 1760,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/mould-ui/content-08-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/mould-ui/content-08-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/mould-ui/content-08.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/mould-ui/content-09.webp": {
+    "width": 2720,
+    "height": 2560,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/mould-ui/content-09-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/mould-ui/content-09-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/mould-ui/content-09.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/mould-ui/hero.webp": {
+    "width": 2720,
+    "height": 1440,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/mould-ui/hero-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/mould-ui/hero-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/mould-ui/hero.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/southwest-kaia/content-01.webp": {
+    "width": 2720,
+    "height": 1280,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-01-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-01-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-01.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/southwest-kaia/content-02.webp": {
+    "width": 2010,
+    "height": 1105,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-02-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-02-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-02.webp",
+        "width": 2010
+      }
+    ]
+  },
+  "/figma-assets/cases/southwest-kaia/content-03.webp": {
+    "width": 2720,
+    "height": 1600,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-03-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-03-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-03.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/southwest-kaia/content-04.webp": {
+    "width": 2010,
+    "height": 1064,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-04-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-04-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-04.webp",
+        "width": 2010
+      }
+    ]
+  },
+  "/figma-assets/cases/southwest-kaia/content-05.webp": {
+    "width": 2010,
+    "height": 1477,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-05-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-05-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-05.webp",
+        "width": 2010
+      }
+    ]
+  },
+  "/figma-assets/cases/southwest-kaia/content-06.webp": {
+    "width": 2010,
+    "height": 1182,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-06-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-06-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-06.webp",
+        "width": 2010
+      }
+    ]
+  },
+  "/figma-assets/cases/southwest-kaia/content-07.webp": {
+    "width": 640,
+    "height": 360,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-07.webp",
+        "width": 640
+      }
+    ]
+  },
+  "/figma-assets/cases/southwest-kaia/content-08.webp": {
+    "width": 2010,
+    "height": 1005,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-08-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-08-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-08.webp",
+        "width": 2010
+      }
+    ]
+  },
+  "/figma-assets/cases/southwest-kaia/content-09.webp": {
+    "width": 2110,
+    "height": 1055,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-09-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-09-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-09.webp",
+        "width": 2110
+      }
+    ]
+  },
+  "/figma-assets/cases/southwest-kaia/content-10.webp": {
+    "width": 2010,
+    "height": 1055,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-10-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-10-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-10.webp",
+        "width": 2010
+      }
+    ]
+  },
+  "/figma-assets/cases/southwest-kaia/content-11.webp": {
+    "width": 2010,
+    "height": 996,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-11-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-11-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-11.webp",
+        "width": 2010
+      }
+    ]
+  },
+  "/figma-assets/cases/southwest-kaia/content-12.webp": {
+    "width": 2010,
+    "height": 1235,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-12-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-12-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-12.webp",
+        "width": 2010
+      }
+    ]
+  },
+  "/figma-assets/cases/southwest-kaia/content-13.webp": {
+    "width": 2010,
+    "height": 1005,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-13-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-13-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-13.webp",
+        "width": 2010
+      }
+    ]
+  },
+  "/figma-assets/cases/southwest-kaia/content-14.webp": {
+    "width": 965,
+    "height": 997,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-14-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-14.webp",
+        "width": 965
+      }
+    ]
+  },
+  "/figma-assets/cases/southwest-kaia/content-15.webp": {
+    "width": 965,
+    "height": 965,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-15-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-15.webp",
+        "width": 965
+      }
+    ]
+  },
+  "/figma-assets/cases/southwest-kaia/content-16.webp": {
+    "width": 2010,
+    "height": 975,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-16-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-16-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-16.webp",
+        "width": 2010
+      }
+    ]
+  },
+  "/figma-assets/cases/southwest-kaia/content-17.webp": {
+    "width": 965,
+    "height": 995,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-17-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-17.webp",
+        "width": 965
+      }
+    ]
+  },
+  "/figma-assets/cases/southwest-kaia/content-18.webp": {
+    "width": 965,
+    "height": 965,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-18-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-18.webp",
+        "width": 965
+      }
+    ]
+  },
+  "/figma-assets/cases/southwest-kaia/content-19.webp": {
+    "width": 2010,
+    "height": 1005,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-19-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-19-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/content-19.webp",
+        "width": 2010
+      }
+    ]
+  },
+  "/figma-assets/cases/southwest-kaia/hero.webp": {
+    "width": 1080,
+    "height": 571,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/southwest-kaia/hero-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/southwest-kaia/hero.webp",
+        "width": 1080
+      }
+    ]
+  },
+  "/figma-assets/cases/truck-app/content-01.webp": {
+    "width": 2722,
+    "height": 1532,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/truck-app/content-01-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/truck-app/content-01-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/truck-app/content-01.webp",
+        "width": 2722
+      }
+    ]
+  },
+  "/figma-assets/cases/truck-app/content-02.webp": {
+    "width": 2724,
+    "height": 1532,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/truck-app/content-02-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/truck-app/content-02-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/truck-app/content-02.webp",
+        "width": 2724
+      }
+    ]
+  },
+  "/figma-assets/cases/truck-app/content-03.webp": {
+    "width": 2724,
+    "height": 1532,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/truck-app/content-03-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/truck-app/content-03-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/truck-app/content-03.webp",
+        "width": 2724
+      }
+    ]
+  },
+  "/figma-assets/cases/truck-app/content-04.webp": {
+    "width": 2724,
+    "height": 1532,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/truck-app/content-04-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/truck-app/content-04-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/truck-app/content-04.webp",
+        "width": 2724
+      }
+    ]
+  },
+  "/figma-assets/cases/truck-app/content-05.webp": {
+    "width": 2724,
+    "height": 1532,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/truck-app/content-05-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/truck-app/content-05-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/truck-app/content-05.webp",
+        "width": 2724
+      }
+    ]
+  },
+  "/figma-assets/cases/truck-app/content-06.webp": {
+    "width": 2724,
+    "height": 1532,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/truck-app/content-06-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/truck-app/content-06-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/truck-app/content-06.webp",
+        "width": 2724
+      }
+    ]
+  },
+  "/figma-assets/cases/truck-app/content-07.webp": {
+    "width": 2724,
+    "height": 1532,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/truck-app/content-07-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/truck-app/content-07-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/truck-app/content-07.webp",
+        "width": 2724
+      }
+    ]
+  },
+  "/figma-assets/cases/truck-app/content-08.webp": {
+    "width": 2724,
+    "height": 1532,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/truck-app/content-08-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/truck-app/content-08-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/truck-app/content-08.webp",
+        "width": 2724
+      }
+    ]
+  },
+  "/figma-assets/cases/truck-app/hero.webp": {
+    "width": 1360,
+    "height": 720,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/truck-app/hero-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/truck-app/hero.webp",
+        "width": 1360
+      }
+    ]
+  },
+  "/figma-assets/cases/zentao/content-01.webp": {
+    "width": 2722,
+    "height": 1532,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/zentao/content-01-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/zentao/content-01-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/zentao/content-01.webp",
+        "width": 2722
+      }
+    ]
+  },
+  "/figma-assets/cases/zentao/content-02.webp": {
+    "width": 2724,
+    "height": 1532,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/zentao/content-02-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/zentao/content-02-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/zentao/content-02.webp",
+        "width": 2724
+      }
+    ]
+  },
+  "/figma-assets/cases/zentao/content-03.webp": {
+    "width": 2720,
+    "height": 2564,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/zentao/content-03-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/zentao/content-03-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/zentao/content-03.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/cases/zentao/content-04.webp": {
+    "width": 3000,
+    "height": 1688,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/zentao/content-04-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/zentao/content-04-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/zentao/content-04.webp",
+        "width": 3000
+      }
+    ]
+  },
+  "/figma-assets/cases/zentao/content-05.webp": {
+    "width": 3000,
+    "height": 1688,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/zentao/content-05-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/zentao/content-05-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/zentao/content-05.webp",
+        "width": 3000
+      }
+    ]
+  },
+  "/figma-assets/cases/zentao/content-06.webp": {
+    "width": 3000,
+    "height": 1688,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/zentao/content-06-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/zentao/content-06-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/zentao/content-06.webp",
+        "width": 3000
+      }
+    ]
+  },
+  "/figma-assets/cases/zentao/content-07.webp": {
+    "width": 3000,
+    "height": 1688,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/zentao/content-07-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/zentao/content-07-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/zentao/content-07.webp",
+        "width": 3000
+      }
+    ]
+  },
+  "/figma-assets/cases/zentao/content-08.webp": {
+    "width": 3000,
+    "height": 2560,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/zentao/content-08-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/zentao/content-08-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/zentao/content-08.webp",
+        "width": 3000
+      }
+    ]
+  },
+  "/figma-assets/cases/zentao/hero.webp": {
+    "width": 1360,
+    "height": 720,
+    "variants": [
+      {
+        "src": "/figma-assets/cases/zentao/hero-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/cases/zentao/hero.webp",
+        "width": 1360
+      }
+    ]
+  },
+  "/figma-assets/hero-e.webp": {
+    "width": 212,
+    "height": 186,
+    "variants": [
+      {
+        "src": "/figma-assets/hero-e.webp",
+        "width": 212
+      }
+    ]
+  },
+  "/figma-assets/inner/about-hero-media-visible.webp": {
+    "width": 200,
+    "height": 264,
+    "variants": [
+      {
+        "src": "/figma-assets/inner/about-hero-media-visible.webp",
+        "width": 200
+      }
+    ]
+  },
+  "/figma-assets/inner/bird-sprite.webp": {
+    "width": 400,
+    "height": 100,
+    "variants": [
+      {
+        "src": "/figma-assets/inner/bird-sprite.webp",
+        "width": 400
+      }
+    ]
+  },
+  "/figma-assets/inner/experience-bg.webp": {
+    "width": 4096,
+    "height": 683,
+    "variants": [
+      {
+        "src": "/figma-assets/inner/experience-bg-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/inner/experience-bg-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/inner/experience-bg.webp",
+        "width": 4096
+      }
+    ]
+  },
+  "/figma-assets/inner/experience-shell.webp": {
+    "width": 1920,
+    "height": 1440,
+    "variants": [
+      {
+        "src": "/figma-assets/inner/experience-shell-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/inner/experience-shell-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/inner/experience-shell.webp",
+        "width": 1920
+      }
+    ]
+  },
+  "/figma-assets/inner/game-back.webp": {
+    "width": 100,
+    "height": 100,
+    "variants": [
+      {
+        "src": "/figma-assets/inner/game-back.webp",
+        "width": 100
+      }
+    ]
+  },
+  "/figma-assets/inner/game-cloud.webp": {
+    "width": 100,
+    "height": 100,
+    "variants": [
+      {
+        "src": "/figma-assets/inner/game-cloud.webp",
+        "width": 100
+      }
+    ]
+  },
+  "/figma-assets/inner/game-ground-stripe.webp": {
+    "width": 1440,
+    "height": 15,
+    "variants": [
+      {
+        "src": "/figma-assets/inner/game-ground-stripe-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/inner/game-ground-stripe.webp",
+        "width": 1440
+      }
+    ]
+  },
+  "/figma-assets/inner/game-sound-off.webp": {
+    "width": 112,
+    "height": 112,
+    "variants": [
+      {
+        "src": "/figma-assets/inner/game-sound-off.webp",
+        "width": 112
+      }
+    ]
+  },
+  "/figma-assets/inner/game-sound-on.webp": {
+    "width": 112,
+    "height": 112,
+    "variants": [
+      {
+        "src": "/figma-assets/inner/game-sound-on.webp",
+        "width": 112
+      }
+    ]
+  },
+  "/figma-assets/inner/principle-business.webp": {
+    "width": 100,
+    "height": 100,
+    "variants": [
+      {
+        "src": "/figma-assets/inner/principle-business.webp",
+        "width": 100
+      }
+    ]
+  },
+  "/figma-assets/inner/principle-emotion.webp": {
+    "width": 97,
+    "height": 100,
+    "variants": [
+      {
+        "src": "/figma-assets/inner/principle-emotion.webp",
+        "width": 97
+      }
+    ]
+  },
+  "/figma-assets/inner/principle-purpose.webp": {
+    "width": 100,
+    "height": 92,
+    "variants": [
+      {
+        "src": "/figma-assets/inner/principle-purpose.webp",
+        "width": 100
+      }
+    ]
+  },
+  "/figma-assets/inner/principle-simple.webp": {
+    "width": 100,
+    "height": 93,
+    "variants": [
+      {
+        "src": "/figma-assets/inner/principle-simple.webp",
+        "width": 100
+      }
+    ]
+  },
+  "/figma-assets/inner/title-b.webp": {
+    "width": 282,
+    "height": 234,
+    "variants": [
+      {
+        "src": "/figma-assets/inner/title-b.webp",
+        "width": 282
+      }
+    ]
+  },
+  "/figma-assets/inner/title-o.webp": {
+    "width": 202,
+    "height": 218,
+    "variants": [
+      {
+        "src": "/figma-assets/inner/title-o.webp",
+        "width": 202
+      }
+    ]
+  },
+  "/figma-assets/inner/title-t.webp": {
+    "width": 162,
+    "height": 219,
+    "variants": [
+      {
+        "src": "/figma-assets/inner/title-t.webp",
+        "width": 162
+      }
+    ]
+  },
+  "/figma-assets/inner/wechat-qr-figma.webp": {
+    "width": 440,
+    "height": 440,
+    "variants": [
+      {
+        "src": "/figma-assets/inner/wechat-qr-figma.webp",
+        "width": 440
+      }
+    ]
+  },
+  "/figma-assets/inner/works-frame-0.webp": {
+    "width": 200,
+    "height": 264,
+    "variants": [
+      {
+        "src": "/figma-assets/inner/works-frame-0.webp",
+        "width": 200
+      }
+    ]
+  },
+  "/figma-assets/inner/works-frame-1.webp": {
+    "width": 200,
+    "height": 264,
+    "variants": [
+      {
+        "src": "/figma-assets/inner/works-frame-1.webp",
+        "width": 200
+      }
+    ]
+  },
+  "/figma-assets/inner/works-frame-2.webp": {
+    "width": 200,
+    "height": 264,
+    "variants": [
+      {
+        "src": "/figma-assets/inner/works-frame-2.webp",
+        "width": 200
+      }
+    ]
+  },
+  "/figma-assets/inner/works-frame-3.webp": {
+    "width": 200,
+    "height": 264,
+    "variants": [
+      {
+        "src": "/figma-assets/inner/works-frame-3.webp",
+        "width": 200
+      }
+    ]
+  },
+  "/figma-assets/k-logo-a.webp": {
+    "width": 400,
+    "height": 401,
+    "variants": [
+      {
+        "src": "/figma-assets/k-logo-a.webp",
+        "width": 400
+      }
+    ]
+  },
+  "/figma-assets/k-logo-b.webp": {
+    "width": 401,
+    "height": 401,
+    "variants": [
+      {
+        "src": "/figma-assets/k-logo-b.webp",
+        "width": 401
+      }
+    ]
+  },
+  "/figma-assets/k-logo-c.webp": {
+    "width": 301,
+    "height": 301,
+    "variants": [
+      {
+        "src": "/figma-assets/k-logo-c.webp",
+        "width": 301
+      }
+    ]
+  },
+  "/figma-assets/k-logo-d.webp": {
+    "width": 401,
+    "height": 401,
+    "variants": [
+      {
+        "src": "/figma-assets/k-logo-d.webp",
+        "width": 401
+      }
+    ]
+  },
+  "/figma-assets/service-back-bg.webp": {
+    "width": 480,
+    "height": 512,
+    "variants": [
+      {
+        "src": "/figma-assets/service-back-bg.webp",
+        "width": 480
+      }
+    ]
+  },
+  "/figma-assets/service-back-ink.webp": {
+    "width": 800,
+    "height": 32,
+    "variants": [
+      {
+        "src": "/figma-assets/service-back-ink-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/service-back-ink.webp",
+        "width": 800
+      }
+    ]
+  },
+  "/figma-assets/service-branding.webp": {
+    "width": 480,
+    "height": 514,
+    "variants": [
+      {
+        "src": "/figma-assets/service-branding.webp",
+        "width": 480
+      }
+    ]
+  },
+  "/figma-assets/service-product.webp": {
+    "width": 480,
+    "height": 514,
+    "variants": [
+      {
+        "src": "/figma-assets/service-product.webp",
+        "width": 480
+      }
+    ]
+  },
+  "/figma-assets/service-strategy.webp": {
+    "width": 480,
+    "height": 514,
+    "variants": [
+      {
+        "src": "/figma-assets/service-strategy.webp",
+        "width": 480
+      }
+    ]
+  },
+  "/figma-assets/service-systems.webp": {
+    "width": 480,
+    "height": 514,
+    "variants": [
+      {
+        "src": "/figma-assets/service-systems.webp",
+        "width": 480
+      }
+    ]
+  },
+  "/figma-assets/work-academy.webp": {
+    "width": 1008,
+    "height": 917,
+    "variants": [
+      {
+        "src": "/figma-assets/work-academy-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/work-academy.webp",
+        "width": 1008
+      }
+    ]
+  },
+  "/figma-assets/work-airline.webp": {
+    "width": 1320,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/figma-assets/work-airline-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/work-airline.webp",
+        "width": 1320
+      }
+    ]
+  },
+  "/figma-assets/work-insurance.webp": {
+    "width": 1320,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/figma-assets/work-insurance-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/work-insurance.webp",
+        "width": 1320
+      }
+    ]
+  },
+  "/figma-assets/work-mould-mobile-square.webp": {
+    "width": 1254,
+    "height": 1254,
+    "variants": [
+      {
+        "src": "/figma-assets/work-mould-mobile-square-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/work-mould-mobile-square.webp",
+        "width": 1254
+      }
+    ]
+  },
+  "/figma-assets/work-mould.webp": {
+    "width": 2720,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/figma-assets/work-mould-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/work-mould-1360.webp",
+        "width": 1360
+      },
+      {
+        "src": "/figma-assets/work-mould.webp",
+        "width": 2720
+      }
+    ]
+  },
+  "/figma-assets/work-rebrand.webp": {
+    "width": 1320,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/figma-assets/work-rebrand-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/work-rebrand.webp",
+        "width": 1320
+      }
+    ]
+  },
+  "/figma-assets/work-truck.webp": {
+    "width": 1320,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/figma-assets/work-truck-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/work-truck.webp",
+        "width": 1320
+      }
+    ]
+  },
+  "/figma-assets/work-zentao.webp": {
+    "width": 1008,
+    "height": 916,
+    "variants": [
+      {
+        "src": "/figma-assets/work-zentao-720.webp",
+        "width": 720
+      },
+      {
+        "src": "/figma-assets/work-zentao.webp",
+        "width": 1008
+      }
+    ]
+  }
+}

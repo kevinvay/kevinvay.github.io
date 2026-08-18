@@ -6,29 +6,30 @@ import { motion, useMotionValue, useTransform, type MotionValue, type PanInfo } 
 import heroMedia from "./hero-media.json";
 import contactFlip from "./contact-flip.json";
 import { PortfolioNav, SiteFooter, SiteHeader, SiteLoader } from "./components/site-chrome";
+import { OptimizedImage } from "./components/optimized-image";
 import { homeProjects } from "./projects";
 
 const serviceCards = [
   {
-    image: "/figma-assets/service-strategy.png",
+    image: "/figma-assets/service-strategy.webp",
     title: "Product strategy",
     backTitle: "Strategy",
     items: [["Experience Strategy", "体验策略"], ["Creative Direction", "创意指导"], ["User Research", "用户研究"], ["Vision Discovery", "视觉探索"], ["Technology Strategy", "技术策略"]],
   },
   {
-    image: "/figma-assets/service-branding.png",
+    image: "/figma-assets/service-branding.webp",
     title: "Branding",
     backTitle: "Branding",
     items: [["Brand Design", "品牌设计"], ["Brand Strategy", "品牌策略"], ["Brand Identity", "品牌识别"], ["Rebranding", "品牌重塑"], ["Enterprise VI", "企业 VI"]],
   },
   {
-    image: "/figma-assets/service-systems.png",
+    image: "/figma-assets/service-systems.webp",
     title: "Design systems",
     backTitle: "Design Systems",
     items: [["Design Token", "设计指令"], ["UI Component", "界面组件库"], ["Style Guidelines", "样式指南"], ["Assets Guides", "组件指南"], ["System Application", "系统应用"]],
   },
   {
-    image: "/figma-assets/service-product.png",
+    image: "/figma-assets/service-product.webp",
     title: "Product design",
     backTitle: "Product Design",
     items: [["Interaction Design", "交互设计"], ["Interface Design", "界面设计"], ["Prototyping", "原型设计"], ["Usability Testing", "可用性测试"], ["Design Handoff", "设计交付"]],
@@ -50,9 +51,11 @@ function HeroAnimation() {
   return (
     <div className="hero-animation" aria-hidden="true">
       <div className="hero-animation-stage">
-        <img
+        <OptimizedImage
           src={heroMedia.frames[frame]}
           alt=""
+          loading="eager"
+          fetchPriority="high"
           key={heroMedia.frames[frame]}
           style={{ "--hero-duration": `${heroMedia.itemDurationMs}ms` } as CSSProperties}
         />
@@ -65,7 +68,7 @@ function TickerItem({ direction }: { direction: "left" | "right" }) {
   return (
     <span className="ticker-item">
       <span>what can I do</span>
-      <img src={`/figma-assets/ticker-arrow-${direction}.svg`} alt="" />
+      <OptimizedImage src={`/figma-assets/ticker-arrow-${direction}.svg`} alt="" />
     </span>
   );
 }
@@ -75,13 +78,13 @@ function ServiceCardContent({ card }: { card: (typeof serviceCards)[number] }) {
     <span className="service-card-tilt">
       <span className="service-card-inner">
         <span className="service-card-face service-card-front">
-          <span className="service-card-art"><img src={card.image} alt="" /></span>
+          <span className="service-card-art"><OptimizedImage src={card.image} alt="" /></span>
           <span className="service-front-divider" aria-hidden="true" />
           <span className="service-front-title">{card.backTitle}<span aria-hidden="true">↗</span></span>
         </span>
         <span className="service-card-face service-card-back">
-          <span className="service-card-heading"><strong>{card.backTitle}</strong><img src="/figma-assets/service-back-symbol.svg" alt="" aria-hidden="true" /></span>
-          <img className="service-ink-divider" src="/figma-assets/service-back-ink.png" alt="" aria-hidden="true" />
+          <span className="service-card-heading"><strong>{card.backTitle}</strong><OptimizedImage src="/figma-assets/service-back-symbol.svg" alt="" aria-hidden="true" /></span>
+          <OptimizedImage className="service-ink-divider" src="/figma-assets/service-back-ink.webp" alt="" aria-hidden="true" />
           <span className="service-card-list">
             {card.items.map(([label, translation]) => (
               <span className="service-card-row" key={label}><span>{label}</span><span>{translation}</span></span>
@@ -529,7 +532,7 @@ export default function Home() {
             <span className="hero-line first-line">
               <span>ID</span>
               <span className="hero-e" aria-hidden="true">
-                <img src="/figma-assets/hero-e.png" alt="" />
+                <OptimizedImage src="/figma-assets/hero-e.webp" alt="" loading="eager" />
               </span>
               <span>AS, CRAFT</span>
             </span>
@@ -558,11 +561,11 @@ export default function Home() {
               >
                 {index === 2 ? (
                   <picture>
-                    <source media="(max-width: 729px)" srcSet="/figma-assets/work-mould-mobile-square.png" />
-                    <img src={work.coverImage} alt="" />
+                    <source media="(max-width: 729px)" srcSet="/figma-assets/work-mould-mobile-square.webp" />
+                    <OptimizedImage src={work.coverImage} alt="" sizes="(max-width: 729px) calc(100vw - 48px), 42vw" />
                   </picture>
                 ) : (
-                  <img src={work.coverImage} alt="" />
+                  <OptimizedImage src={work.coverImage} alt="" sizes="(max-width: 729px) calc(100vw - 48px), 42vw" />
                 )}
                 <div className="work-copy">
                   <p>{work.description}</p>
@@ -607,7 +610,7 @@ export default function Home() {
             className="carousel-arrow previous"
             aria-label="Previous service"
             onClick={() => changeService((serviceIndex + serviceCards.length - 1) % serviceCards.length, "previous")}
-          ><img src="/figma-assets/carousel-arrow-left.svg" alt="" /></button>
+          ><OptimizedImage src="/figma-assets/carousel-arrow-left.svg" alt="" /></button>
           <div className={`service-cards desktop-service-cards slide-${serviceMotion.direction} motion-${serviceMotion.tick % 2}`}>
             {[-1, 0, 1].map((offset) => {
               const cardIndex = (serviceIndex + offset + serviceCards.length) % serviceCards.length;
@@ -659,12 +662,12 @@ export default function Home() {
             className="carousel-arrow next"
             aria-label="Next service"
             onClick={() => changeService((serviceIndex + 1) % serviceCards.length, "next")}
-          ><img src="/figma-assets/carousel-arrow-right.svg" alt="" /></button>
+          ><OptimizedImage src="/figma-assets/carousel-arrow-right.svg" alt="" /></button>
         </div>
       </section>
 
       <section className="contact" id="contact" aria-labelledby="contact-title">
-        <img className="contact-line" src="/figma-assets/contact-line.svg" alt="" aria-hidden="true" />
+        <OptimizedImage className="contact-line" src="/figma-assets/contact-line.svg" alt="" aria-hidden="true" />
         <div className="contact-content">
           <p>Are you ready?</p>
           <h2 id="contact-title">

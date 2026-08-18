@@ -1,18 +1,18 @@
 {
   "works": {
     "frames": [
-      { "src": "/figma-assets/inner/works-frame-0.png", "x": 0, "y": -14, "scale": 1, "rotate": 0, "duration": 1250 },
-      { "src": "/figma-assets/inner/works-frame-1.png", "x": 0, "y": 0, "scale": 1, "rotate": 0, "duration": 1100 },
-      { "src": "/figma-assets/inner/works-frame-2.png", "x": 0, "y": 14, "scale": 1, "rotate": 0, "duration": 1250 },
-      { "src": "/figma-assets/inner/works-frame-3.png", "x": 0, "y": 0, "scale": 1, "rotate": 0, "duration": 1600 }
+      { "src": "/figma-assets/inner/works-frame-0.webp", "x": 0, "y": -14, "scale": 1, "rotate": 0, "duration": 1250 },
+      { "src": "/figma-assets/inner/works-frame-1.webp", "x": 0, "y": 0, "scale": 1, "rotate": 0, "duration": 1100 },
+      { "src": "/figma-assets/inner/works-frame-2.webp", "x": 0, "y": 14, "scale": 1, "rotate": 0, "duration": 1250 },
+      { "src": "/figma-assets/inner/works-frame-3.webp", "x": 0, "y": 0, "scale": 1, "rotate": 0, "duration": 1600 }
     ]
   },
   "about": {
     "frames": [
-      { "src": "/figma-assets/inner/about-hero-media-visible.png", "x": 0, "y": -14, "scale": 1, "rotate": 0, "duration": 1250 },
-      { "src": "/figma-assets/inner/about-hero-media-visible.png", "x": 0, "y": 0, "scale": 1, "rotate": 0, "duration": 1100 },
-      { "src": "/figma-assets/inner/about-hero-media-visible.png", "x": 0, "y": 14, "scale": 1, "rotate": 0, "duration": 1250 },
-      { "src": "/figma-assets/inner/about-hero-media-visible.png", "x": 0, "y": 0, "scale": 1, "rotate": 0, "duration": 1600 }
+      { "src": "/figma-assets/inner/about-hero-media-visible.webp", "x": 0, "y": -14, "scale": 1, "rotate": 0, "duration": 1250 },
+      { "src": "/figma-assets/inner/about-hero-media-visible.webp", "x": 0, "y": 0, "scale": 1, "rotate": 0, "duration": 1100 },
+      { "src": "/figma-assets/inner/about-hero-media-visible.webp", "x": 0, "y": 14, "scale": 1, "rotate": 0, "duration": 1250 },
+      { "src": "/figma-assets/inner/about-hero-media-visible.webp", "x": 0, "y": 0, "scale": 1, "rotate": 0, "duration": 1600 }
     ]
   }
 }
