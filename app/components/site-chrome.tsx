@@ -10,7 +10,7 @@ import { OptimizedImage } from "./optimized-image";
 
 const socials = [
   ["Dribbble", "https://dribbble.com/kevin-vay", "/figma-assets/dribbble.svg"],
-  ["Instagram", "https://www.instagram.com/kevin.vay/", "/figma-assets/instagram.svg"],
+  ["Instagram", "https://www.instagram.com/hello_kevinwu/", "/figma-assets/instagram.svg"],
   ["Facebook", "https://www.facebook.com/kevin.vay217", "/figma-assets/facebook.svg"],
   ["LinkedIn", "https://www.linkedin.com/in/kevin-vay/details/experience/", "/figma-assets/linkedin.svg"],
 ];
