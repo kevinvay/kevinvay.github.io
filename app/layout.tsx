@@ -3,7 +3,7 @@ import { ParallaxController } from "./components/parallax";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Kevin Wu — Portfolio",
+  title: "Kevin Wu's Portfolio",
   description: "Kevin Wu's portfolio for branding, product design, and design systems.",
   openGraph: {
     title: "Kevin Wu — Portfolio",
