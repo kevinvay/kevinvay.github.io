@@ -13,37 +13,9 @@
       }
     ]
   },
-  "/figma-assets/cases/greater-bay-air/block-01-render.webp": {
-    "width": 1005,
-    "height": 315,
-    "variants": [
-      {
-        "src": "/figma-assets/cases/greater-bay-air/block-01-render-720.webp",
-        "width": 720
-      },
-      {
-        "src": "/figma-assets/cases/greater-bay-air/block-01-render.webp",
-        "width": 1005
-      }
-    ]
-  },
-  "/figma-assets/cases/greater-bay-air/block-02-render.webp": {
-    "width": 1005,
-    "height": 586,
-    "variants": [
-      {
-        "src": "/figma-assets/cases/greater-bay-air/block-02-render-720.webp",
-        "width": 720
-      },
-      {
-        "src": "/figma-assets/cases/greater-bay-air/block-02-render.webp",
-        "width": 1005
-      }
-    ]
-  },
   "/figma-assets/cases/greater-bay-air/block-03-01.webp": {
     "width": 2010,
-    "height": 1271,
+    "height": 2542,
     "variants": [
       {
         "src": "/figma-assets/cases/greater-bay-air/block-03-01-720.webp",
@@ -56,20 +28,6 @@
       {
         "src": "/figma-assets/cases/greater-bay-air/block-03-01.webp",
         "width": 2010
-      }
-    ]
-  },
-  "/figma-assets/cases/greater-bay-air/block-03-render.webp": {
-    "width": 1005,
-    "height": 636,
-    "variants": [
-      {
-        "src": "/figma-assets/cases/greater-bay-air/block-03-render-720.webp",
-        "width": 720
-      },
-      {
-        "src": "/figma-assets/cases/greater-bay-air/block-03-render.webp",
-        "width": 1005
       }
     ]
   },
@@ -88,20 +46,6 @@
       {
         "src": "/figma-assets/cases/greater-bay-air/block-04-01.webp",
         "width": 2720
-      }
-    ]
-  },
-  "/figma-assets/cases/greater-bay-air/block-04-render.webp": {
-    "width": 1005,
-    "height": 799,
-    "variants": [
-      {
-        "src": "/figma-assets/cases/greater-bay-air/block-04-render-720.webp",
-        "width": 720
-      },
-      {
-        "src": "/figma-assets/cases/greater-bay-air/block-04-render.webp",
-        "width": 1005
       }
     ]
   },
@@ -159,20 +103,6 @@
       }
     ]
   },
-  "/figma-assets/cases/greater-bay-air/block-05-render.webp": {
-    "width": 1005,
-    "height": 2807,
-    "variants": [
-      {
-        "src": "/figma-assets/cases/greater-bay-air/block-05-render-720.webp",
-        "width": 720
-      },
-      {
-        "src": "/figma-assets/cases/greater-bay-air/block-05-render.webp",
-        "width": 1005
-      }
-    ]
-  },
   "/figma-assets/cases/greater-bay-air/block-06-01.webp": {
     "width": 2720,
     "height": 2160,
@@ -209,59 +139,39 @@
       }
     ]
   },
-  "/figma-assets/cases/greater-bay-air/block-06-render.webp": {
-    "width": 1005,
-    "height": 799,
-    "variants": [
-      {
-        "src": "/figma-assets/cases/greater-bay-air/block-06-render-720.webp",
-        "width": 720
-      },
-      {
-        "src": "/figma-assets/cases/greater-bay-air/block-06-render.webp",
-        "width": 1005
-      }
-    ]
-  },
   "/figma-assets/cases/greater-bay-air/block-07-01.webp": {
-    "width": 1360,
-    "height": 1500,
+    "width": 2720,
+    "height": 3000,
     "variants": [
       {
         "src": "/figma-assets/cases/greater-bay-air/block-07-01-720.webp",
         "width": 720
       },
       {
-        "src": "/figma-assets/cases/greater-bay-air/block-07-01.webp",
+        "src": "/figma-assets/cases/greater-bay-air/block-07-01-1360.webp",
         "width": 1360
+      },
+      {
+        "src": "/figma-assets/cases/greater-bay-air/block-07-01.webp",
+        "width": 2720
       }
     ]
   },
   "/figma-assets/cases/greater-bay-air/block-07-02.webp": {
-    "width": 1360,
-    "height": 1500,
+    "width": 2720,
+    "height": 3000,
     "variants": [
       {
         "src": "/figma-assets/cases/greater-bay-air/block-07-02-720.webp",
         "width": 720
       },
       {
-        "src": "/figma-assets/cases/greater-bay-air/block-07-02.webp",
+        "src": "/figma-assets/cases/greater-bay-air/block-07-02-1360.webp",
         "width": 1360
-      }
-    ]
-  },
-  "/figma-assets/cases/greater-bay-air/block-07-render.webp": {
-    "width": 1005,
-    "height": 2244,
-    "variants": [
-      {
-        "src": "/figma-assets/cases/greater-bay-air/block-07-render-720.webp",
-        "width": 720
       },
       {
-        "src": "/figma-assets/cases/greater-bay-air/block-07-render.webp",
-        "width": 1005
+        "src": "/figma-assets/cases/greater-bay-air/block-07-02.webp",
+        "width": 2720
       }
     ]
   },
