@@ -858,7 +858,10 @@ main {
 }
 
 .service-card-art {
+  align-items: center;
+  display: flex;
   height: 392px;
+  justify-content: center;
   margin-inline: -64px;
   overflow: hidden;
 }
@@ -885,6 +888,11 @@ main {
   gap: 8px;
   justify-content: center;
   padding-top: 17px;
+}
+
+.service-front-title img {
+  height: 24px;
+  width: 24px;
 }
 
 .service-card.active {
@@ -5006,23 +5014,13 @@ footer nav img {
   }
 }
 
-/* Service artwork files already contain the complete front face. Rendering the
-   artwork and the caption as two separate layers exposed a compositor seam
-   during the 3D flip, so keep the front as one continuous raster surface. */
-.services .service-card-front { padding: 0; }
-.services .service-card-art {
-  height: 100%;
-  margin: 0;
-  overflow: hidden;
-  width: 100%;
-}
+/* The front artwork is a standalone image; divider and title stay as live text. */
 .services .service-card-art img {
-  height: 100%;
-  object-fit: fill;
-  width: 100%;
+  aspect-ratio: 1;
+  height: auto;
+  object-fit: contain;
+  width: 73.333%;
 }
-.services .service-front-divider,
-.services .service-front-title { display: none; }
 
 /* Keep portfolio covers in the tablet two-column composition through 730px.
    The stacked cover layout begins only below this range. */

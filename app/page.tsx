@@ -80,7 +80,7 @@ function ServiceCardContent({ card }: { card: (typeof serviceCards)[number] }) {
         <span className="service-card-face service-card-front">
           <span className="service-card-art"><OptimizedImage src={card.image} alt="" /></span>
           <span className="service-front-divider" aria-hidden="true" />
-          <span className="service-front-title">{card.backTitle}<span aria-hidden="true">↗</span></span>
+          <span className="service-front-title">{card.title}<OptimizedImage src="/figma-assets/service-front-arrow.webp" alt="" aria-hidden="true" /></span>
         </span>
         <span className="service-card-face service-card-back">
           <span className="service-card-heading"><strong>{card.backTitle}</strong><OptimizedImage src="/figma-assets/service-back-symbol.svg" alt="" aria-hidden="true" /></span>

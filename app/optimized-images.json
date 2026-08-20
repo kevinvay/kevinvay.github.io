@@ -808,16 +808,20 @@
     ]
   },
   "/figma-assets/cases/mould-ui/content-05.webp": {
-    "width": 1024,
-    "height": 753,
+    "width": 2720,
+    "height": 2000,
     "variants": [
       {
         "src": "/figma-assets/cases/mould-ui/content-05-720.webp",
         "width": 720
       },
       {
+        "src": "/figma-assets/cases/mould-ui/content-05-1360.webp",
+        "width": 1360
+      },
+      {
         "src": "/figma-assets/cases/mould-ui/content-05.webp",
-        "width": 1024
+        "width": 2720
       }
     ]
   },
@@ -1863,43 +1867,53 @@
       }
     ]
   },
+  "/figma-assets/service-front-arrow.webp": {
+    "width": 96,
+    "height": 96,
+    "variants": [
+      {
+        "src": "/figma-assets/service-front-arrow.webp",
+        "width": 96
+      }
+    ]
+  },
   "/figma-assets/service-branding.webp": {
-    "width": 480,
-    "height": 514,
+    "width": 704,
+    "height": 704,
     "variants": [
       {
         "src": "/figma-assets/service-branding.webp",
-        "width": 480
+        "width": 704
       }
     ]
   },
   "/figma-assets/service-product.webp": {
-    "width": 480,
-    "height": 514,
+    "width": 704,
+    "height": 704,
     "variants": [
       {
         "src": "/figma-assets/service-product.webp",
-        "width": 480
+        "width": 704
       }
     ]
   },
   "/figma-assets/service-strategy.webp": {
-    "width": 480,
-    "height": 514,
+    "width": 704,
+    "height": 704,
     "variants": [
       {
         "src": "/figma-assets/service-strategy.webp",
-        "width": 480
+        "width": 704
       }
     ]
   },
   "/figma-assets/service-systems.webp": {
-    "width": 480,
-    "height": 514,
+    "width": 704,
+    "height": 704,
     "variants": [
       {
         "src": "/figma-assets/service-systems.webp",
-        "width": 480
+        "width": 704
       }
     ]
   },
