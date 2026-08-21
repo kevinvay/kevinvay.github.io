@@ -9,17 +9,19 @@ export type LiquidGlassConfig = {
   bezelWidth: number;
   ior: number;
   scaleRatio: number;
+  dispersionStrength: number;
   blur: number;
   tintOpacity: number;
 };
 
 export const DEFAULT_LIQUID_GLASS_CONFIG: LiquidGlassConfig = {
   enabled: true,
-  glassThickness: 50,
+  glassThickness: 40,
   bezelWidth: 36,
-  ior: 2.01,
-  scaleRatio: 1.45,
-  blur: 2,
+  ior: 1.7,
+  scaleRatio: 1.4,
+  dispersionStrength: 4,
+  blur: 3,
   tintOpacity: 0.2,
 };
 
@@ -118,7 +120,7 @@ export function LiquidGlass({ config }: { config: LiquidGlassConfig }) {
   const configKey = `${config.glassThickness}-${config.bezelWidth}-${config.ior}`;
   const [filter, setFilter] = useState<{ width: number; height: number; map: string; maxDisplacement: number; configKey: string } | null>(null);
   const filterId = filter
-    ? `${baseFilterId}-${filter.configKey}-${config.scaleRatio}-${config.blur}`.replace(/[^a-zA-Z0-9_-]/g, "_")
+    ? `${baseFilterId}-${filter.configKey}-${config.scaleRatio}-${config.dispersionStrength}-${config.blur}`.replace(/[^a-zA-Z0-9_-]/g, "_")
     : baseFilterId;
 
   useEffect(() => {
@@ -185,10 +187,47 @@ export function LiquidGlass({ config }: { config: LiquidGlassConfig }) {
                 <feDisplacementMap
                   in="softened"
                   in2="displacement"
+                  scale={filter.maxDisplacement * config.scaleRatio + config.dispersionStrength}
+                  xChannelSelector="R"
+                  yChannelSelector="G"
+                  result="redDisplaced"
+                />
+                <feColorMatrix
+                  in="redDisplaced"
+                  type="matrix"
+                  values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0"
+                  result="redChannel"
+                />
+                <feDisplacementMap
+                  in="softened"
+                  in2="displacement"
                   scale={filter.maxDisplacement * config.scaleRatio}
                   xChannelSelector="R"
                   yChannelSelector="G"
+                  result="greenDisplaced"
                 />
+                <feColorMatrix
+                  in="greenDisplaced"
+                  type="matrix"
+                  values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0"
+                  result="greenChannel"
+                />
+                <feDisplacementMap
+                  in="softened"
+                  in2="displacement"
+                  scale={Math.max(0, filter.maxDisplacement * config.scaleRatio - config.dispersionStrength)}
+                  xChannelSelector="R"
+                  yChannelSelector="G"
+                  result="blueDisplaced"
+                />
+                <feColorMatrix
+                  in="blueDisplaced"
+                  type="matrix"
+                  values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0"
+                  result="blueChannel"
+                />
+                <feBlend in="redChannel" in2="greenChannel" mode="screen" result="redGreen" />
+                <feBlend in="redGreen" in2="blueChannel" mode="screen" />
               </filter>
             ) : null}
           </defs>
@@ -220,6 +259,7 @@ const controls: Array<{
   { key: "bezelWidth", label: "折射边缘", min: 4, max: 36, step: 1, digits: 0 },
   { key: "ior", label: "折射率", min: 1, max: 2.2, step: 0.01, digits: 2 },
   { key: "scaleRatio", label: "折射强度", min: 0, max: 2.5, step: 0.05, digits: 2 },
+  { key: "dispersionStrength", label: "色散强度", min: 0, max: 4, step: 0.1, digits: 1 },
   { key: "blur", label: "背景模糊", min: 0, max: 4, step: 0.1, digits: 1 },
   { key: "tintOpacity", label: "玻璃底色", min: 0, max: 0.5, step: 0.01, digits: 2 },
 ];

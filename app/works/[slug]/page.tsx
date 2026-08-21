@@ -163,7 +163,7 @@ function SouthwestKaiaPage() {
           <div className="case-text case-section-title"><h2>方案探索</h2><p>对标识的思考本质上是设计师头脑中的思维导图，将所有抽象词汇转化为SYMBOL每个人都可以联想到。并逐步形成草图及绘制。</p></div>
           <figure className="case-media"><OptimizedImage src={`${southwestMedia}/content-07.webp`} alt="西南凯亚标识方案动态探索" /></figure>
           <figure className="case-media"><OptimizedImage src={`${southwestMedia}/content-08.webp`} alt="西南凯亚标识方案" /></figure>
-          {[9, 11, 12].map(n => <figure className="case-media" key={n}><OptimizedImage src={`${southwestMedia}/content-${String(n).padStart(2, "0")}.webp`} alt={`西南凯亚品牌视觉 ${n}`} /></figure>)}
+          <figure className="case-media"><OptimizedImage src={`${southwestMedia}/content-11.webp`} alt="西南凯亚品牌色彩与字体系统" /></figure>
           <div className="case-text case-section-title"><h2>品牌基本准则</h2><p>为了确保品牌的正确使用，我们创建了基本的品牌指南，明确了徽标、彩色拼贴画、排版和其他图形元素的适当使用，收集在一个包含所有品牌资产的完整折叠器中，随时可以使用。</p></div>
           <figure className="case-media"><OptimizedImage src={`${southwestMedia}/content-13.webp`} alt="西南凯亚品牌基本准则" /></figure>
           <div className="case-media-pair">

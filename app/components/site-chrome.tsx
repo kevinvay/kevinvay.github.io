@@ -5,6 +5,7 @@ import logoAnimation from "../logo-frames.json";
 import {
   DEFAULT_LIQUID_GLASS_CONFIG,
   LiquidGlass,
+  LiquidGlassControls,
 } from "./liquid-glass";
 import { OptimizedImage } from "./optimized-image";
 
@@ -98,13 +99,16 @@ export function SiteFooter() {
 export function PortfolioNav({
   active = "home",
   liquidGlass = true,
+  glassControls = false,
 }: {
   active?: "home" | "works" | "about" | "contact" | null;
   liquidGlass?: boolean;
+  glassControls?: boolean;
 }) {
   const [docked, setDocked] = useState(false);
   const [glassMode, setGlassMode] = useState<GlassRenderingMode>("fallback");
-  const glassConfig = DEFAULT_LIQUID_GLASS_CONFIG;
+  const [glassConfig, setGlassConfig] = useState({ ...DEFAULT_LIQUID_GLASS_CONFIG });
+  const [glassRevision, setGlassRevision] = useState(0);
 
   useEffect(() => {
     if (!liquidGlass) return;
@@ -135,7 +139,7 @@ export function PortfolioNav({
       style={navStyle}
       aria-label="Portfolio navigation"
     >
-        {liquidGlass && glassMode === "svg" ? <LiquidGlass config={glassConfig} /> : null}
+        {liquidGlass && glassMode === "svg" ? <LiquidGlass key={glassRevision} config={glassConfig} /> : null}
         <a className={`home-link ${active === "home" ? "is-active" : ""}`} href="/">Home <span>/</span></a>
         <div className="nav-menu">
           <a className={active === "works" ? "is-active" : ""} href="/works">Works</a>
@@ -148,6 +152,14 @@ export function PortfolioNav({
   return (
     <div className={`floating-nav-shell${docked ? " is-docked" : ""}`}>
       {nav}
+      {liquidGlass && glassControls && active === "home" ? (
+        <LiquidGlassControls
+          config={glassConfig}
+          onChange={setGlassConfig}
+          onReset={() => setGlassConfig({ ...DEFAULT_LIQUID_GLASS_CONFIG })}
+          onRebuild={() => setGlassRevision((current) => current + 1)}
+        />
+      ) : null}
     </div>
   );
 }

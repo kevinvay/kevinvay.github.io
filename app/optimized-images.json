@@ -175,24 +175,6 @@
       }
     ]
   },
-  "/figma-assets/cases/greater-bay-air/comparison-action-1.5x.webp": {
-    "width": 2720,
-    "height": 1440,
-    "variants": [
-      {
-        "src": "/figma-assets/cases/greater-bay-air/comparison-action-1.5x-720.webp",
-        "width": 720
-      },
-      {
-        "src": "/figma-assets/cases/greater-bay-air/comparison-action-1.5x-1360.webp",
-        "width": 1360
-      },
-      {
-        "src": "/figma-assets/cases/greater-bay-air/comparison-action-1.5x.webp",
-        "width": 2720
-      }
-    ]
-  },
   "/figma-assets/cases/greater-bay-air/comparison-default-1.5x.webp": {
     "width": 2720,
     "height": 1440,
@@ -961,45 +943,9 @@
       }
     ]
   },
-  "/figma-assets/cases/southwest-kaia/content-09.webp": {
-    "width": 2110,
-    "height": 1055,
-    "variants": [
-      {
-        "src": "/figma-assets/cases/southwest-kaia/content-09-720.webp",
-        "width": 720
-      },
-      {
-        "src": "/figma-assets/cases/southwest-kaia/content-09-1360.webp",
-        "width": 1360
-      },
-      {
-        "src": "/figma-assets/cases/southwest-kaia/content-09.webp",
-        "width": 2110
-      }
-    ]
-  },
-  "/figma-assets/cases/southwest-kaia/content-10.webp": {
-    "width": 2010,
-    "height": 1055,
-    "variants": [
-      {
-        "src": "/figma-assets/cases/southwest-kaia/content-10-720.webp",
-        "width": 720
-      },
-      {
-        "src": "/figma-assets/cases/southwest-kaia/content-10-1360.webp",
-        "width": 1360
-      },
-      {
-        "src": "/figma-assets/cases/southwest-kaia/content-10.webp",
-        "width": 2010
-      }
-    ]
-  },
   "/figma-assets/cases/southwest-kaia/content-11.webp": {
-    "width": 2010,
-    "height": 996,
+    "width": 2720,
+    "height": 4440,
     "variants": [
       {
         "src": "/figma-assets/cases/southwest-kaia/content-11-720.webp",
@@ -1011,25 +957,7 @@
       },
       {
         "src": "/figma-assets/cases/southwest-kaia/content-11.webp",
-        "width": 2010
-      }
-    ]
-  },
-  "/figma-assets/cases/southwest-kaia/content-12.webp": {
-    "width": 2010,
-    "height": 1235,
-    "variants": [
-      {
-        "src": "/figma-assets/cases/southwest-kaia/content-12-720.webp",
-        "width": 720
-      },
-      {
-        "src": "/figma-assets/cases/southwest-kaia/content-12-1360.webp",
-        "width": 1360
-      },
-      {
-        "src": "/figma-assets/cases/southwest-kaia/content-12.webp",
-        "width": 2010
+        "width": 2720
       }
     ]
   },
@@ -1126,8 +1054,8 @@
     ]
   },
   "/figma-assets/cases/southwest-kaia/content-19.webp": {
-    "width": 2010,
-    "height": 1005,
+    "width": 2720,
+    "height": 1360,
     "variants": [
       {
         "src": "/figma-assets/cases/southwest-kaia/content-19-720.webp",
@@ -1139,21 +1067,25 @@
       },
       {
         "src": "/figma-assets/cases/southwest-kaia/content-19.webp",
-        "width": 2010
+        "width": 2720
       }
     ]
   },
   "/figma-assets/cases/southwest-kaia/hero.webp": {
-    "width": 1080,
-    "height": 571,
+    "width": 2720,
+    "height": 1440,
     "variants": [
       {
         "src": "/figma-assets/cases/southwest-kaia/hero-720.webp",
         "width": 720
       },
       {
+        "src": "/figma-assets/cases/southwest-kaia/hero-1360.webp",
+        "width": 1360
+      },
+      {
         "src": "/figma-assets/cases/southwest-kaia/hero.webp",
-        "width": 1080
+        "width": 2720
       }
     ]
   },
