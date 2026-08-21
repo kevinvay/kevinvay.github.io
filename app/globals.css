@@ -2180,7 +2180,7 @@ footer nav img {
 
 .experience-game-page {
   align-items: center;
-  background: #252a32;
+  background: #282c34;
   display: flex;
   justify-content: center;
   min-height: 100vh;
@@ -2190,10 +2190,8 @@ footer nav img {
 .experience-device {
   aspect-ratio: 4 / 3;
   background: center / 100% 100% no-repeat url("/figma-assets/inner/experience-shell.webp");
-  max-height: calc(100vh - 48px);
-  max-width: calc(100vw - 48px);
   position: relative;
-  width: min(100%, 1920px);
+  width: min(calc(100vw - 48px), calc((100vh - 48px) * 1.333333), 1920px);
 }
 
 .experience-screen {
@@ -2403,7 +2401,7 @@ footer nav img {
   .experience-copy { left: 5.5%; top: 23%; transform: scale(.58); transform-origin: left top; }
   .pixel-bird { height: 18%; width: 9%; }
   .experience-game-page { padding: 8px; }
-  .experience-device { max-height: calc(100vh - 16px); max-width: calc(100vw - 16px); }
+  .experience-device { width: min(calc(100vw - 16px), calc((100vh - 16px) * 1.333333)); }
   .experience-screen { touch-action: pan-y; }
   .game-desktop-instruction { display: none; }
   .game-touch-instruction { display: inline; }
