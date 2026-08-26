@@ -20,7 +20,7 @@ test("server-renders the portfolio with optimized loading hints", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>Kevin Wu — Portfolio<\/title>/i);
+  assert.match(html, /<title>Kevin Wu(?:&#x27;|')s Portfolio<\/title>/i);
   assert.match(html, /Ideas, craft and creativity/i);
   assert.match(html, /src="\/figma-assets\/hero-e\.webp"[^>]*loading="eager"/i);
   assert.match(html, /src="\/figma-assets\/work-rebrand\.webp"[^>]*srcSet=/i);

@@ -195,6 +195,20 @@ function MobileServiceCarousel({ initialIndex = 1 }: { initialIndex?: number }) 
   );
 }
 
+function useCompactServiceLayout() {
+  const [isCompact, setIsCompact] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 1000px)");
+    const update = () => setIsCompact(mediaQuery.matches);
+    update();
+    mediaQuery.addEventListener("change", update);
+    return () => mediaQuery.removeEventListener("change", update);
+  }, []);
+
+  return isCompact;
+}
+
 function FlipLine({ children, offset = 0 }: { children: string; offset?: number }) {
   const [frame, setFrame] = useState(0);
 
@@ -230,6 +244,7 @@ function FlipLine({ children, offset = 0 }: { children: string; offset?: number 
 
 export default function Home() {
   const pageRef = useRef<HTMLElement | null>(null);
+  const isCompactServiceLayout = useCompactServiceLayout();
   const [serviceIndex, setServiceIndex] = useState(1);
   const [serviceMotion, setServiceMotion] = useState<{ direction: "previous" | "next" | "none"; tick: number }>({ direction: "next", tick: 0 });
   const [serviceFlipped, setServiceFlipped] = useState(false);
@@ -606,63 +621,68 @@ export default function Home() {
           </div>
         </div>
         <div className="service-stage">
-          <button
-            className="carousel-arrow previous"
-            aria-label="Previous service"
-            onClick={() => changeService((serviceIndex + serviceCards.length - 1) % serviceCards.length, "previous")}
-          ><OptimizedImage src="/figma-assets/carousel-arrow-left.svg" alt="" /></button>
-          <div className={`service-cards desktop-service-cards slide-${serviceMotion.direction} motion-${serviceMotion.tick % 2}`}>
-            {[-1, 0, 1].map((offset) => {
-              const cardIndex = (serviceIndex + offset + serviceCards.length) % serviceCards.length;
-              const card = serviceCards[cardIndex];
-              return (
-                <button
-                  className={`service-card ${offset === 0 ? `active${serviceFlipped ? " is-flipped" : ""}` : `side-card ${offset < 0 ? "side-previous" : "side-next"}`}`}
-                  key={`service-slot-${offset}`}
-                  tabIndex={offset === 0 ? 0 : -1}
-                  aria-hidden={offset !== 0}
-                  aria-pressed={offset === 0 ? serviceFlipped : undefined}
-                  aria-label={offset === 0 ? `${card.title}: reveal details` : undefined}
-                >
-                  <ServiceCardContent card={card} />
-                  <span
-                    className="service-card-hit-area"
-                    aria-hidden="true"
-                    onPointerEnter={offset === 0 ? (event) => beginServiceCardTilt(event, event.currentTarget.parentElement as HTMLButtonElement) : undefined}
-                    onPointerMove={offset === 0 ? (event) => tiltServiceCard(event, event.currentTarget.parentElement as HTMLButtonElement) : undefined}
-                    onPointerLeave={offset === 0 ? (event) => resetServiceCardTilt(event, event.currentTarget.parentElement as HTMLButtonElement) : undefined}
-                    onClick={offset === 0 ? (event) => {
-                      event.stopPropagation();
-                      const cardElement = event.currentTarget.parentElement as HTMLButtonElement;
-                      if (serviceSwipeHandled.current) {
-                        serviceSwipeHandled.current = false;
-                        return;
-                      }
-                      clearServiceCardTilt(cardElement);
-                      setServiceFlipped((flipped) => !flipped);
-                    } : undefined}
-                  />
-                </button>
-              );
-            })}
-          </div>
-          <div className="desktop-service-dots service-dots" aria-label="Choose a service">
-            {serviceCards.map((card, index) => (
+          {isCompactServiceLayout ? (
+            <MobileServiceCarousel initialIndex={1} />
+          ) : (
+            <>
               <button
-                className={index === serviceIndex ? "is-active" : ""}
-                key={card.title}
-                aria-label={`Show ${card.title}`}
-                aria-pressed={index === serviceIndex}
-                onClick={() => changeService(index, index > serviceIndex ? "next" : "previous")}
-              />
-            ))}
-          </div>
-          <MobileServiceCarousel initialIndex={1} />
-          <button
-            className="carousel-arrow next"
-            aria-label="Next service"
-            onClick={() => changeService((serviceIndex + 1) % serviceCards.length, "next")}
-          ><OptimizedImage src="/figma-assets/carousel-arrow-right.svg" alt="" /></button>
+                className="carousel-arrow previous"
+                aria-label="Previous service"
+                onClick={() => changeService((serviceIndex + serviceCards.length - 1) % serviceCards.length, "previous")}
+              ><OptimizedImage src="/figma-assets/carousel-arrow-left.svg" alt="" /></button>
+              <div className={`service-cards desktop-service-cards slide-${serviceMotion.direction} motion-${serviceMotion.tick % 2}`}>
+                {[-1, 0, 1].map((offset) => {
+                  const cardIndex = (serviceIndex + offset + serviceCards.length) % serviceCards.length;
+                  const card = serviceCards[cardIndex];
+                  return (
+                    <button
+                      className={`service-card ${offset === 0 ? `active${serviceFlipped ? " is-flipped" : ""}` : `side-card ${offset < 0 ? "side-previous" : "side-next"}`}`}
+                      key={`service-slot-${offset}`}
+                      tabIndex={offset === 0 ? 0 : -1}
+                      aria-hidden={offset !== 0}
+                      aria-pressed={offset === 0 ? serviceFlipped : undefined}
+                      aria-label={offset === 0 ? `${card.title}: reveal details` : undefined}
+                    >
+                      <ServiceCardContent card={card} />
+                      <span
+                        className="service-card-hit-area"
+                        aria-hidden="true"
+                        onPointerEnter={offset === 0 ? (event) => beginServiceCardTilt(event, event.currentTarget.parentElement as HTMLButtonElement) : undefined}
+                        onPointerMove={offset === 0 ? (event) => tiltServiceCard(event, event.currentTarget.parentElement as HTMLButtonElement) : undefined}
+                        onPointerLeave={offset === 0 ? (event) => resetServiceCardTilt(event, event.currentTarget.parentElement as HTMLButtonElement) : undefined}
+                        onClick={offset === 0 ? (event) => {
+                          event.stopPropagation();
+                          const cardElement = event.currentTarget.parentElement as HTMLButtonElement;
+                          if (serviceSwipeHandled.current) {
+                            serviceSwipeHandled.current = false;
+                            return;
+                          }
+                          clearServiceCardTilt(cardElement);
+                          setServiceFlipped((flipped) => !flipped);
+                        } : undefined}
+                      />
+                    </button>
+                  );
+                })}
+              </div>
+              <div className="desktop-service-dots service-dots" aria-label="Choose a service">
+                {serviceCards.map((card, index) => (
+                  <button
+                    className={index === serviceIndex ? "is-active" : ""}
+                    key={card.title}
+                    aria-label={`Show ${card.title}`}
+                    aria-pressed={index === serviceIndex}
+                    onClick={() => changeService(index, index > serviceIndex ? "next" : "previous")}
+                  />
+                ))}
+              </div>
+              <button
+                className="carousel-arrow next"
+                aria-label="Next service"
+                onClick={() => changeService((serviceIndex + 1) % serviceCards.length, "next")}
+              ><OptimizedImage src="/figma-assets/carousel-arrow-right.svg" alt="" /></button>
+            </>
+          )}
         </div>
       </section>
 

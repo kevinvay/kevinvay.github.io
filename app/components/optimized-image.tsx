@@ -15,6 +15,9 @@ type OptimizedImageProps = Omit<ImgHTMLAttributes<HTMLImageElement>, "src"> & {
 
 export function OptimizedImage({
   src,
+  className,
+  width,
+  height,
   loading,
   decoding = "async",
   sizes,
@@ -29,9 +32,12 @@ export function OptimizedImage({
   return (
     <img
       {...props}
+      className={["optimized-image", "is-image-loading", className].filter(Boolean).join(" ")}
       src={src}
       srcSet={srcSet}
       sizes={srcSet ? (sizes ?? "100vw") : sizes}
+      width={width ?? entry?.width}
+      height={height ?? entry?.height}
       loading={loading ?? "lazy"}
       decoding={decoding}
     />

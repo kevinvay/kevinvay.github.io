@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { MediaLoadController } from "./components/media-load-controller";
 import { ParallaxController } from "./components/parallax";
 import "./globals.css";
 
@@ -35,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}<ParallaxController /></body>
+      <body>{children}<MediaLoadController /><ParallaxController /></body>
     </html>
   );
 }

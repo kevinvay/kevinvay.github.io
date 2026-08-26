@@ -25,6 +25,39 @@ export const DEFAULT_LIQUID_GLASS_CONFIG: LiquidGlassConfig = {
   tintOpacity: 0.2,
 };
 
+export type GlassBorderConfig = {
+  borderWidth: number;
+  baseOpacity: number;
+  highlightOpacity: number;
+  highlightX: number;
+  highlightY: number;
+  lowlightOpacity: number;
+  lowlightX: number;
+  lowlightY: number;
+};
+
+export const DEFAULT_GLASS_BORDER_CONFIG: GlassBorderConfig = {
+  borderWidth: 1,
+  baseOpacity: 0.1,
+  highlightOpacity: 0.32,
+  highlightX: 20,
+  highlightY: -30,
+  lowlightOpacity: 0.36,
+  lowlightX: 82,
+  lowlightY: 130,
+};
+
+export const DEFAULT_MENU_GLASS_BORDER_CONFIG: GlassBorderConfig = {
+  borderWidth: 1,
+  baseOpacity: 0.14,
+  highlightOpacity: 0.9,
+  highlightX: 20,
+  highlightY: -30,
+  lowlightOpacity: 0.36,
+  lowlightX: 82,
+  lowlightY: 130,
+};
+
 function surfaceFn(x: number) {
   return Math.pow(1 - Math.pow(1 - x, 4), 0.25);
 }

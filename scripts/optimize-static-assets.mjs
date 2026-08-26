@@ -1,5 +1,5 @@
 import { execFileSync } from "node:child_process";
-import { readdirSync, statSync, writeFileSync } from "node:fs";
+import { readdirSync, statSync, unlinkSync, writeFileSync } from "node:fs";
 import { extname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -44,6 +44,10 @@ function encodeRaster(source) {
     if (width <= variantWidth * 1.1) continue;
     const variant = destination.replace(/\.webp$/, `-${variantWidth}.webp`);
     execFileSync("cwebp", [...baseOptions, "-resize", String(variantWidth), "0", source, "-o", variant]);
+    if (statSync(variant).size >= statSync(destination).size) {
+      unlinkSync(variant);
+      continue;
+    }
     variants.push({ src: publicPath(variant), width: variantWidth });
   }
 

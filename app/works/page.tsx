@@ -54,7 +54,7 @@ export default function WorksPage() {
       </section>
       <section className="project-directory" aria-label="Portfolio projects">
         <div className="project-grid">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <a
               className={`directory-card${project.wide ? " wide" : ""}`}
               href={`/works/${project.slug}`}
@@ -64,10 +64,10 @@ export default function WorksPage() {
               {project.slug === "mould-ui" ? (
                 <picture>
                   <source media="(max-width: 729px)" srcSet="/figma-assets/work-mould-mobile-square.webp" />
-                  <OptimizedImage src={project.coverImage} alt="" sizes="(max-width: 729px) calc(100vw - 48px), 42vw" />
+                  <OptimizedImage src={project.coverImage} alt="" sizes="(max-width: 729px) calc(100vw - 48px), 42vw" loading={index === 0 ? "eager" : undefined} fetchPriority={index === 0 ? "low" : undefined} />
                 </picture>
               ) : (
-                <OptimizedImage src={project.coverImage} alt="" sizes="(max-width: 729px) calc(100vw - 48px), 42vw" />
+                <OptimizedImage src={project.coverImage} alt="" sizes="(max-width: 729px) calc(100vw - 48px), 42vw" loading={index === 0 ? "eager" : undefined} fetchPriority={index === 0 ? "low" : undefined} />
               )}
               <div><p>{project.description}</p><h2>{project.title} <span>↗</span></h2></div>
             </a>

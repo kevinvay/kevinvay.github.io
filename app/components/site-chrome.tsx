@@ -3,7 +3,9 @@
 import { useEffect, useState, type CSSProperties } from "react";
 import logoAnimation from "../logo-frames.json";
 import {
+  DEFAULT_GLASS_BORDER_CONFIG,
   DEFAULT_LIQUID_GLASS_CONFIG,
+  DEFAULT_MENU_GLASS_BORDER_CONFIG,
   LiquidGlass,
   LiquidGlassControls,
 } from "./liquid-glass";
@@ -130,6 +132,22 @@ export function PortfolioNav({
     "--glass-tint-opacity": glassConfig.tintOpacity,
     "--glass-tint-soft": glassConfig.tintOpacity * 0.36,
     "--glass-menu-opacity": Math.min(0.7, glassConfig.tintOpacity + 0.02),
+    "--glass-border-width": `${DEFAULT_GLASS_BORDER_CONFIG.borderWidth}px`,
+    "--glass-border-base-opacity": DEFAULT_GLASS_BORDER_CONFIG.baseOpacity,
+    "--glass-border-highlight-opacity": DEFAULT_GLASS_BORDER_CONFIG.highlightOpacity,
+    "--glass-border-highlight-x": `${DEFAULT_GLASS_BORDER_CONFIG.highlightX}%`,
+    "--glass-border-highlight-y": `${DEFAULT_GLASS_BORDER_CONFIG.highlightY}%`,
+    "--glass-border-lowlight-opacity": DEFAULT_GLASS_BORDER_CONFIG.lowlightOpacity,
+    "--glass-border-lowlight-x": `${DEFAULT_GLASS_BORDER_CONFIG.lowlightX}%`,
+    "--glass-border-lowlight-y": `${DEFAULT_GLASS_BORDER_CONFIG.lowlightY}%`,
+    "--menu-border-width": `${DEFAULT_MENU_GLASS_BORDER_CONFIG.borderWidth}px`,
+    "--menu-border-base-opacity": DEFAULT_MENU_GLASS_BORDER_CONFIG.baseOpacity,
+    "--menu-border-highlight-opacity": DEFAULT_MENU_GLASS_BORDER_CONFIG.highlightOpacity,
+    "--menu-border-highlight-x": `${DEFAULT_MENU_GLASS_BORDER_CONFIG.highlightX}%`,
+    "--menu-border-highlight-y": `${DEFAULT_MENU_GLASS_BORDER_CONFIG.highlightY}%`,
+    "--menu-border-lowlight-opacity": DEFAULT_MENU_GLASS_BORDER_CONFIG.lowlightOpacity,
+    "--menu-border-lowlight-x": `${DEFAULT_MENU_GLASS_BORDER_CONFIG.lowlightX}%`,
+    "--menu-border-lowlight-y": `${DEFAULT_MENU_GLASS_BORDER_CONFIG.lowlightY}%`,
   } as CSSProperties : undefined;
 
   const nav = (

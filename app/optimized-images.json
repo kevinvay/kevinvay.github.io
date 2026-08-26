@@ -1496,10 +1496,6 @@
     "height": 15,
     "variants": [
       {
-        "src": "/figma-assets/inner/game-ground-stripe-720.webp",
-        "width": 720
-      },
-      {
         "src": "/figma-assets/inner/game-ground-stripe.webp",
         "width": 1440
       }
@@ -1700,10 +1696,6 @@
     "height": 32,
     "variants": [
       {
-        "src": "/figma-assets/service-back-ink-720.webp",
-        "width": 720
-      },
-      {
         "src": "/figma-assets/service-back-ink.webp",
         "width": 800
       }
@@ -1792,10 +1784,6 @@
     "height": 1200,
     "variants": [
       {
-        "src": "/figma-assets/work-insurance-720.webp",
-        "width": 720
-      },
-      {
         "src": "/figma-assets/work-insurance.webp",
         "width": 1320
       }
@@ -1851,10 +1839,6 @@
     "width": 1320,
     "height": 1200,
     "variants": [
-      {
-        "src": "/figma-assets/work-truck-720.webp",
-        "width": 720
-      },
       {
         "src": "/figma-assets/work-truck.webp",
         "width": 1320
