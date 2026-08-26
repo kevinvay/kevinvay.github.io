@@ -175,7 +175,8 @@ main {
   width: 40px;
 }
 
-.brand-logo img {
+.brand-logo img,
+.brand-logo svg {
   display: block;
   height: 40px;
   inset: 0;
@@ -361,13 +362,15 @@ main {
   width: 320px;
 }
 
-.hero-content > p span:last-child {
+.hero-content > p span:last-child,
+.inner-hero-copy > p span:last-child {
   align-items: center;
   display: flex;
   gap: 6px;
 }
 
-.hero-content > p i {
+.hero-content > p i,
+.inner-hero-copy > p i {
   animation: cursor-blink 1s steps(1) infinite;
   background: white;
   display: inline-block;
@@ -3606,7 +3609,10 @@ footer nav img {
 .motion-ready .home-page > .hero .hero-animation-stage,
 .motion-ready .works-page > .inner-hero .inner-hero-copy > h1,
 .motion-ready .works-page > .inner-hero .inner-hero-copy > p,
-.motion-ready .works-page > .inner-hero .inner-frame-reveal {
+.motion-ready .works-page > .inner-hero .inner-frame-reveal,
+.motion-ready .about-page > .inner-hero .inner-hero-copy > h1,
+.motion-ready .about-page > .inner-hero .inner-hero-copy > p,
+.motion-ready .about-page > .inner-hero .inner-frame-reveal {
   opacity: 0;
   transform: translate3d(0, 150px, 0);
   animation-duration: 1.35s;
@@ -3620,22 +3626,28 @@ footer nav img {
 .motion-ready .home-page > .hero.is-hero-revealed .hero-animation-stage,
 .motion-ready .works-page > .inner-hero.is-hero-revealed .inner-hero-copy > h1,
 .motion-ready .works-page > .inner-hero.is-hero-revealed .inner-hero-copy > p,
-.motion-ready .works-page > .inner-hero.is-hero-revealed .inner-frame-reveal {
+.motion-ready .works-page > .inner-hero.is-hero-revealed .inner-frame-reveal,
+.motion-ready .about-page > .inner-hero.is-hero-revealed .inner-hero-copy > h1,
+.motion-ready .about-page > .inner-hero.is-hero-revealed .inner-hero-copy > p,
+.motion-ready .about-page > .inner-hero.is-hero-revealed .inner-frame-reveal {
   animation-name: hero-appear;
 }
 
 .motion-ready .home-page > .hero .hero-content > h1,
-.motion-ready .works-page > .inner-hero .inner-hero-copy > h1 {
+.motion-ready .works-page > .inner-hero .inner-hero-copy > h1,
+.motion-ready .about-page > .inner-hero .inner-hero-copy > h1 {
   animation-delay: 540ms;
 }
 
 .motion-ready .home-page > .hero .hero-content > p,
-.motion-ready .works-page > .inner-hero .inner-hero-copy > p {
+.motion-ready .works-page > .inner-hero .inner-hero-copy > p,
+.motion-ready .about-page > .inner-hero .inner-hero-copy > p {
   animation-delay: 680ms;
 }
 
 .motion-ready .home-page > .hero .hero-animation-stage,
-.motion-ready .works-page > .inner-hero .inner-frame-reveal {
+.motion-ready .works-page > .inner-hero .inner-frame-reveal,
+.motion-ready .about-page > .inner-hero .inner-frame-reveal {
   animation-delay: 820ms;
 }
 
@@ -3671,7 +3683,10 @@ footer nav img {
   .motion-ready .home-page > .hero .hero-animation-stage,
   .motion-ready .works-page > .inner-hero .inner-hero-copy > h1,
   .motion-ready .works-page > .inner-hero .inner-hero-copy > p,
-  .motion-ready .works-page > .inner-hero .inner-frame-reveal {
+  .motion-ready .works-page > .inner-hero .inner-frame-reveal,
+  .motion-ready .about-page > .inner-hero .inner-hero-copy > h1,
+  .motion-ready .about-page > .inner-hero .inner-hero-copy > p,
+  .motion-ready .about-page > .inner-hero .inner-frame-reveal {
     translate: none !important;
     transform: none !important;
     opacity: 1 !important;
@@ -4481,6 +4496,19 @@ footer nav img {
 }
 
 @media (min-width: 1134px) {
+  .home-page .hero-content {
+    align-content: normal;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 18px;
+  }
+
+  .home-page .hero-content > p {
+    align-self: flex-start;
+    padding: 0;
+  }
+
   .about-page .experience-panel {
     margin-inline: auto;
     max-width: 1660px;
@@ -5256,5 +5284,35 @@ footer nav img {
   .mould-page .mould-more > h2 > span,
   .case-page .case-more > h2 > span {
     font-size: calc(80px * (100vw / 912px));
+  }
+}
+
+/* Keep every primary-page hero on one responsive height through the tablet
+   breakpoint. The content floor follows Contact's tallest hero composition;
+   the viewport floor prevents a thin slice of the next section appearing. */
+@media (max-width: 1133px) {
+  :root {
+    --primary-hero-media-scale: clamp(.875, calc(100vw / 913px), 1);
+    --primary-hero-content-height: calc(
+      184px
+      + clamp(94.74px, 26.3158vw, 240px)
+      + 392px * var(--primary-hero-media-scale)
+    );
+    --primary-hero-height: max(
+      var(--primary-hero-content-height),
+      calc(100vh - 100px)
+    );
+    --primary-hero-height: max(
+      var(--primary-hero-content-height),
+      calc(100svh - 100px)
+    );
+  }
+
+  .home-page > .hero,
+  .works-page > .inner-hero,
+  .about-page > .inner-hero,
+  .contact-page > .contact-hero {
+    height: var(--primary-hero-height);
+    min-height: var(--primary-hero-height);
   }
 }

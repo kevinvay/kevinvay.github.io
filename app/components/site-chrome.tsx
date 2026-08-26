@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState, type CSSProperties } from "react";
-import logoAnimation from "../logo-frames.json";
 import {
   DEFAULT_GLASS_BORDER_CONFIG,
   DEFAULT_LIQUID_GLASS_CONFIG,
@@ -9,7 +8,11 @@ import {
   LiquidGlass,
   LiquidGlassControls,
 } from "./liquid-glass";
+import { LogoMark } from "./logo-mark";
 import { OptimizedImage } from "./optimized-image";
+
+const LOGO_FRAME_COUNT = 9;
+const LOGO_FRAME_DURATION_MS = 85;
 
 const socials = [
   ["Dribbble", "https://dribbble.com/kevin-vay", "/figma-assets/dribbble.svg"],
@@ -47,14 +50,10 @@ export function SiteLoader() {
 
 export function SiteHeader() {
   const [hovering, setHovering] = useState(false);
-  const [frame, setFrame] = useState(logoAnimation.frames.length - 1);
+  const [frame, setFrame] = useState(LOGO_FRAME_COUNT - 1);
 
   useEffect(() => {
-    logoAnimation.frames.forEach((src) => { const image = new Image(); image.src = src; });
-  }, []);
-
-  useEffect(() => {
-    const last = logoAnimation.frames.length - 1;
+    const last = LOGO_FRAME_COUNT - 1;
     if (!hovering) { setFrame(last); return; }
     let current = 0;
     setFrame(current);
@@ -62,7 +61,7 @@ export function SiteHeader() {
       current += 1;
       setFrame(Math.min(current, last));
       if (current >= last) window.clearInterval(timer);
-    }, logoAnimation.frameDurationMs);
+    }, LOGO_FRAME_DURATION_MS);
     return () => window.clearInterval(timer);
   }, [hovering]);
 
@@ -75,7 +74,7 @@ export function SiteHeader() {
         onPointerEnter={() => setHovering(true)}
         onPointerLeave={() => setHovering(false)}
       >
-        <span className="brand-logo" aria-hidden="true"><OptimizedImage src={logoAnimation.frames[frame]} alt="" loading="eager" /></span>
+        <span className="brand-logo" aria-hidden="true"><LogoMark frame={frame} /></span>
         <span className="brand-copy"><b>Kevin Wu</b><span className="brand-comma">,</span><em>a creative designer</em></span>
       </a>
       <a className="connect-button" href="/contact">
