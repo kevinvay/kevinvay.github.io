@@ -4937,56 +4937,6 @@ footer nav img {
   }
 }
 
-/* Let the About hero content determine its height on the stacked layout. */
-@media (max-width: 912px) {
-  .about-page .inner-hero {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    min-height: 0;
-    padding-bottom: clamp(40px, 5vw, 56px);
-  }
-
-  .about-page .inner-hero-copy {
-    display: contents;
-    height: auto;
-  }
-
-  .about-page .inner-hero h1 {
-    order: 1;
-    position: static;
-  }
-
-  .about-page .inner-frame-media {
-    bottom: auto;
-    flex: none;
-    height: clamp(100px, 15.35vw, 140px);
-    left: auto;
-    margin-top: clamp(24px, 4vw, 40px);
-    order: 2;
-    position: relative;
-    right: auto;
-    top: auto;
-    width: clamp(100px, 15.35vw, 140px);
-  }
-
-  .about-page .inner-frame-media img {
-    height: 100%;
-    width: 100%;
-  }
-
-  .about-page .inner-hero-copy > p {
-    left: auto;
-    margin: clamp(24px, 4vw, 40px) 0 0;
-    order: 3;
-    padding: 0;
-    position: static;
-    top: auto;
-    width: auto;
-  }
-}
-
 /* Mobile typography and About spacing corrections. */
 @media (max-width: 669px) {
   .home-page .contact h2 {
