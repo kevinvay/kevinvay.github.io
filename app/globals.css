@@ -59,13 +59,13 @@
 }
 
 html {
-  background: #000;
+  background: var(--black);
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  background: #000;
+  background: var(--black);
   color: var(--white);
   font-family: "FK Display", Avenir, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -97,7 +97,7 @@ p {
 }
 
 main {
-  background: #000;
+  background: var(--black);
   min-height: 100vh;
   overflow-x: clip;
   position: relative;
@@ -1607,7 +1607,7 @@ footer nav img {
 .nav-menu a.is-active { transform: none; }
 
 /* Mould UI case — Figma frame 8983:11606 (1133px base) */
-.mould-page { background: #0e0e0e; }
+.mould-page { background: var(--black); }
 .mould-page > article { margin: 0 auto; max-width: 1660px; }
 .mould-hero {
   column-gap: clamp(40px, 7vw, 80px);
@@ -1762,7 +1762,7 @@ footer nav img {
 }
 
 /* Independent portfolio cases — Figma frames 8983:15972 and 8983:12865 */
-.case-page { background: #0e0e0e; }
+.case-page { background: var(--black); }
 .case-page > article { margin: 0 auto; max-width: 1660px; }
 .case-hero {
   column-gap: clamp(40px, 7vw, 80px);
