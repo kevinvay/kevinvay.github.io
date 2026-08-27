@@ -1885,6 +1885,7 @@ footer nav img {
 .case-media { background: #1a1a1a; }
 .case-media img { display: block; height: auto; width: 100%; }
 .case-media-stack img { border-radius: 0; }
+.case-media-stack img + img { margin-top: -1px; }
 .case-media-pair { display: grid; gap: 40px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .case-media-pair .case-media { aspect-ratio: 1; }
 .case-media-pair img { height: 100%; object-fit: cover; }
