@@ -570,6 +570,20 @@ export default function Home() {
     setServiceFlipped((flipped) => !flipped);
   };
 
+  const settleDesktopServiceFlip = () => {
+    if (serviceFlipFrame.current !== null) window.cancelAnimationFrame(serviceFlipFrame.current);
+    flushSync(() => {
+      setServiceFlipSettled(true);
+      setServiceFlipRehydrating(true);
+    });
+    serviceFlipFrame.current = window.requestAnimationFrame(() => {
+      serviceFlipFrame.current = window.requestAnimationFrame(() => {
+        serviceFlipFrame.current = null;
+        setServiceFlipRehydrating(false);
+      });
+    });
+  };
+
   return (
     <main className="home-page" ref={pageRef}>
       <SiteLoader />
@@ -680,10 +694,11 @@ export default function Home() {
                       onTransitionEnd={offset === 0 ? (event) => {
                         if (
                           serviceFlipped &&
+                          !serviceFlipSettled &&
                           !serviceFlipRehydrating &&
                           event.propertyName === "transform" &&
                           (event.target as HTMLElement).classList.contains("service-card-inner")
-                        ) setServiceFlipSettled(true);
+                        ) settleDesktopServiceFlip();
                       } : undefined}
                     >
                       <ServiceCardContent card={card} />
