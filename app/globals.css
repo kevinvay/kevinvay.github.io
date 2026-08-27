@@ -1089,6 +1089,15 @@ main {
   }
 }
 
+/* Hold the completed back face flat for one painted frame before hover tilt
+   resumes. This prevents the 180deg flip transform from being interpolated a
+   second time during the sharp-text handoff. */
+.service-card.active.is-flipped.is-flip-settled.is-flip-rehydrating .service-card-inner {
+  transform: none;
+  transition: none;
+  will-change: auto;
+}
+
 .service-card-heading,
 .service-card-list {
   position: relative;
