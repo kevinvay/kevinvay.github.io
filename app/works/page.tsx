@@ -6,6 +6,9 @@ import { FrameAnimation } from "../components/frame-animation";
 import { projects } from "../projects";
 import { OptimizedImage } from "../components/optimized-image";
 
+const HALF_COVER_SIZES = "(max-width: 729px) calc(100vw - 48px), 42vw";
+const WORKS_WIDE_COVER_SIZES = "(min-width: 1788px) 1660px, (min-width: 1134px) calc(100vw - 128px), (min-width: 730px) 88.72vw, calc(100vw - 48px)";
+
 export default function WorksPage() {
   const pageRef = useRef<HTMLElement | null>(null);
 
@@ -64,10 +67,10 @@ export default function WorksPage() {
               {project.slug === "mould-ui" ? (
                 <picture>
                   <source media="(max-width: 729px)" srcSet="/figma-assets/work-mould-mobile-square.webp" />
-                  <OptimizedImage src={project.coverImage} alt="" sizes="(max-width: 729px) calc(100vw - 48px), 42vw" loading={index === 0 ? "eager" : undefined} fetchPriority={index === 0 ? "low" : undefined} />
+                  <OptimizedImage src={project.coverImage} alt="" sizes={project.wide ? WORKS_WIDE_COVER_SIZES : HALF_COVER_SIZES} loading={index === 0 ? "eager" : undefined} fetchPriority={index === 0 ? "low" : undefined} />
                 </picture>
               ) : (
-                <OptimizedImage src={project.coverImage} alt="" sizes="(max-width: 729px) calc(100vw - 48px), 42vw" loading={index === 0 ? "eager" : undefined} fetchPriority={index === 0 ? "low" : undefined} />
+                <OptimizedImage src={project.coverImage} alt="" sizes={project.wide ? WORKS_WIDE_COVER_SIZES : HALF_COVER_SIZES} loading={index === 0 ? "eager" : undefined} fetchPriority={index === 0 ? "low" : undefined} />
               )}
               <div><p>{project.description}</p><h2>{project.title} <span>↗</span></h2></div>
             </a>

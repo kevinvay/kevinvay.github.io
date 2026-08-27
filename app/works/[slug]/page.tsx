@@ -6,6 +6,7 @@ import { getProject, projects } from "../../projects";
 import { AirlineComparison } from "./airline-comparison";
 import { AirlineDarkMode } from "./airline-dark-mode";
 import { OptimizedImage } from "../../components/optimized-image";
+import { TextIcon } from "../../components/text-icon";
 
 type ProjectPageProps = { params: Promise<{ slug: string }> };
 
@@ -19,6 +20,8 @@ const academyMedia = "/figma-assets/cases/kaia-academy";
 const b2bMedia = "/figma-assets/cases/manbangbao";
 const truckMedia = "/figma-assets/cases/truck-app";
 const zentaoMedia = "/figma-assets/cases/zentao";
+const HALF_COVER_SIZES = "(max-width: 729px) calc(100vw - 48px), 42vw";
+const CASE_WIDE_COVER_SIZES = "(min-width: 1660px) 1532px, (min-width: 730px) calc(100vw - 128px), calc(100vw - 48px)";
 
 const systemCards = [
   ["#ffe8b0", "设计原则", "Principle", "content-10.svg", "简介＆三大原则"],
@@ -74,7 +77,7 @@ function MouldUiPage() {
 
         <section className="mould-more">
           <div className="mould-more-mask" />
-          <h2><span>More</span> Projects 📂</h2>
+          <h2><span>More</span> Projects <TextIcon name="folder" label="folder" /></h2>
           <div>
             <a className="directory-card" href="/works/huochebang-shipper-app" aria-label="View project: 货车帮｜货主端 APP">
               <OptimizedImage src="/figma-assets/work-truck.webp" alt="" />
@@ -127,10 +130,10 @@ function ProjectCard({ slug, image, mobileImage, eyebrow, title, wide = false }:
       {mobileImage ? (
         <picture>
           <source media="(max-width: 729px)" srcSet={mobileImage} />
-          <OptimizedImage src={image} alt="" sizes="(max-width: 729px) calc(100vw - 48px), 42vw" />
+          <OptimizedImage src={image} alt="" sizes={wide ? CASE_WIDE_COVER_SIZES : HALF_COVER_SIZES} />
         </picture>
       ) : (
-        <OptimizedImage src={image} alt="" sizes="(max-width: 729px) calc(100vw - 48px), 42vw" />
+        <OptimizedImage src={image} alt="" sizes={wide ? CASE_WIDE_COVER_SIZES : HALF_COVER_SIZES} />
       )}
       <div><p>{eyebrow}</p><h2>{title} <span>↗</span></h2></div>
     </a>
@@ -141,7 +144,7 @@ function CaseMore({ children }: { children: ReactNode }) {
   return (
     <section className="case-more">
       <div className="case-more-mask" />
-      <h2><span>More</span> Projects 📂</h2>
+      <h2><span>More</span> Projects <TextIcon name="folder" label="folder" /></h2>
       <div className="case-more-grid">{children}</div>
     </section>
   );

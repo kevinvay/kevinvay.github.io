@@ -3,6 +3,7 @@
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent } from "react";
 import { PortfolioNav, SiteFooter, SiteHeader, SiteLoader } from "../components/site-chrome";
 import { OptimizedImage } from "../components/optimized-image";
+import { TextIcon } from "../components/text-icon";
 
 const principles = [
   ["/figma-assets/inner/principle-business.webp", "Business Value", "As designers, we are connecting what users need with what companies can offer for sustainable long-term value.", "作为设计师，我们将用户的需求与公司能够提供的可持续长期价值联系起来。"],
@@ -163,7 +164,7 @@ export default function ContactPage() {
         </div>
       </section>
       <section className="principles-section">
-        <h2>What I stick to 🎗️</h2>
+        <h2>What I stick to <TextIcon name="ribbon" label="ribbon" /></h2>
         <RotatingPrinciples />
       </section>
       <SiteFooter />

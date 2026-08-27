@@ -2,8 +2,9 @@ import { PortfolioNav, SiteFooter, SiteHeader, SiteLoader } from "../components/
 import { FrameAnimation } from "../components/frame-animation";
 import { StatsStack } from "../components/stats-stack";
 import { OptimizedImage } from "../components/optimized-image";
+import { TextIcon } from "../components/text-icon";
 
-const greeting = "Hello! I’m Kevin Wu. 👋🏻";
+const greeting = "Hello! I’m Kevin Wu, waving hello.";
 
 export default function AboutPage() {
   return (
@@ -20,7 +21,7 @@ export default function AboutPage() {
       <div className="about-intro">
         <section className="hello-strip" aria-label={greeting}>
           <div className="hello-track" aria-hidden="true">
-            {[0, 1].map((group) => <span className="hello-group" key={group}>{[0, 1, 2].map((item) => <span key={item}>{greeting}</span>)}</span>)}
+            {[0, 1].map((group) => <span className="hello-group" key={group}>{[0, 1, 2].map((item) => <span key={item}>Hello! I’m Kevin Wu. <TextIcon name="wave" /></span>)}</span>)}
           </div>
         </section>
         <section className="about-story">

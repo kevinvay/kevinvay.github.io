@@ -7,7 +7,11 @@ import heroMedia from "./hero-media.json";
 import contactFlip from "./contact-flip.json";
 import { PortfolioNav, SiteFooter, SiteHeader, SiteLoader } from "./components/site-chrome";
 import { OptimizedImage } from "./components/optimized-image";
+import { TextIcon } from "./components/text-icon";
 import { homeProjects } from "./projects";
+
+const HALF_COVER_SIZES = "(max-width: 729px) calc(100vw - 48px), 42vw";
+const HOME_WIDE_COVER_SIZES = "(min-width: 1788px) 1660px, (min-width: 730px) calc(100vw - 128px), calc(100vw - 48px)";
 
 const serviceCards = [
   {
@@ -248,6 +252,9 @@ export default function Home() {
   const [serviceIndex, setServiceIndex] = useState(1);
   const [serviceMotion, setServiceMotion] = useState<{ direction: "previous" | "next" | "none"; tick: number }>({ direction: "next", tick: 0 });
   const [serviceFlipped, setServiceFlipped] = useState(false);
+  const [serviceFlipSettled, setServiceFlipSettled] = useState(false);
+  const [serviceFlipRehydrating, setServiceFlipRehydrating] = useState(false);
+  const serviceFlipFrame = useRef<number | null>(null);
   const serviceDragStart = useRef<{
     x: number;
     y: number;
@@ -302,6 +309,10 @@ export default function Home() {
   }, []);
 
   const changeService = (nextIndex: number, direction: "previous" | "next", animate = true) => {
+    if (serviceFlipFrame.current !== null) window.cancelAnimationFrame(serviceFlipFrame.current);
+    serviceFlipFrame.current = null;
+    setServiceFlipSettled(false);
+    setServiceFlipRehydrating(false);
     setServiceFlipped(false);
     setServiceIndex(nextIndex);
     setServiceMotion(({ tick }) => ({ direction: animate ? direction : "none", tick: tick + 1 }));
@@ -535,6 +546,30 @@ export default function Home() {
     card.style.setProperty("--service-glare-y", "50%");
   };
 
+  const toggleDesktopServiceFlip = () => {
+    if (serviceFlipFrame.current !== null) window.cancelAnimationFrame(serviceFlipFrame.current);
+    serviceFlipFrame.current = null;
+
+    if (serviceFlipped && serviceFlipSettled) {
+      /* Restore the visually equivalent 3D back-face without a transition,
+         then animate it back to the front on the following frame. */
+      flushSync(() => {
+        setServiceFlipSettled(false);
+        setServiceFlipRehydrating(true);
+      });
+      serviceFlipFrame.current = window.requestAnimationFrame(() => {
+        serviceFlipFrame.current = null;
+        setServiceFlipRehydrating(false);
+        setServiceFlipped(false);
+      });
+      return;
+    }
+
+    setServiceFlipSettled(false);
+    setServiceFlipRehydrating(false);
+    setServiceFlipped((flipped) => !flipped);
+  };
+
   return (
     <main className="home-page" ref={pageRef}>
       <SiteLoader />
@@ -564,7 +599,7 @@ export default function Home() {
       <section className="works-panel" id="works" aria-labelledby="works-title">
         <div className="works-content">
           <h2 id="works-title">
-            <span>Selected</span><span>works 🧩</span>
+            <span>Selected</span><span>works <TextIcon name="puzzle" label="puzzle piece" /></span>
           </h2>
           <div className="work-grid">
             {homeProjects.map((work, index) => (
@@ -577,10 +612,10 @@ export default function Home() {
                 {index === 2 ? (
                   <picture>
                     <source media="(max-width: 729px)" srcSet="/figma-assets/work-mould-mobile-square.webp" />
-                    <OptimizedImage src={work.coverImage} alt="" sizes="(max-width: 729px) calc(100vw - 48px), 42vw" />
+                    <OptimizedImage src={work.coverImage} alt="" sizes={HOME_WIDE_COVER_SIZES} />
                   </picture>
                 ) : (
-                  <OptimizedImage src={work.coverImage} alt="" sizes="(max-width: 729px) calc(100vw - 48px), 42vw" />
+                  <OptimizedImage src={work.coverImage} alt="" sizes={HALF_COVER_SIZES} />
                 )}
                 <div className="work-copy">
                   <p>{work.description}</p>
@@ -636,12 +671,20 @@ export default function Home() {
                   const card = serviceCards[cardIndex];
                   return (
                     <button
-                      className={`service-card ${offset === 0 ? `active${serviceFlipped ? " is-flipped" : ""}` : `side-card ${offset < 0 ? "side-previous" : "side-next"}`}`}
+                      className={`service-card ${offset === 0 ? `active${serviceFlipped ? " is-flipped" : ""}${serviceFlipSettled ? " is-flip-settled" : ""}${serviceFlipRehydrating ? " is-flip-rehydrating" : ""}` : `side-card ${offset < 0 ? "side-previous" : "side-next"}`}`}
                       key={`service-slot-${offset}`}
                       tabIndex={offset === 0 ? 0 : -1}
                       aria-hidden={offset !== 0}
                       aria-pressed={offset === 0 ? serviceFlipped : undefined}
                       aria-label={offset === 0 ? `${card.title}: reveal details` : undefined}
+                      onTransitionEnd={offset === 0 ? (event) => {
+                        if (
+                          serviceFlipped &&
+                          !serviceFlipRehydrating &&
+                          event.propertyName === "transform" &&
+                          (event.target as HTMLElement).classList.contains("service-card-inner")
+                        ) setServiceFlipSettled(true);
+                      } : undefined}
                     >
                       <ServiceCardContent card={card} />
                       <span
@@ -658,7 +701,7 @@ export default function Home() {
                             return;
                           }
                           clearServiceCardTilt(cardElement);
-                          setServiceFlipped((flipped) => !flipped);
+                          toggleDesktopServiceFlip();
                         } : undefined}
                       />
                     </button>

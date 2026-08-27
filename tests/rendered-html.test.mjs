@@ -25,7 +25,7 @@ test("server-renders the portfolio with optimized loading hints", async () => {
   assert.match(html, /src="\/figma-assets\/hero-e\.webp"[^>]*loading="eager"/i);
   assert.match(html, /src="\/figma-assets\/work-rebrand\.webp"[^>]*srcSet=/i);
   assert.match(html, /loading="lazy" decoding="async"/i);
-  assert.doesNotMatch(html, /\/figma-assets\/[^"']+\.(?:png|jpe?g|gif)/i);
+  assert.doesNotMatch(html, /\/figma-assets\/(?!emoji\/)[^"']+\.(?:png|jpe?g|gif)/i);
 });
 
 test("ships responsive WebP images and subset WOFF2 fonts", async () => {
