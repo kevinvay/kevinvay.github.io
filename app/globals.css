@@ -4838,11 +4838,10 @@ footer nav img {
   border-radius: 64px 64px 0 0;
   box-sizing: border-box;
   content: "";
-  height: 100px;
+  height: 172px;
   left: 50%;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 46%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 46%, transparent 100%);
-  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 54%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 54%, transparent 100%);
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -5079,6 +5078,16 @@ footer nav img {
   .about-page .about-story::before {
     border-radius: var(--about-hello-radius) var(--about-hello-radius) 0 0;
     height: calc(var(--about-hello-overlap) + max(calc(100px * var(--about-hello-scale)), var(--about-hello-overlap)));
+  }
+}
+
+/* Keep the Hello-to-story cap on the same proportional geometry as the
+   1200px layout, preventing the white strip from showing around the corner. */
+@media (min-width: 480px) and (max-width: 1104px) {
+  .about-page {
+    --about-hello-overlap: calc(72px * var(--about-hello-scale));
+    --about-hello-pad: calc(32px * var(--about-hello-scale));
+    --about-hello-radius: calc(64px * var(--about-hello-scale));
   }
 }
 
