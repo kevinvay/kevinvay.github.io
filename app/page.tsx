@@ -40,6 +40,18 @@ const serviceCards = [
   },
 ];
 
+const serviceMedia = serviceCards.map(({ image }) => image);
+
+function ServiceMediaPreloads() {
+  return (
+    <>
+      {serviceMedia.map((src) => (
+        <link as="image" fetchPriority="low" href={src} key={src} rel="preload" />
+      ))}
+    </>
+  );
+}
+
 function HeroAnimation() {
   const [frame, setFrame] = useState(0);
 
@@ -68,11 +80,11 @@ function HeroAnimation() {
   );
 }
 
-function TickerItem({ direction }: { direction: "left" | "right" }) {
+function TickerItem() {
   return (
     <span className="ticker-item">
       <span>what can I do</span>
-      <OptimizedImage src={`/figma-assets/ticker-arrow-${direction}.svg`} alt="" />
+      <OptimizedImage src="/figma-assets/ticker-arrow-left.svg" alt="" />
     </span>
   );
 }
@@ -82,7 +94,7 @@ function ServiceCardContent({ card }: { card: (typeof serviceCards)[number] }) {
     <span className="service-card-tilt">
       <span className="service-card-inner">
         <span className="service-card-face service-card-front">
-          <span className="service-card-art"><OptimizedImage src={card.image} alt="" /></span>
+          <span className="service-card-art"><OptimizedImage src={card.image} alt="" loading="eager" /></span>
           <span className="service-front-divider" aria-hidden="true" />
           <span className="service-front-title">{card.title}<OptimizedImage src="/figma-assets/service-front-arrow.webp" alt="" aria-hidden="true" /></span>
         </span>
@@ -252,9 +264,6 @@ export default function Home() {
   const [serviceIndex, setServiceIndex] = useState(1);
   const [serviceMotion, setServiceMotion] = useState<{ direction: "previous" | "next" | "none"; tick: number }>({ direction: "next", tick: 0 });
   const [serviceFlipped, setServiceFlipped] = useState(false);
-  const [serviceFlipSettled, setServiceFlipSettled] = useState(false);
-  const [serviceFlipRehydrating, setServiceFlipRehydrating] = useState(false);
-  const serviceFlipFrame = useRef<number | null>(null);
   const serviceDragStart = useRef<{
     x: number;
     y: number;
@@ -309,10 +318,6 @@ export default function Home() {
   }, []);
 
   const changeService = (nextIndex: number, direction: "previous" | "next", animate = true) => {
-    if (serviceFlipFrame.current !== null) window.cancelAnimationFrame(serviceFlipFrame.current);
-    serviceFlipFrame.current = null;
-    setServiceFlipSettled(false);
-    setServiceFlipRehydrating(false);
     setServiceFlipped(false);
     setServiceIndex(nextIndex);
     setServiceMotion(({ tick }) => ({ direction: animate ? direction : "none", tick: tick + 1 }));
@@ -547,46 +552,13 @@ export default function Home() {
   };
 
   const toggleDesktopServiceFlip = () => {
-    if (serviceFlipFrame.current !== null) window.cancelAnimationFrame(serviceFlipFrame.current);
-    serviceFlipFrame.current = null;
-
-    if (serviceFlipped && serviceFlipSettled) {
-      /* Restore the visually equivalent 3D back-face without a transition,
-         then animate it back to the front on the following frame. */
-      flushSync(() => {
-        setServiceFlipSettled(false);
-        setServiceFlipRehydrating(true);
-      });
-      serviceFlipFrame.current = window.requestAnimationFrame(() => {
-        serviceFlipFrame.current = null;
-        setServiceFlipRehydrating(false);
-        setServiceFlipped(false);
-      });
-      return;
-    }
-
-    setServiceFlipSettled(false);
-    setServiceFlipRehydrating(false);
     setServiceFlipped((flipped) => !flipped);
-  };
-
-  const settleDesktopServiceFlip = () => {
-    if (serviceFlipFrame.current !== null) window.cancelAnimationFrame(serviceFlipFrame.current);
-    flushSync(() => {
-      setServiceFlipSettled(true);
-      setServiceFlipRehydrating(true);
-    });
-    serviceFlipFrame.current = window.requestAnimationFrame(() => {
-      serviceFlipFrame.current = window.requestAnimationFrame(() => {
-        serviceFlipFrame.current = null;
-        setServiceFlipRehydrating(false);
-      });
-    });
   };
 
   return (
     <main className="home-page" ref={pageRef}>
       <SiteLoader />
+      <ServiceMediaPreloads />
 
       <SiteHeader />
 
@@ -661,12 +633,12 @@ export default function Home() {
       <section className="services" id="about" aria-label="What can I do">
         <div className="ticker ticker-back" aria-hidden="true">
           <div className="ticker-track">
-            {Array.from({ length: 8 }, (_, index) => <TickerItem direction="right" key={index} />)}
+            {Array.from({ length: 8 }, (_, index) => <TickerItem key={index} />)}
           </div>
         </div>
         <div className="ticker ticker-front" aria-hidden="true">
           <div className="ticker-track reverse">
-            {Array.from({ length: 8 }, (_, index) => <TickerItem direction="left" key={index} />)}
+            {Array.from({ length: 8 }, (_, index) => <TickerItem key={index} />)}
           </div>
         </div>
         <div className="service-stage">
@@ -685,21 +657,12 @@ export default function Home() {
                   const card = serviceCards[cardIndex];
                   return (
                     <button
-                      className={`service-card ${offset === 0 ? `active${serviceFlipped ? " is-flipped" : ""}${serviceFlipSettled ? " is-flip-settled" : ""}${serviceFlipRehydrating ? " is-flip-rehydrating" : ""}` : `side-card ${offset < 0 ? "side-previous" : "side-next"}`}`}
+                      className={`service-card ${offset === 0 ? `active${serviceFlipped ? " is-flipped" : ""}` : `side-card ${offset < 0 ? "side-previous" : "side-next"}`}`}
                       key={`service-slot-${offset}`}
                       tabIndex={offset === 0 ? 0 : -1}
                       aria-hidden={offset !== 0}
                       aria-pressed={offset === 0 ? serviceFlipped : undefined}
                       aria-label={offset === 0 ? `${card.title}: reveal details` : undefined}
-                      onTransitionEnd={offset === 0 ? (event) => {
-                        if (
-                          serviceFlipped &&
-                          !serviceFlipSettled &&
-                          !serviceFlipRehydrating &&
-                          event.propertyName === "transform" &&
-                          (event.target as HTMLElement).classList.contains("service-card-inner")
-                        ) settleDesktopServiceFlip();
-                      } : undefined}
                     >
                       <ServiceCardContent card={card} />
                       <span

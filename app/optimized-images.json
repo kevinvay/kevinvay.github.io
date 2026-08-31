@@ -1601,42 +1601,12 @@
       }
     ]
   },
-  "/figma-assets/inner/works-frame-0.webp": {
-    "width": 200,
-    "height": 264,
-    "variants": [
-      {
-        "src": "/figma-assets/inner/works-frame-0.webp",
-        "width": 200
-      }
-    ]
-  },
   "/figma-assets/inner/works-frame-1.webp": {
     "width": 200,
     "height": 264,
     "variants": [
       {
         "src": "/figma-assets/inner/works-frame-1.webp",
-        "width": 200
-      }
-    ]
-  },
-  "/figma-assets/inner/works-frame-2.webp": {
-    "width": 200,
-    "height": 264,
-    "variants": [
-      {
-        "src": "/figma-assets/inner/works-frame-2.webp",
-        "width": 200
-      }
-    ]
-  },
-  "/figma-assets/inner/works-frame-3.webp": {
-    "width": 200,
-    "height": 264,
-    "variants": [
-      {
-        "src": "/figma-assets/inner/works-frame-3.webp",
         "width": 200
       }
     ]

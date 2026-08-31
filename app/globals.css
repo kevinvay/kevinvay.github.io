@@ -973,35 +973,6 @@ main {
   transform: perspective(2400px) rotateX(var(--service-tilt-x)) rotateY(var(--service-tilt-y)) scale3d(1, 1, 1);
 }
 
-/* The 3D pair is required only while the card is rotating. Once the transition
-   settles, show the same back face as a genuinely flat layer so browser text
-   rasterization returns to native 2D sharpness. */
-.service-card.active.is-flipped.is-flip-settled {
-  perspective: none;
-}
-
-.service-card.active.is-flipped.is-flip-settled .service-card-tilt,
-.service-card.active.is-flipped.is-flip-settled .service-card-inner,
-.service-card.active.is-flipped.is-flip-settled .service-card-back {
-  transform: none;
-}
-
-.service-card.active.is-flipped.is-flip-settled .service-card-tilt,
-.service-card.active.is-flipped.is-flip-settled .service-card-inner,
-.service-card.active.is-flipped.is-flip-settled .service-card-face {
-  transform-style: flat;
-  transition: none;
-  will-change: auto;
-}
-
-.service-card.active.is-flipped.is-flip-settled .service-card-front {
-  visibility: hidden;
-}
-
-.service-card.active.is-flip-rehydrating .service-card-inner {
-  transition: none;
-}
-
 .service-card-handoff {
   border: 0;
   border-radius: 24px;
@@ -1034,68 +1005,6 @@ main {
   padding: 20px 62px;
   text-align: left;
   transform: rotateY(180deg) translateZ(1px);
-}
-
-/* After the flip settles, return live text to a native 2D layer for sharpness.
-   On hover it temporarily rejoins the independent 3D background plane, then
-   flattens again as soon as the pointer leaves. */
-.service-card.active.is-flipped.is-flip-settled .service-card-tilt {
-  position: relative;
-}
-
-.service-card.active.is-flipped.is-flip-settled .service-card-tilt::before {
-  backface-visibility: hidden;
-  background: #e1e1e1 url("/figma-assets/service-back-bg.webp") center / 100% 100% no-repeat;
-  border-radius: 24px;
-  box-shadow: 0 18px 36px rgba(0, 0, 0, .18);
-  content: "";
-  inset: 0;
-  pointer-events: none;
-  position: absolute;
-  transform: perspective(1100px) rotateX(var(--service-tilt-x)) rotateY(var(--service-tilt-y)) scale3d(1.015, 1.015, 1.015);
-  transform-origin: center;
-  transition: transform 150ms cubic-bezier(.2, .75, .2, 1), box-shadow 150ms ease;
-  will-change: transform;
-  z-index: 0;
-}
-
-.service-card.active.is-flipped.is-flip-settled .service-card-inner {
-  position: relative;
-  z-index: 1;
-}
-
-.service-card.active.is-flipped.is-flip-settled .service-card-back {
-  background: transparent;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .service-card.active.is-flipped.is-flip-settled:hover .service-card-inner {
-    transform: perspective(1100px) rotateX(var(--service-tilt-x)) rotateY(var(--service-tilt-y)) scale3d(1.015, 1.015, 1.015);
-    transition: transform 150ms cubic-bezier(.2, .75, .2, 1);
-    will-change: transform;
-  }
-
-  .service-card.active.is-flipped.is-flip-settled:not(:hover) .service-card-inner {
-    transform: none;
-    transition: transform .55s cubic-bezier(.22, 1, .36, 1);
-    will-change: auto;
-  }
-
-  .service-card.active.is-flipped.is-flip-settled:not(:hover) .service-card-tilt::before {
-    box-shadow: 0 12px 28px rgba(0, 0, 0, .12);
-    transform: perspective(1100px) rotateX(0) rotateY(0) scale3d(1, 1, 1);
-    transition-duration: .55s;
-    transition-timing-function: cubic-bezier(.22, 1, .36, 1);
-  }
-}
-
-/* Hold the completed back face flat for one painted frame before hover tilt
-   resumes. This prevents the 180deg flip transform from being interpolated a
-   second time during the sharp-text handoff. */
-.service-card.active.is-flipped.is-flip-settled.is-flip-rehydrating .service-card-inner {
-  transform: none;
-  transition: none;
-  will-change: auto;
 }
 
 .service-card-heading,
@@ -4931,6 +4840,8 @@ footer nav img {
   content: "";
   height: 100px;
   left: 50%;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 46%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 46%, transparent 100%);
   overflow: hidden;
   pointer-events: none;
   position: absolute;
@@ -4971,7 +4882,7 @@ footer nav img {
 
   .about-page .about-story::before {
     border-radius: calc(64px * var(--about-hello-scale)) calc(64px * var(--about-hello-scale)) 0 0;
-    height: calc(100px * var(--about-hello-scale));
+    height: calc(172px * var(--about-hello-scale));
     left: 0;
     transform: none;
     width: 100%;
@@ -5167,7 +5078,7 @@ footer nav img {
 
   .about-page .about-story::before {
     border-radius: var(--about-hello-radius) var(--about-hello-radius) 0 0;
-    height: max(calc(100px * var(--about-hello-scale)), var(--about-hello-overlap));
+    height: calc(var(--about-hello-overlap) + max(calc(100px * var(--about-hello-scale)), var(--about-hello-overlap)));
   }
 }
 

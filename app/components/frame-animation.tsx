@@ -6,8 +6,7 @@ import { OptimizedImage } from "./optimized-image";
 type MediaName = keyof typeof media;
 
 export function FrameAnimation({ name }: { name: MediaName }) {
-  const animation = media[name];
-  const image = animation.frames[1] ?? animation.frames[0];
+  const image = media[name];
 
   return (
     <span className={`inner-frame-media inner-frame-media-${name}`} aria-hidden="true">
