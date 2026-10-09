@@ -1,0 +1,11 @@
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  # This site is built with vinext/Vite (Cloudflare Workers), not a real
+  # `next build`. The Next.js Runtime plugin was auto-installed because
+  # `next` is a listed dependency, but it expects genuine Next.js build
+  # output and fails looking for it. Skip it so Netlify just publishes the
+  # static `out/` directory produced by the build.
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
