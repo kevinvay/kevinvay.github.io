@@ -16,9 +16,10 @@ const stops = [
 
 export function ExperienceGame() {
   const [step, setStep] = useState(0);
-  const [soundOn, setSoundOn] = useState(false);
+  const [soundOn, setSoundOn] = useState(true);
   const audioRef = useRef<AudioContext | null>(null);
   const melodyTimerRef = useRef<number | null>(null);
+  const playNoteRef = useRef<(() => void) | null>(null);
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
 
   const stopMusic = () => {
@@ -26,15 +27,24 @@ export function ExperienceGame() {
     melodyTimerRef.current = null;
     void audioRef.current?.close();
     audioRef.current = null;
+    playNoteRef.current = null;
   };
 
-  const toggleMusic = () => {
-    if (soundOn) {
-      stopMusic();
-      setSoundOn(false);
+  const resumeMusic = () => {
+    const audio = audioRef.current;
+    if (!audio || melodyTimerRef.current !== null) return;
+    void audio.resume().then(() => {
+      if (audioRef.current !== audio || melodyTimerRef.current !== null) return;
+      playNoteRef.current?.();
+      melodyTimerRef.current = window.setInterval(() => playNoteRef.current?.(), 360);
+    }).catch(() => {});
+  };
+
+  const startMusic = () => {
+    if (audioRef.current) {
+      resumeMusic();
       return;
     }
-
     const audio = new AudioContext();
     const notes = [261.63, 329.63, 392, 523.25, 392, 329.63, 293.66, 349.23];
     let note = 0;
@@ -44,7 +54,7 @@ export function ExperienceGame() {
       const now = audio.currentTime;
       oscillator.type = "square";
       oscillator.frequency.value = notes[note % notes.length];
-      gain.gain.setValueAtTime(.022, now);
+      gain.gain.setValueAtTime(.032, now);
       gain.gain.exponentialRampToValueAtTime(.001, now + .26);
       oscillator.connect(gain).connect(audio.destination);
       oscillator.start(now);
@@ -53,8 +63,18 @@ export function ExperienceGame() {
     };
 
     audioRef.current = audio;
-    void audio.resume().then(playNote);
-    melodyTimerRef.current = window.setInterval(playNote, 360);
+    playNoteRef.current = playNote;
+    resumeMusic();
+  };
+
+  const toggleMusic = () => {
+    if (soundOn) {
+      stopMusic();
+      setSoundOn(false);
+      return;
+    }
+
+    startMusic();
     setSoundOn(true);
   };
 
@@ -67,7 +87,16 @@ export function ExperienceGame() {
     return () => window.removeEventListener("keydown", move);
   }, []);
 
-  useEffect(() => () => stopMusic(), []);
+  useEffect(() => {
+    startMusic();
+    window.addEventListener("keydown", resumeMusic);
+    window.addEventListener("pointerdown", resumeMusic);
+    return () => {
+      window.removeEventListener("keydown", resumeMusic);
+      window.removeEventListener("pointerdown", resumeMusic);
+      stopMusic();
+    };
+  }, []);
 
   const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
     const touch = event.changedTouches[0];

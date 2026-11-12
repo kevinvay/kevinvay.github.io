@@ -30,7 +30,7 @@ const revealSelector = [
   ".works-content > h2", ".work-card", ".directory-card",
   ".about-intro", ".stats-stack > *", ".experience-panel > *:not(.pixel-bird)",
   ".service-stage", ".contact-content > *",
-  ".wechat-card", ".project-plan",
+  ".wechat-card", ".project-plan", ".scope-tabs",
   ".principles-section > h2",
   ".case-hero > *", ".case-text", ".case-media", ".airline-task-cards > article",
   ".mould-hero > *", ".mould-text", ".mould-system-cards > article", ".mould-rounded", ".mould-platform",
