@@ -1,8 +1,14 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { MediaLoadController } from "./components/media-load-controller";
+import { MobileViewport } from "./components/mobile-viewport";
 import { ParallaxController } from "./components/parallax";
 import { WorkCardCursor } from "./components/work-card-cursor";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  colorScheme: "dark",
+  themeColor: "#0e0e0e",
+};
 
 export const metadata: Metadata = {
   title: "Kevin Wu's Portfolio",
@@ -37,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}<WorkCardCursor /><MediaLoadController /><ParallaxController /></body>
+      <body><MobileViewport />{children}<WorkCardCursor /><MediaLoadController /><ParallaxController /></body>
     </html>
   );
 }

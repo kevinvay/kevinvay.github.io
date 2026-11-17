@@ -2,6 +2,7 @@ import vinext from "vinext";
 import { defineConfig } from "vite";
 import hostingConfig from "./.openai/hosting.json";
 import { sites } from "./build/sites-vite-plugin";
+import { patchMobileViewportHtml } from "./scripts/patch-mobile-viewport.mjs";
 
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   "00000000-0000-4000-8000-000000000000";
@@ -50,6 +51,19 @@ export default defineConfig(async () => {
     plugins: [
       vinext(),
       sites(),
+      {
+        name: "mobile-viewport",
+        transform(code: string, id: string) {
+          if (!id.replaceAll("\\", "/").includes("vinext/dist/shims/metadata.js")) return null;
+          if (code.includes("viewport-fit=cover")) return null;
+          const needle = "if (viewport.initialScale !== void 0) parts.push(`initial-scale=${viewport.initialScale}`);";
+          if (!code.includes(needle)) return null;
+          return code.replace(needle, `${needle}\n\tparts.push("viewport-fit=cover");`);
+        },
+        transformIndexHtml(html: string) {
+          return patchMobileViewportHtml(html);
+        },
+      },
       cloudflare({
         viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },
         config: localBindingConfig,
