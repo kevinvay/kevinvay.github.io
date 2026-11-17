@@ -132,15 +132,31 @@ main {
 }
 
 .site-loader span {
-  animation:
-    loader-panel-in .6s cubic-bezier(.5, 0, 0, 1) calc(1ms + var(--loader-index) * 50ms) forwards,
-    loader-panel-out .6s cubic-bezier(.5, 0, 0, 1) calc(1.2s + var(--loader-index) * 50ms) forwards;
+  animation: loader-panel 1.8s calc(var(--loader-index) * 50ms) both;
   background: white;
   box-shadow: -2px 0 0 white, 2px 0 0 white;
   margin-inline: -1px;
   min-width: calc(100% + 2px);
-  transform: translateY(-100.14%);
+  transform: translate3d(0, -100.14%, 0);
   will-change: transform;
+}
+
+@keyframes loader-panel {
+  0% {
+    animation-timing-function: cubic-bezier(.5, 0, 0, 1);
+    transform: translate3d(0, -100.14%, 0);
+  }
+  33.333% {
+    animation-timing-function: linear;
+    transform: translate3d(0, 0, 0);
+  }
+  66.667% {
+    animation-timing-function: cubic-bezier(.5, 0, 0, 1);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, -100.14%, 0);
+  }
 }
 
 @keyframes loader-panel-in {
@@ -3390,6 +3406,8 @@ footer nav img {
 /* Figma mobile layout: 360px base, fluid through 912px */
 @media (max-width: 912px) {
   :root { --pad: clamp(24px, 6.6667vw, 64px); }
+
+  .site-loader span { box-shadow: none; }
 
   .site-header {
     height: 100px;

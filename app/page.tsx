@@ -61,33 +61,58 @@ function HeroAnimation({ holdOffscreen = false }: { holdOffscreen?: boolean }) {
   useEffect(() => {
     heroMedia.frames.forEach((src) => { const image = new Image(); image.src = src; });
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let timer = 0;
+    const root = rootRef.current;
+    if (!root) return;
+
+    let stopped = false;
+    let playing = !holdOffscreen;
+    let advanced = false;
+    let fallback = 0;
+    const advance = () => {
+      if (stopped || !playing || advanced) return;
+      advanced = true;
+      window.clearTimeout(fallback);
+      setFrame((current) => (current + 1) % heroMedia.frames.length);
+    };
+    const arm = () => {
+      window.clearTimeout(fallback);
+      if (stopped || !playing) return;
+      fallback = window.setTimeout(advance, heroMedia.itemDurationMs + 120);
+    };
+    const onEnd = (event: AnimationEvent) => {
+      if (event.animationName !== "hero-sequence") return;
+      advance();
+    };
     const start = () => {
-      if (timer) return;
-      timer = window.setInterval(() => {
-        setFrame((current) => (current + 1) % heroMedia.frames.length);
-      }, heroMedia.itemDurationMs);
+      if (playing) return;
+      playing = true;
+      advanced = false;
+      arm();
     };
     const stop = () => {
-      window.clearInterval(timer);
-      timer = 0;
+      playing = false;
+      window.clearTimeout(fallback);
     };
-    if (!holdOffscreen) {
-      start();
-      return stop;
+
+    root.addEventListener("animationend", onEnd);
+    if (playing) arm();
+    let observer: IntersectionObserver | null = null;
+    if (holdOffscreen) {
+      playing = false;
+      window.clearTimeout(fallback);
+      observer = new IntersectionObserver(([entry]) => {
+        if (entry?.isIntersecting) start();
+        else stop();
+      }, { threshold: 0.2 });
+      observer.observe(root);
     }
-    const node = rootRef.current;
-    if (!node) return stop;
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry?.isIntersecting) start();
-      else stop();
-    }, { threshold: 0.2 });
-    observer.observe(node);
     return () => {
-      stop();
-      observer.disconnect();
+      stopped = true;
+      window.clearTimeout(fallback);
+      root.removeEventListener("animationend", onEnd);
+      observer?.disconnect();
     };
-  }, [holdOffscreen]);
+  }, [frame, holdOffscreen]);
 
   return (
     <div className="hero-animation" ref={rootRef} aria-hidden="true">
