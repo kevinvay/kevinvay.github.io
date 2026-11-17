@@ -2648,23 +2648,26 @@ footer nav img {
   .work-card-cursor {
     align-items: center;
     background: #5a53fe;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 999px;
     color: #fff;
     display: flex;
     flex-direction: column;
-    font: 24px/28.8px "FK Display Alt", sans-serif;
-    height: 120px;
+    font: 32px/38px "FK Display Alt", sans-serif;
+    height: 160px;
     justify-content: center;
     left: 0;
     opacity: 0;
+    overflow: hidden;
     pointer-events: none;
     position: fixed;
     text-align: center;
     top: 0;
-    width: 120px;
+    width: 160px;
     z-index: 90;
   }
 
+  .work-card-cursor span:last-child { transform: translateX(0.5px); }
   .work-card-cursor.is-visible { opacity: 1; }
 }
 .directory-card.wide { aspect-ratio: 1360 / 600; grid-column: 1 / -1; }
