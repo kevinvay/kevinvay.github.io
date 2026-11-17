@@ -64,9 +64,9 @@ export default function WorksPage() {
               key={project.slug}
               aria-label={`View project: ${project.title}`}
             >
-              {project.slug === "mould-ui" ? (
+              {project.mobileCover ? (
                 <picture>
-                  <source media="(max-width: 729px)" srcSet="/figma-assets/work-mould-mobile-square.webp" />
+                  <source media="(max-width: 729px)" srcSet={project.mobileCover} />
                   <OptimizedImage src={project.coverImage} alt="" sizes={project.wide ? WORKS_WIDE_COVER_SIZES : HALF_COVER_SIZES} loading={index === 0 ? "eager" : undefined} fetchPriority={index === 0 ? "low" : undefined} />
                 </picture>
               ) : (

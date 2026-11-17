@@ -5,6 +5,7 @@ export type Project = {
   headline: string;
   summary: string;
   coverImage: string;
+  mobileCover?: string;
   wide?: boolean;
   discipline: string;
   field: string;
@@ -31,6 +32,7 @@ export const projects: Project[] = [
     headline: "A System for Making",
     summary: "从设计原则、视觉变量到组件与文档，搭建一套可持续演进的界面设计系统。",
     coverImage: "/figma-assets/work-mould.webp",
+    mobileCover: "/figma-assets/work-mould-mobile-square.webp",
     wide: true,
     discipline: "Design System & UI Design",
     field: "设计系统",
@@ -150,6 +152,26 @@ export const projects: Project[] = [
     colors: ["#0788F5", "#0062E9", "#31C9F5", "#65C76F", "#F3F8FC"],
     theme: { accent: "#0788F5", accentAlt: "#65C76F", surface: "#EAF5FF", ink: "#12334F" },
     relatedSlugs: ["mould-ui", "greater-bay-airlines", "kaiya-academy"],
+  },
+  {
+    slug: "sogou-input",
+    title: "搜狗输入法丨输入法皮肤",
+    description: "一套移动端输入法皮肤",
+    headline: "A Familiar Keyboard",
+    summary: "在26键和9键界面上统一视觉与按键层级，让输入法皮肤同时具备品质感和易用性。",
+    coverImage: "/figma-assets/work-sogou.webp",
+    mobileCover: "/figma-assets/work-sogou-mobile.webp",
+    wide: true,
+    discipline: "Visual & UI Design",
+    field: "输入法皮肤",
+    focus: "26-key / 9-key / Skin",
+    challenge: "26键与9键需要保持同一套视觉语言，同时让按键层级在实际输入中仍然清楚。",
+    approach: "从经典、个性与优雅三个方向收敛皮肤气质，再统一键盘结构、按键触点和界面层次。",
+    outcome: "完成一套可同时落地在26键与9键上的输入法皮肤，兼顾外观品质和熟悉的使用体验。",
+    keywords: ["Input method", "Skin design", "26-key", "9-key"],
+    colors: ["#F7F4EF", "#E7E0D4", "#C4B7A4", "#8C8378", "#3A342C"],
+    theme: { accent: "#C4B7A4", accentAlt: "#8C8378", surface: "#F7F4EF", ink: "#3A342C" },
+    relatedSlugs: ["kaiya-academy", "huochebang-shipper-app"],
   },
 ];
 

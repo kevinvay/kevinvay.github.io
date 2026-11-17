@@ -1,12 +1,27 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { parallaxOffset, revealDelay, swipeStep } from "../app/components/parallax-math.js";
+import { isMotionStudyPath, parallaxOffset, parallaxOffsetSoft, revealDelay, swipeStep } from "../app/components/parallax-math.js";
 
 test("parallax offset scales and stays within its depth limit", () => {
   assert.equal(parallaxOffset(200, 0.05, 20), 10);
   assert.equal(parallaxOffset(1000, 0.05, 20), 20);
   assert.equal(parallaxOffset(-1000, 0.05, 20), -20);
   assert.equal(parallaxOffset(200, 0.05, 20, 0.5), 5);
+});
+
+test("soft parallax keeps its direction and never hits the depth limit", () => {
+  assert.equal(parallaxOffsetSoft(0, 0.04, 16), 0);
+  assert.ok(parallaxOffsetSoft(200, 0.04, 16) > 0);
+  assert.ok(parallaxOffsetSoft(200, 0.04, 16) < 16);
+  assert.ok(parallaxOffsetSoft(-10000, 0.04, 16) > -16);
+  assert.ok(Math.abs(parallaxOffsetSoft(10000, 0.04, 16)) < 16);
+});
+
+test("motion study path accepts the trailing slash used by the site", () => {
+  assert.equal(isMotionStudyPath("/motion"), true);
+  assert.equal(isMotionStudyPath("/motion/"), true);
+  assert.equal(isMotionStudyPath("/"), false);
+  assert.equal(isMotionStudyPath("/works/"), false);
 });
 
 test("reveal delay staggers nearby elements without growing forever", () => {

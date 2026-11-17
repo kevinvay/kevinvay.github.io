@@ -2,6 +2,17 @@ export function parallaxOffset(distance, speed, limit, multiplier = 1) {
   return Math.max(-limit, Math.min(limit, distance * speed * multiplier));
 }
 
+/* Approaches the depth limit instead of stopping against it. */
+export function parallaxOffsetSoft(distance, speed, limit, multiplier = 1) {
+  if (!limit) return 0;
+  const raw = distance * speed * multiplier;
+  return raw / (1 + Math.abs(raw) / limit);
+}
+
+export function isMotionStudyPath(pathname) {
+  return pathname === "/motion" || pathname === "/motion/";
+}
+
 export function revealDelay(index, step = 85, cap = 5) {
   return Math.min(Math.max(index, 0), cap) * step;
 }

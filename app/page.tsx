@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent, type ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import { flushSync } from "react-dom";
 import { motion, useMotionValue, useTransform, type MotionValue, type PanInfo } from "motion/react";
 import heroMedia from "./hero-media.json";
@@ -8,6 +9,7 @@ import contactFlip from "./contact-flip.json";
 import { PortfolioNav, SiteFooter, SiteHeader, SiteLoader } from "./components/site-chrome";
 import { OptimizedImage } from "./components/optimized-image";
 import { TextIcon } from "./components/text-icon";
+import { isMotionStudyPath } from "./components/parallax-math.js";
 import { homeProjects } from "./projects";
 
 const HALF_COVER_SIZES = "(max-width: 729px) calc(100vw - 48px), 42vw";
@@ -52,20 +54,43 @@ function ServiceMediaPreloads() {
   );
 }
 
-function HeroAnimation() {
+function HeroAnimation({ holdOffscreen = false }: { holdOffscreen?: boolean }) {
+  const rootRef = useRef<HTMLDivElement>(null);
   const [frame, setFrame] = useState(0);
 
   useEffect(() => {
     heroMedia.frames.forEach((src) => { const image = new Image(); image.src = src; });
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const timer = window.setInterval(() => {
-      setFrame((current) => (current + 1) % heroMedia.frames.length);
-    }, heroMedia.itemDurationMs);
-    return () => window.clearInterval(timer);
-  }, []);
+    let timer = 0;
+    const start = () => {
+      if (timer) return;
+      timer = window.setInterval(() => {
+        setFrame((current) => (current + 1) % heroMedia.frames.length);
+      }, heroMedia.itemDurationMs);
+    };
+    const stop = () => {
+      window.clearInterval(timer);
+      timer = 0;
+    };
+    if (!holdOffscreen) {
+      start();
+      return stop;
+    }
+    const node = rootRef.current;
+    if (!node) return stop;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry?.isIntersecting) start();
+      else stop();
+    }, { threshold: 0.2 });
+    observer.observe(node);
+    return () => {
+      stop();
+      observer.disconnect();
+    };
+  }, [holdOffscreen]);
 
   return (
-    <div className="hero-animation" aria-hidden="true">
+    <div className="hero-animation" ref={rootRef} aria-hidden="true">
       <div className="hero-animation-stage">
         <OptimizedImage
           src={heroMedia.frames[frame]}
@@ -225,10 +250,24 @@ function useCompactServiceLayout() {
   return isCompact;
 }
 
-function FlipLine({ children, offset = 0 }: { children: string; offset?: number }) {
+function FlipLine({ children, offset = 0, once = false }: { children: string; offset?: number; once?: boolean }) {
+  const lineRef = useRef<HTMLSpanElement>(null);
   const [frame, setFrame] = useState(0);
+  const [armed, setArmed] = useState(!once);
 
   useEffect(() => {
+    if (once) {
+      const node = lineRef.current;
+      if (!node) return;
+      const observer = new IntersectionObserver(([entry]) => {
+        if (!entry?.isIntersecting) return;
+        setArmed(true);
+        observer.disconnect();
+      }, { threshold: 0.5 });
+      observer.observe(node);
+      return () => observer.disconnect();
+    }
+
     let timer = 0;
     const advance = () => {
       setFrame((current) => {
@@ -239,11 +278,11 @@ function FlipLine({ children, offset = 0 }: { children: string; offset?: number 
     };
     timer = window.setTimeout(advance, contactFlip.frames[0].duration);
     return () => window.clearTimeout(timer);
-  }, []);
+  }, [once]);
 
-  const activeCharacters = new Set(contactFlip.frames[frame].active);
+  const activeCharacters = armed ? new Set(contactFlip.frames[frame].active) : new Set<number>();
   return (
-    <span className="flip-line" aria-label={children}>
+    <span className="flip-line" ref={lineRef} aria-label={children}>
       {[...children].map((character, index) => (
         <span
           className={character === " " ? "flip-space" : `flip-char${activeCharacters.has(index + offset) ? " is-flipping" : ""}`}
@@ -258,7 +297,8 @@ function FlipLine({ children, offset = 0 }: { children: string; offset?: number 
   );
 }
 
-export default function Home() {
+export function Home() {
+  const motionStudy = isMotionStudyPath(usePathname());
   const pageRef = useRef<HTMLElement | null>(null);
   const isCompactServiceLayout = useCompactServiceLayout();
   const [serviceIndex, setServiceIndex] = useState(1);
@@ -298,7 +338,9 @@ export default function Home() {
       const viewportHeight = window.innerHeight;
       const heroRect = hero.getBoundingClientRect();
       const overlap = heroRect.bottom - panel.getBoundingClientRect().top;
-      const transitionDistance = Math.min(viewportHeight * 0.2, heroRect.height * 0.35);
+      const transitionDistance = motionStudy
+        ? Math.min(viewportHeight * 0.42, Math.max(280, heroRect.height * 0.72))
+        : Math.min(viewportHeight * 0.2, heroRect.height * 0.35);
       const progress = Math.min(1, Math.max(0, overlap / transitionDistance));
       page.style.setProperty("--home-hero-progress", progress.toFixed(3));
     };
@@ -315,7 +357,7 @@ export default function Home() {
       window.removeEventListener("resize", schedule);
       page.style.removeProperty("--home-hero-progress");
     };
-  }, []);
+  }, [motionStudy]);
 
   const changeService = (nextIndex: number, direction: "previous" | "next", animate = true) => {
     setServiceFlipped(false);
@@ -579,7 +621,7 @@ export default function Home() {
             <span>and user interface design ↓ <i aria-hidden="true" /></span>
           </p>
         </div>
-        <HeroAnimation />
+        <HeroAnimation holdOffscreen={motionStudy} />
       </section>
 
       <section className="works-panel" id="works" aria-labelledby="works-title">
@@ -712,8 +754,8 @@ export default function Home() {
         <div className="contact-content">
           <p>Are you ready?</p>
           <h2 id="contact-title">
-            <FlipLine>Let&apos;s talk about</FlipLine>
-            <FlipLine offset={17}>your product.</FlipLine>
+            <FlipLine once={motionStudy}>Let&apos;s talk about</FlipLine>
+            <FlipLine once={motionStudy} offset={17}>your product.</FlipLine>
           </h2>
           <a className="contact-button" href="mailto:hello@kevinwu.design">
             <span>Contact me</span><i aria-hidden="true">→</i>
@@ -725,4 +767,8 @@ export default function Home() {
       <PortfolioNav liquidGlass />
     </main>
   );
+}
+
+export default function HomePage() {
+  return <Home />;
 }

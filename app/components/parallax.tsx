@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import { parallaxOffset, revealDelay } from "./parallax-math.js";
+import { usePathname } from "next/navigation";
+import { isMotionStudyPath, parallaxOffset, parallaxOffsetSoft, revealDelay } from "./parallax-math.js";
 
 const layers = [
   {
@@ -37,9 +38,18 @@ const revealSelector = [
   "footer",
 ].join(", ");
 
+const studyLayers = [
+  { speed: 0.04, limit: 16 },
+  { speed: 0.02, limit: 10 },
+  { speed: -0.012, limit: 8 },
+] as const;
+
 export function ParallaxController() {
+  const pathname = usePathname();
+
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const study = isMotionStudyPath(pathname);
 
     const items = new Map<HTMLElement, Layer>();
     const active = new Set<HTMLElement>();
@@ -62,10 +72,15 @@ export function ParallaxController() {
       const group = element.closest("section, header, footer") ?? document.body;
       const index = element.matches(".site-header") ? 0 : Math.max(0, revealGroups.get(group)?.indexOf(element) ?? 0) + 1;
       element.classList.add("reveal-layer");
-      element.style.setProperty("--reveal-delay", `${revealDelay(index, 140, 7)}ms`);
+      element.style.setProperty("--reveal-delay", `${revealDelay(index, study ? 42 : 140, study ? 3 : 7)}ms`);
     });
 
-    layers.forEach((layer) => {
+    const activeLayers = study
+      ? layers.map((layer, index) => ({ ...layer, ...studyLayers[index] }))
+      : layers;
+    const offsetFor = study ? parallaxOffsetSoft : parallaxOffset;
+
+    activeLayers.forEach((layer) => {
       document.querySelectorAll<HTMLElement>(layer.selector).forEach((element) => {
         if (element.closest(".home-page .hero, .works-page, .about-page .inner-hero")) return;
         if (items.has(element)) return;
@@ -81,7 +96,7 @@ export function ParallaxController() {
       const offsets = Array.from(active, (element) => {
         const rect = element.getBoundingClientRect();
         const layer = items.get(element)!;
-        return [element, parallaxOffset(center - rect.top - rect.height / 2, layer.speed, layer.limit, multiplier)] as const;
+        return [element, offsetFor(center - rect.top - rect.height / 2, layer.speed, layer.limit, multiplier)] as const;
       });
       offsets.forEach(([element, offset]) => element.style.setProperty("--parallax-y", `${offset.toFixed(2)}px`));
     };
@@ -101,24 +116,38 @@ export function ParallaxController() {
         if (!entry.isIntersecting) return;
         const element = entry.target as HTMLElement;
         element.classList.add("is-scroll-reveal");
-        element.style.setProperty("--reveal-scroll-delay", `${40 + Math.min(revealIndex, 4) * 55}ms`);
+        element.style.setProperty("--reveal-scroll-delay", `${(study ? 0 : 40) + Math.min(revealIndex, study ? 2 : 4) * (study ? 36 : 55)}ms`);
         element.classList.add("is-revealed");
         revealObserver.unobserve(element);
         revealIndex += 1;
       });
     }, { rootMargin: "0px 0px -4%", threshold: 0.01 });
 
+    const tickerTracks = study ? Array.from(document.querySelectorAll<HTMLElement>(".ticker-track")) : [];
+    const services = study ? document.querySelector(".services") : null;
+    let ambientObserver: IntersectionObserver | null = null;
+    if (services && tickerTracks.length) {
+      const setTickerState = (state: "running" | "paused") => {
+        tickerTracks.forEach((track) => { track.style.animationPlayState = state; });
+      };
+      setTickerState("paused");
+      ambientObserver = new IntersectionObserver(([entry]) => {
+        setTickerState(entry?.isIntersecting ? "running" : "paused");
+      }, { threshold: 0.12 });
+      ambientObserver.observe(services);
+    }
+
     items.forEach((_, element) => observer.observe(element));
     revealTimer = window.setTimeout(() => {
       matchedHero?.classList.add("is-hero-revealed");
       revealItems.forEach((element) => {
         const rect = element.getBoundingClientRect();
-        const revealStartOffset = 150;
+        const revealStartOffset = study ? 24 : 150;
         const layoutTop = rect.top - revealStartOffset;
         if (layoutTop < window.innerHeight * 0.96 && rect.bottom > 0) element.classList.add("is-revealed");
         else revealObserver.observe(element);
       });
-    }, 1100);
+    }, study ? 420 : 1100);
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", schedule);
     schedule();
@@ -127,6 +156,8 @@ export function ParallaxController() {
       window.cancelAnimationFrame(frame);
       observer.disconnect();
       revealObserver.disconnect();
+      ambientObserver?.disconnect();
+      tickerTracks.forEach((track) => track.style.removeProperty("animation-play-state"));
       window.clearTimeout(revealTimer);
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
@@ -142,7 +173,7 @@ export function ParallaxController() {
       });
       document.documentElement.classList.remove("motion-ready");
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }

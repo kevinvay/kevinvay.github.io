@@ -87,7 +87,7 @@ export function SiteHeader() {
 export function SiteFooter() {
   return (
     <footer>
-      <span>Copyright ⓒ 2026 K-STUDIO.</span>
+      <span>Copyright ⓒ 2023 K-STUDIO.</span>
       <nav aria-label="Social links">
         {socials.map(([label, href, icon]) => (
           <a href={href} target="_blank" rel="noreferrer" aria-label={label} key={label}><OptimizedImage src={icon} alt="" /></a>

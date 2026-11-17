@@ -20,6 +20,7 @@ const academyMedia = "/figma-assets/cases/kaia-academy";
 const b2bMedia = "/figma-assets/cases/manbangbao";
 const truckMedia = "/figma-assets/cases/truck-app";
 const zentaoMedia = "/figma-assets/cases/zentao";
+const sogouMedia = "/figma-assets/cases/sogou-input";
 const HALF_COVER_SIZES = "(max-width: 729px) calc(100vw - 48px), 42vw";
 const CASE_WIDE_COVER_SIZES = "(min-width: 1660px) 1532px, (min-width: 730px) calc(100vw - 128px), calc(100vw - 48px)";
 
@@ -79,6 +80,13 @@ function MouldUiPage() {
           <div className="mould-more-mask" />
           <h2><span>More</span> Projects <TextIcon name="folder" label="folder" /></h2>
           <div>
+            <a className="directory-card wide" href="/works/sogou-input" aria-label="View project: 搜狗输入法｜输入法皮肤">
+              <picture>
+                <source media="(max-width: 729px)" srcSet="/figma-assets/work-sogou-mobile.webp" />
+                <OptimizedImage src="/figma-assets/work-sogou.webp" alt="" sizes="(min-width: 730px) calc(100vw - 128px), calc(100vw - 48px)" />
+              </picture>
+              <div><p>一套移动端输入法皮肤</p><h2>搜狗输入法｜输入法皮肤 <span>↗</span></h2></div>
+            </a>
             <a className="directory-card" href="/works/huochebang-shipper-app" aria-label="View project: 货车帮｜货主端 APP">
               <OptimizedImage src="/figma-assets/work-truck.webp" alt="" />
               <div><p>货车帮保险业务货主端 APP 设计</p><h2>货车帮｜货主端 APP <span>↗</span></h2></div>
@@ -308,6 +316,29 @@ function TruckAppPage() {
   );
 }
 
+function SogouInputPage() {
+  return (
+    <main className="case-page sogou-page">
+      <SiteLoader /><SiteHeader />
+      <article>
+        <CaseHero title="搜狗输入法丨输入法皮肤" role="负责方案探索、设计和交付。" team="1名设计师。" time="2016/12" image={`${sogouMedia}/hero.webp`} />
+        <section className="case-body">
+          <div className="case-text"><h2>概述</h2><p>该项目是我在搜狗实习中参加搜狗输入法的比赛作品。其在26键和9键界面设计上的整体统一，以及鲜明的按键设计，使得界面更具有层次感。该作品的杰出之处在于将品质与易用性完美结合。它不仅仅是外观的炫目，更是在实际使用性上展现出的易用性。</p></div>
+          <figure className="case-media"><OptimizedImage src={`${sogouMedia}/content-01.webp`} alt="搜狗输入法皮肤设计理念：经典、个性、优雅" /></figure>
+          <figure className="case-media"><OptimizedImage src={`${sogouMedia}/content-02.webp`} alt="搜狗输入法26键与9键界面" /></figure>
+          <figure className="case-media"><OptimizedImage src={`${sogouMedia}/content-03.webp`} alt="搜狗输入法按键触点与使用体验" /></figure>
+          <CaseCta />
+        </section>
+        <CaseMore>
+          <ProjectCard slug="kaiya-academy" image="/figma-assets/work-academy.webp" eyebrow="凯亚学院官方品牌塑造" title="凯亚学院｜品牌VI" />
+          <ProjectCard slug="huochebang-shipper-app" image="/figma-assets/work-truck.webp" eyebrow="货车帮保险业务货主端APP设计" title="货车帮｜货主端APP" />
+        </CaseMore>
+      </article>
+      <SiteFooter /><PortfolioNav active={null} />
+    </main>
+  );
+}
+
 function ZentaoPage() {
   return (
     <main className="case-page zentao-page">
@@ -346,5 +377,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   if (slug === "manbang-insurance") return <ManbangB2BPage />;
   if (slug === "huochebang-shipper-app") return <TruckAppPage />;
   if (slug === "zentao") return <ZentaoPage />;
+  if (slug === "sogou-input") return <SogouInputPage />;
   notFound();
 }

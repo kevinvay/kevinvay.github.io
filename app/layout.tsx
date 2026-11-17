@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { MediaLoadController } from "./components/media-load-controller";
 import { ParallaxController } from "./components/parallax";
+import { WorkCardCursor } from "./components/work-card-cursor";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -36,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}<MediaLoadController /><ParallaxController /></body>
+      <body>{children}<WorkCardCursor /><MediaLoadController /><ParallaxController /></body>
     </html>
   );
 }

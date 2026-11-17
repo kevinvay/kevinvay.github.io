@@ -446,6 +446,12 @@ main {
     opacity: 1;
     transform: translate3d(-50%, 0, 0) scale(1);
   }
+  /* Fade out while the artwork is still fully inside the stage. The rest of the
+     rise happens at opacity 0 so the top clip cannot slice a visible frame. */
+  82% {
+    opacity: 0;
+    transform: translate3d(-50%, -20px, 0) scale(.34);
+  }
   100% {
     opacity: 0;
     transform: translate3d(-50%, -120px, 0) scale(.06);
@@ -543,17 +549,24 @@ main {
   justify-content: flex-end;
   padding: 32px 40px;
   position: absolute;
-  transform: translateY(105%);
-  transition: transform .5s cubic-bezier(.22, 1, .36, 1);
   width: 100%;
   z-index: 2;
+}
+
+.work-copy p,
+.work-copy h3 {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity .5s cubic-bezier(.22, 1, .36, 1),
+    transform .5s cubic-bezier(.22, 1, .36, 1);
 }
 
 .work-copy p {
   font-family: MiSans, sans-serif;
   font-size: 18px;
   line-height: 28px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .work-copy h3 {
@@ -564,7 +577,7 @@ main {
   font-weight: 600;
   gap: 10px;
   justify-content: flex-start;
-  padding-top: 12px;
+  padding-top: 6px;
   width: 100%;
 }
 
@@ -580,9 +593,29 @@ main {
   opacity: 1;
 }
 
-.work-card:hover .work-copy,
-.work-card:focus-within .work-copy {
+.work-card:hover .work-copy p,
+.work-card:focus-within .work-copy p,
+.work-card:hover .work-copy h3,
+.work-card:focus-within .work-copy h3 {
+  opacity: 1;
   transform: translateY(0);
+}
+
+.work-card:hover .work-copy h3,
+.work-card:focus-within .work-copy h3 {
+  transition-delay: .1s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-copy p,
+  .work-copy h3,
+  .work-card:hover .work-copy p,
+  .work-card:focus-within .work-copy p,
+  .work-card:hover .work-copy h3,
+  .work-card:focus-within .work-copy h3 {
+    transform: none;
+    transition: none;
+  }
 }
 
 .more-button {
@@ -1752,7 +1785,9 @@ footer nav img {
 .mould-more > h2 > span { font-size: 80px; }
 .mould-more > div:last-child { display: grid; gap: 40px; grid-template-columns: 1fr 1fr; margin: 0 auto; max-width: 1660px; padding: 0 64px; }
 .mould-more a { aspect-ratio: 504/458.18; border-radius: 24px; display: block; overflow: hidden; }
-.mould-more a img { height: 100%; object-fit: cover; width: 100%; }
+.mould-more a.wide { aspect-ratio: 1360 / 600; grid-column: 1 / -1; }
+.mould-more a picture,
+.mould-more a img { display: block; height: 100%; object-fit: cover; width: 100%; }
 
 @media (max-width: 720px) {
   .mould-page .brand-copy,
@@ -1776,6 +1811,7 @@ footer nav img {
   .mould-more > h2 { font-size: 44px; line-height: 1; padding: 100px 24px 40px; }
   .mould-more > h2 > span { font-size: 48px; }
   .mould-more > div:last-child { gap: 40px; grid-template-columns: 1fr; padding: 0 24px; }
+  .mould-more a.wide { aspect-ratio: 504 / 458.18; }
 }
 
 /* Independent portfolio cases — Figma frames 8983:15972 and 8983:12865 */
@@ -1796,6 +1832,10 @@ footer nav img {
 .case-hero-meta { display: grid; gap: 40px; grid-template-columns: 1fr auto; }
 .case-hero-image { aspect-ratio: 540/285.882; border-radius: 24px; flex: 1 0 540px; height: auto; min-width: 540px; object-fit: cover; width: 100%; }
 .southwest-page .case-hero-image { height: auto; object-fit: contain; }
+.sogou-page .case-media { border-radius: 12px; }
+@media (min-width: 721px) {
+  .sogou-page .case-hero-copy { flex-basis: 480px; max-width: 480px; }
+}
 .case-body { display: flex; flex-direction: column; gap: 40px; padding: 40px 64px 64px; }
 .case-text { font-family: MiSans, sans-serif; }
 .case-text p { color: rgba(255,255,255,.8); font-size: 20px; line-height: 40px; }
@@ -2599,11 +2639,33 @@ footer nav img {
   position: relative;
 }
 
+.work-card-cursor { display: none; }
+
 @media (hover: hover) and (pointer: fine) {
   .work-card,
-  .directory-card {
-    cursor: url("/ui/cursor-dot.svg") 12 12, pointer;
+  .directory-card { cursor: none; }
+
+  .work-card-cursor {
+    align-items: center;
+    background: #5a53fe;
+    border-radius: 999px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    font: 24px/28.8px "FK Display Alt", sans-serif;
+    height: 120px;
+    justify-content: center;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 120px;
+    z-index: 90;
   }
+
+  .work-card-cursor.is-visible { opacity: 1; }
 }
 .directory-card.wide { aspect-ratio: 1360 / 600; grid-column: 1 / -1; }
 .directory-card > img,
@@ -3887,6 +3949,15 @@ footer nav img {
   .inner-frame-media {
     left: var(--pad);
     top: clamp(220px, calc(180px + 10vw), 280px);
+  }
+
+  /* Catch the invisible exit tail. The visible fade finishes below this edge. */
+  .home-page .hero-animation {
+    clip-path: inset(0 -40px -180px -40px);
+    top: max(
+      clamp(220px, calc(180px + 10vw), 280px),
+      calc(46px + 2 * clamp(47.37px, 13.1579vw, 120px))
+    );
   }
 
   .hero,
@@ -5292,5 +5363,133 @@ footer nav img {
   .contact-page > .contact-hero {
     height: var(--primary-hero-height);
     min-height: var(--primary-hero-height);
+  }
+}
+
+/* Motion study: short, scroll-owned browsing motion. The current homepage is unchanged. */
+@property --reveal-y {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+html.motion-study .site-loader {
+  animation: loader-backdrop 1ms linear .52s forwards, loader-away 1ms linear .98s forwards;
+}
+
+html.motion-study .site-loader span {
+  animation:
+    loader-panel-in .4s cubic-bezier(.22, 1, .36, 1) calc(var(--loader-index) * 32ms) forwards,
+    loader-panel-out .4s cubic-bezier(.22, 1, .36, 1) calc(.5s + var(--loader-index) * 28ms) forwards;
+}
+
+html.motion-study .home-page > .hero .hero-content,
+html.motion-study .home-page > .hero .hero-animation {
+  opacity: calc(1 - var(--home-hero-progress));
+  translate: none;
+  scale: calc(1 - var(--home-hero-progress) * .04);
+  will-change: auto;
+}
+
+html.motion-study .parallax-layer {
+  will-change: auto;
+}
+
+html.motion-study.motion-ready .reveal-layer {
+  --reveal-y: 18px;
+  opacity: 0;
+  translate: 0 calc(var(--parallax-y, 0px) + var(--reveal-y));
+  animation: none;
+  transition:
+    opacity 520ms cubic-bezier(.22, 1, .36, 1),
+    --reveal-y 520ms cubic-bezier(.22, 1, .36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: auto;
+}
+
+html.motion-study.motion-ready .reveal-layer.is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+  animation: none;
+}
+
+html.motion-study.motion-ready .reveal-layer.is-scroll-reveal {
+  transition-duration: 480ms;
+  transition-delay: var(--reveal-scroll-delay, 0ms);
+}
+
+html.motion-study.motion-ready .home-page > .hero .hero-content > h1,
+html.motion-study.motion-ready .home-page > .hero .hero-content > p,
+html.motion-study.motion-ready .home-page > .hero .hero-animation-stage {
+  transform: translate3d(0, 22px, 0);
+  animation-duration: .62s;
+}
+
+html.motion-study.motion-ready .home-page > .hero .hero-content > h1 { animation-delay: .04s; }
+html.motion-study.motion-ready .home-page > .hero .hero-content > p { animation-delay: .1s; }
+html.motion-study.motion-ready .home-page > .hero .hero-animation-stage { animation-delay: .16s; }
+
+html.motion-study.motion-ready .home-page > .hero.is-hero-revealed .hero-content > h1,
+html.motion-study.motion-ready .home-page > .hero.is-hero-revealed .hero-content > p,
+html.motion-study.motion-ready .home-page > .hero.is-hero-revealed .hero-animation-stage {
+  animation-name: study-hero-appear;
+}
+
+@keyframes study-hero-appear {
+  from { opacity: 0; transform: translate3d(0, 22px, 0); }
+  to { opacity: 1; transform: none; }
+}
+
+html.motion-study .floating-nav-shell {
+  animation: study-nav-arrive .58s cubic-bezier(.22, 1, .36, 1) .72s both;
+}
+
+@keyframes study-nav-arrive {
+  from { opacity: 0; translate: 0 20px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+html.motion-study .ticker-track {
+  animation-duration: 38s;
+}
+
+.motion-study-mark {
+  align-items: center;
+  background: rgba(14, 14, 14, .88);
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 999px;
+  color: white;
+  display: flex;
+  font-family: "FK Display", Avenir, Arial, sans-serif;
+  font-size: 13px;
+  gap: 12px;
+  left: 50%;
+  letter-spacing: .01em;
+  line-height: 1;
+  padding: 8px 8px 8px 14px;
+  pointer-events: auto;
+  position: fixed;
+  top: 18px;
+  transform: translateX(-50%);
+  z-index: 1100;
+}
+
+.motion-study-mark a {
+  background: white;
+  border-radius: 999px;
+  color: #0e0e0e;
+  padding: 7px 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.motion-study.motion-ready .reveal-layer,
+  html.motion-study .floating-nav-shell,
+  html.motion-study .home-page > .hero .hero-content,
+  html.motion-study .home-page > .hero .hero-animation {
+    animation: none !important;
+    opacity: 1 !important;
+    scale: 1 !important;
+    transition: none !important;
+    translate: none !important;
   }
 }
