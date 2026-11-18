@@ -5857,15 +5857,19 @@ html.motion-study .ticker-track {
   }
 }
 
-/* On phones, scrolling detaches a transformed marquee from its rounded clip.
-   Keep the clip and the moving track on one layer so the line stays put. */
+/* Phone scroll drops a layer that mixes a moving translate with a transform
+   animation. Keep the marquees on one kind of movement. */
 @media (max-width: 912px) {
-  .about-page .hello-strip {
-    overflow: hidden;
-    transform: translate3d(0, 0, 0);
+  .ticker-back.parallax-layer,
+  .ticker-front.parallax-layer {
+    translate: none;
+    will-change: auto;
   }
 
-  .about-page .hello-track {
+  .about-page .about-intro.is-settled {
+    animation: none;
+    opacity: 1;
+    translate: none;
     will-change: auto;
   }
 }

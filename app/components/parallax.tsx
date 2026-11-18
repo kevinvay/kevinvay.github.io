@@ -79,10 +79,13 @@ export function ParallaxController() {
       ? layers.map((layer, index) => ({ ...layer, ...studyLayers[index] }))
       : layers;
     const offsetFor = study ? parallaxOffsetSoft : parallaxOffset;
+    const phoneMarquee = window.matchMedia("(max-width: 912px)");
+    const tickerLayer = (element: HTMLElement) => activeLayers.find((layer) => element.matches(layer.selector));
 
     activeLayers.forEach((layer) => {
       document.querySelectorAll<HTMLElement>(layer.selector).forEach((element) => {
         if (element.closest(".home-page .hero, .works-page, .about-page .inner-hero")) return;
+        if (element.matches(".ticker-back, .ticker-front") && phoneMarquee.matches) return;
         if (items.has(element)) return;
         items.set(element, layer);
         element.classList.add("parallax-layer");
@@ -101,8 +104,32 @@ export function ParallaxController() {
       offsets.forEach(([element, offset]) => element.style.setProperty("--parallax-y", `${offset.toFixed(2)}px`));
     };
 
+    const releasePhoneTickers = () => {
+      document.querySelectorAll<HTMLElement>(".ticker-back, .ticker-front").forEach((element) => {
+        if (!phoneMarquee.matches) {
+          if (items.has(element)) return;
+          const layer = tickerLayer(element);
+          if (!layer) return;
+          items.set(element, layer);
+          element.classList.add("parallax-layer");
+          observer.observe(element);
+          return;
+        }
+        active.delete(element);
+        items.delete(element);
+        observer.unobserve(element);
+        element.classList.remove("parallax-layer");
+        element.style.removeProperty("--parallax-y");
+      });
+    };
+
     const schedule = () => {
       if (!frame) frame = window.requestAnimationFrame(update);
+    };
+
+    const onResize = () => {
+      releasePhoneTickers();
+      schedule();
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -148,19 +175,27 @@ export function ParallaxController() {
         else revealObserver.observe(element);
       });
     }, study ? 420 : 1100);
+    const intro = document.querySelector<HTMLElement>(".about-page .about-intro");
+    const settleIntro = (event: AnimationEvent) => {
+      if (event.target !== intro) return;
+      intro.classList.add("is-settled");
+    };
+    intro?.addEventListener("animationend", settleIntro);
+
     window.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", schedule);
+    window.addEventListener("resize", onResize);
     schedule();
 
     return () => {
       window.cancelAnimationFrame(frame);
+      intro?.removeEventListener("animationend", settleIntro);
       observer.disconnect();
       revealObserver.disconnect();
       ambientObserver?.disconnect();
       tickerTracks.forEach((track) => track.style.removeProperty("animation-play-state"));
       window.clearTimeout(revealTimer);
       window.removeEventListener("scroll", schedule);
-      window.removeEventListener("resize", schedule);
+      window.removeEventListener("resize", onResize);
       matchedHero?.classList.remove("is-hero-revealed");
       items.forEach((_, element) => {
         element.classList.remove("parallax-layer");
