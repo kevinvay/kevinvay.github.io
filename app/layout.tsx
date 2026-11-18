@@ -6,7 +6,6 @@ import { WorkCardCursor } from "./components/work-card-cursor";
 import "./globals.css";
 
 export const viewport: Viewport = {
-  colorScheme: "dark",
   themeColor: "#0e0e0e",
 };
 

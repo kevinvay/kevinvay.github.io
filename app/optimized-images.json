@@ -1,7 +1,7 @@
 {
   "/figma-assets/about-photo-figma.webp": {
-    "width": 925,
-    "height": 992,
+    "width": 956,
+    "height": 1024,
     "variants": [
       {
         "src": "/figma-assets/about-photo-figma-720.webp",
@@ -9,7 +9,7 @@
       },
       {
         "src": "/figma-assets/about-photo-figma.webp",
-        "width": 925
+        "width": 956
       }
     ]
   },

@@ -2797,7 +2797,7 @@ footer nav img {
 .about-copy p:first-child { font-size: 28px; line-height: 1.55; }
 .about-copy p:last-child { color: rgba(255,255,255,.72); font: 20px/1.8 MiSans, sans-serif; }
 .about-story > img {
-  aspect-ratio: 925 / 992;
+  aspect-ratio: 956 / 1024;
   border-radius: 24px;
   display: block;
   height: auto;
@@ -2821,7 +2821,7 @@ footer nav img {
 .stat-1 { background: #acadff; left: 40px; top: 70px; }
 .stat-2 { background: #00e9ba; left: 247px; top: 0; }
 .stat-3 { background: #5a53fe; left: 0; top: 240px; }
-.stat-4 { background: #ff6b0d; left: 413px; top: 130px; }
+.stat-4 { background: linear-gradient(-28.68528542559089deg, rgb(229, 231, 235) 0%, rgba(219, 221, 226, 0.875) 25%, rgba(205, 208, 215, 0.75) 50%, rgba(185, 190, 199, 0.625) 75%, rgba(156, 163, 175, 0.5) 100%); left: 413px; top: 130px; }
 .stat-5 { background: #ffbe00; left: 247px; top: 320px; }
 .stat-6 { background: white; left: 493px; top: 240px; }
 .about-page .experience-panel { border-radius: 64px; margin-top: 40px; max-width: 1660px; width: calc(100% - 2 * var(--pad)); }
@@ -2947,8 +2947,7 @@ footer nav img {
   .hello-strip { border-radius: 28px 28px 0 0; font-size: 38px; height: auto; padding: 20px 0; }
   .about-story { gap: 34px; grid-template-columns: 1fr; padding: 58px 18px; }
   .about-copy { gap: 26px; }
-  .about-copy p:first-child { font-size: 19px; }
-  .about-copy p:last-child { font-size: 15px; }
+  .about-copy p { font-size: 20px; line-height: 32px; }
   .about-story > img { height: auto; }
   .stats-stack { display: grid; gap: 12px; grid-template-columns: repeat(2, 1fr); height: auto; margin: 0; padding: 0 16px 50px; transform: none; }
   .stat { border-radius: 18px; height: 180px; padding: 22px; position: static; width: auto; }
@@ -3051,8 +3050,7 @@ footer nav img {
   }
 
   .about-copy { gap: 64px; max-width: 352px; }
-  .about-copy p:first-child { font-size: 20px; line-height: 1.55; }
-  .about-copy p:last-child { font-size: 16px; line-height: 1.8; }
+  .about-copy p { font-size: 28px; line-height: 44px; }
   .about-story > img { height: auto; margin-top: 93px; width: 100%; }
 
   .about-page .stats-stack,
@@ -3173,8 +3171,10 @@ footer nav img {
 }
 
 .stat {
+  background-clip: padding-box;
+  border: 1px solid transparent;
   border-radius: 24px;
-  color: #0e0e0e;
+  color: #fff;
   display: flex;
   flex-direction: column;
   height: 280px;
@@ -3185,15 +3185,23 @@ footer nav img {
   width: 427px;
 }
 
-.stat strong { font: 400 88px/1 "FK Display Alt", sans-serif; transition: font-size .72s cubic-bezier(.22,1,.36,1); }
+.stat strong {
+  background-image: linear-gradient(160deg, rgba(255,255,255,.8) 17%, rgba(255,255,255,.5) 78%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font: 400 88px/80px "FK Display Alt", sans-serif;
+  transition: font-size .72s cubic-bezier(.22,1,.36,1);
+}
 .stat span { font-size: 28px; line-height: 40px; }
-.stat-6 span { font-size: clamp(22px, 1.75vw, 28px); white-space: nowrap; }
-.stat-1 { background: #acadff; left: 146.5px; top: 110px; z-index: 1; }
-.stat-2 { background: #00e9ba; left: 353.5px; top: 40px; width: 426px; z-index: 2; }
-.stat-3 { background: #5a53fe; left: 106.5px; top: 280px; z-index: 3; }
-.stat-4 { background: #ff6b0d; left: 519.5px; top: 170px; z-index: 4; }
-.stat-5 { background: #ffbe00; left: 353.5px; top: 360px; width: 426px; z-index: 5; }
-.stat-6 { background: white; left: 599.5px; top: 280px; z-index: 6; }
+.stat-6 span { color: #4c4c4c; font-size: clamp(22px, 1.75vw, 28px); white-space: nowrap; }
+.stat-1 { background-image: linear-gradient(160deg, #f472b6, #fbcfe8); border-color: #f9a8d4; left: 146.5px; top: 110px; z-index: 1; }
+.stat-2 { background-image: linear-gradient(160deg, #047857, #34d399); border-color: #059669; left: 353.5px; top: 40px; width: 426px; z-index: 2; }
+.stat-3 { background-image: linear-gradient(160deg, #1d4ed8, #5192fe); border-color: #2563eb; left: 106.5px; top: 280px; z-index: 3; }
+.stat-4 { background-color: transparent; background-image: linear-gradient(-28.68528542559089deg, rgb(229, 231, 235) 0%, rgba(219, 221, 226, 0.875) 25%, rgba(205, 208, 215, 0.75) 50%, rgba(185, 190, 199, 0.625) 75%, rgba(156, 163, 175, 0.5) 100%); border-color: #d1d5db; left: 519.5px; top: 170px; z-index: 4; }
+.stat-5 { background-image: linear-gradient(160deg, #f59e0b, #fde68a); border-color: #fbbf24; left: 353.5px; top: 360px; width: 426px; z-index: 5; }
+.stat-6 { background-image: linear-gradient(160deg, #f6f6f6, #f0f0f0); border-color: #d1d5db; color: #4c4c4c; left: 599.5px; top: 280px; z-index: 6; }
+.stat-6 strong { background-image: linear-gradient(180deg, #0e0e0e 3%, #747474 100%); }
 
 .wechat-card { height: 320px; perspective: 1000px; width: 320px; }
 .wechat-card-inner { display: block; height: 100%; position: relative; transform-style: preserve-3d; transition: transform .75s cubic-bezier(.22,1,.36,1); width: 100%; }
@@ -3580,16 +3588,15 @@ footer nav img {
     height: auto;
     padding: 24px var(--pad) 0;
   }
-  .about-page .about-copy { gap: 24px; max-width: none; }
-  .about-page .about-copy p:first-child { font-size: 19px; line-height: 30px; }
-  .about-page .about-copy p:last-child { font-size: 16px; line-height: 24px; }
+  .about-page .about-copy { gap: 8px; max-width: none; }
+  .about-page .about-copy p { font-size: 22px; line-height: 34px; }
   .about-page .about-story > img { height: auto; margin-top: 24px; width: 100%; }
 
   .about-page .stats-stack,
   .about-page .stats-stack.is-expanded {
     display: grid;
     gap: 12px;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     height: auto;
     margin: 40px var(--pad) 0;
     max-width: none;
@@ -4526,22 +4533,17 @@ footer nav img {
   }
 
   .about-page .about-copy {
-    gap: calc(64px * var(--about-tablet-scale));
+    gap: calc(8px * var(--about-tablet-scale));
     max-width: none;
   }
 
-  .about-page .about-copy p:first-child {
-    font-size: calc(24px * var(--about-tablet-scale));
-    line-height: calc(40px * var(--about-tablet-scale));
-  }
-
-  .about-page .about-copy p:last-child {
-    font-size: calc(20px * var(--about-tablet-scale));
-    line-height: calc(36px * var(--about-tablet-scale));
+  .about-page .about-copy p {
+    font-size: calc(40px * var(--about-tablet-scale));
+    line-height: calc(64px * var(--about-tablet-scale));
   }
 
   .about-page .about-story > img {
-    aspect-ratio: 925 / 992;
+    aspect-ratio: 956 / 1024;
     border-radius: calc(24px * var(--about-tablet-scale));
     height: auto;
     margin: 0;
@@ -4572,7 +4574,7 @@ footer nav img {
     height: calc(264px * var(--about-tablet-scale));
     inset: auto;
     justify-content: flex-start;
-    padding: calc(40px * var(--about-tablet-scale));
+    padding: calc(40px * var(--about-tablet-scale)) calc(18px * var(--about-tablet-scale));
     position: relative;
     width: auto;
   }
@@ -4587,8 +4589,10 @@ footer nav img {
 
   .about-page .stats-stack .stat span,
   .about-page .stats-stack.is-expanded .stat span {
-    font-size: calc(28px * var(--about-tablet-scale));
-    line-height: calc(40px * var(--about-tablet-scale));
+    font-family: "FK Display Alt", "FK Display", sans-serif;
+    font-size: calc(21px * var(--about-tablet-scale));
+    line-height: calc(30px * var(--about-tablet-scale));
+    min-width: 0;
     white-space: nowrap;
   }
 
@@ -4995,6 +4999,107 @@ footer nav img {
   z-index: 1;
 }
 
+.about-page .about-copy { gap: 8px; max-width: 892px; }
+.about-page .about-copy p {
+  color: #fff;
+  font: 400 40px/64px "FK Display Alt", sans-serif;
+}
+
+.about-patents {
+  margin: 48px auto 0;
+  max-width: 1660px;
+  padding: 48px var(--pad) 80px;
+}
+.about-patents h2 {
+  align-items: center;
+  display: flex;
+  font: 400 80px/1 "FK Display Alt", sans-serif;
+  gap: 16px;
+  justify-content: center;
+}
+.about-patents h2 img { display: block; flex-shrink: 0; height: 72px; width: auto; }
+.patent-grid {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 80px;
+}
+.patent-grid a {
+  background: rgba(255,255,255,.02);
+  border: 1px solid rgba(255,255,255,.05);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;
+  justify-content: space-between;
+  min-height: 414px;
+  padding: 40px;
+  position: relative;
+}
+.patent-grid a::before {
+  background: linear-gradient(270deg, rgba(255,255,255,.08) 0%, rgba(153,153,153,.08) 100%);
+  border-radius: inherit;
+  content: "";
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity .28s ease;
+  z-index: 0;
+}
+.patent-grid a:hover::before,
+.patent-grid a:focus-visible::before { opacity: 1; }
+.patent-grid a > * { position: relative; z-index: 1; }
+.patent-head {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  min-height: 72px;
+}
+.patent-marks { height: 72px; position: relative; width: 72px; }
+.patent-mark {
+  display: block;
+  filter: invert(1);
+  height: 72px;
+  object-fit: contain;
+  transition: opacity .28s ease;
+  width: 72px;
+}
+.patent-mark.is-color { filter: none; inset: 0; opacity: 0; position: absolute; }
+.patent-arrow {
+  height: 40px;
+  opacity: 0;
+  transition: opacity .28s ease;
+  width: 40px;
+}
+.patent-grid a:hover .patent-mark:not(.is-color),
+.patent-grid a:focus-visible .patent-mark:not(.is-color) { opacity: 0; }
+.patent-grid a:hover .patent-mark.is-color,
+.patent-grid a:focus-visible .patent-mark.is-color,
+.patent-grid a:hover .patent-arrow,
+.patent-grid a:focus-visible .patent-arrow { opacity: 1; }
+.patent-grid strong,
+.patent-grid b { display: block; font-weight: 400; }
+.patent-grid strong { font: 400 32px/40px "FK Display", sans-serif; margin-top: 24px; }
+.patent-grid b { font: 700 32px/40px ui-monospace, Menlo, monospace; margin-top: 16px; }
+.patent-grid small {
+  display: block;
+  font: 400 24px/20px "FK Display", sans-serif;
+  margin-top: 16px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 912px) {
+  .about-patents { padding-bottom: 48px; }
+  .about-patents h2 { font-size: 40px; }
+  .about-patents h2 img { height: 36px; }
+  .patent-grid { gap: 16px; grid-template-columns: 1fr; margin-top: 32px; }
+  .patent-grid a { min-height: 0; padding: 24px; }
+  .patent-grid strong,
+  .patent-grid b { font-size: 20px; line-height: 28px; }
+  .patent-grid small { font-size: 16px; line-height: 20px; }
+}
+
 /* Scale the complete Hello / glossy-cap transition from its 1920px desktop frame. */
 @media (max-width: 1240px) {
   .about-page {
@@ -5060,29 +5165,31 @@ footer nav img {
   }
 }
 
-/* Use one continuous side-by-side composition from the visible 912px frame onward. */
-@media (min-width: 670px) and (max-width: 1253px) {
+/* Side-by-side story from 913px. Narrower widths stay stacked; the old 670px
+   start put a full 40px bio beside the photo in the tablet preview. */
+@media (min-width: 913px) and (max-width: 1253px) {
   .about-page {
     --about-story-scale: calc(100vw / 1253px);
   }
 
   .about-page .about-story {
-    align-items: center;
+    align-items: start;
     box-sizing: border-box;
     display: grid;
-    gap: calc(80px * var(--about-story-scale));
+    gap: max(48px, calc(80px * var(--about-story-scale)));
     grid-template-columns: repeat(2, minmax(0, 1fr));
     margin-left: auto;
     margin-right: auto;
     max-width: none;
-    padding-left: calc(64px * var(--about-story-scale));
-    padding-right: calc(64px * var(--about-story-scale));
+    padding-left: var(--pad);
+    padding-right: var(--pad);
     width: 100%;
   }
 
   .about-page .about-copy {
-    gap: calc(64px * var(--about-story-scale));
+    gap: 8px;
     max-width: none;
+    min-width: 0;
     width: 100%;
   }
 
@@ -5166,9 +5273,51 @@ footer nav img {
 
   .about-page .stats-stack,
   .about-page .stats-stack.is-expanded {
+    box-sizing: border-box;
+    display: grid;
     gap: 20px;
-    margin-top: 64px;
+    grid-template-columns: minmax(0, 1fr);
+    height: auto;
+    margin: 64px var(--pad) 0;
+    max-width: none;
+    padding: 0;
+    transform: none;
+    width: calc(100% - 2 * var(--pad));
   }
+
+  .about-page .stats-stack .stat,
+  .about-page .stats-stack.is-expanded .stat {
+    gap: 0;
+    height: 160px;
+    inset: auto;
+    justify-content: space-between;
+    min-width: 0;
+    padding: 22px;
+    position: relative;
+    width: auto;
+  }
+
+  .about-page .stats-stack .stat strong,
+  .about-page .stats-stack.is-expanded .stat strong {
+    font-family: "FK Display Alt", sans-serif;
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 80px;
+  }
+
+  .about-page .stats-stack .stat span,
+  .about-page .stats-stack.is-expanded .stat span {
+    font-size: 17px;
+    line-height: 24px;
+    white-space: normal;
+  }
+
+  .about-page .stats-stack .stat-1 { order: 1; }
+  .about-page .stats-stack .stat-2 { order: 2; }
+  .about-page .stats-stack .stat-4 { order: 3; }
+  .about-page .stats-stack .stat-3 { order: 4; }
+  .about-page .stats-stack .stat-5 { order: 5; }
+  .about-page .stats-stack .stat-6 { order: 6; }
 
   .about-page .experience-panel {
     margin-top: 72px;
@@ -5579,5 +5728,129 @@ html.motion-study .ticker-track {
     scale: 1 !important;
     transition: none !important;
     translate: none !important;
+  }
+}
+
+/* About bio scale. The unscoped 40px/64px rule is later than the older phone
+   and tablet overrides, so these queries have to stay last to win. */
+@media (max-width: 620px) {
+  .about-page .about-story {
+    box-sizing: border-box;
+    display: block;
+    padding-bottom: 40px;
+    padding-inline: var(--pad);
+    padding-top: calc(var(--about-hello-overlap, 24px) + 36px);
+  }
+
+  .about-page .about-copy {
+    gap: 8px;
+    max-width: none;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .about-page .about-copy p {
+    font-size: 22px;
+    line-height: 1.5;
+  }
+
+  .about-page .about-copy p:first-child {
+    font-size: 24px;
+    line-height: 1.45;
+  }
+
+  .about-page .about-story > img {
+    height: auto;
+    margin: 24px 0 0;
+    max-height: none;
+    width: 100%;
+  }
+}
+
+@media (min-width: 621px) and (max-width: 912px) {
+  .about-page .about-story {
+    box-sizing: border-box;
+    display: block;
+    grid-template-columns: none;
+    padding-inline: var(--pad);
+    padding-top: max(calc(140px * var(--about-hello-scale, 1)), calc(var(--about-hello-overlap, 32px) + 32px));
+  }
+
+  .about-page .about-copy {
+    gap: 8px;
+    max-width: none;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .about-page .about-copy p {
+    font-size: 28px;
+    line-height: 40px;
+  }
+
+  .about-page .about-story > img {
+    height: auto;
+    margin: 24px 0 0;
+    max-height: none;
+    width: 100%;
+  }
+}
+
+@media (min-width: 912px) and (max-width: 1133px) {
+  .about-page .about-story {
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-page .about-story > img {
+    margin-top: 0;
+  }
+
+  .about-page .about-copy p {
+    font-size: 32px;
+    line-height: 48px;
+  }
+}
+
+@media (min-width: 1135px) {
+  .about-page .about-story {
+    align-items: center;
+    column-gap: 80px;
+    grid-template-columns: minmax(0, 1fr) 480px;
+  }
+
+  .about-page .about-story > img {
+    margin: 0;
+    width: 100%;
+  }
+
+  .about-page .about-copy {
+    gap: 8px;
+    max-width: 892px;
+  }
+
+  .about-page .about-copy p {
+    font-size: 40px;
+    line-height: 64px;
+  }
+}
+
+/* Stacked story through 911px. A 24px margin is not enough on its own: once the
+   portrait is on screen, .parallax-layer translates it by roughly that amount
+   and the copy sits on the photo. This query is the last one that applies
+   below 912px, so the margin and the reset translate both win. */
+@media (max-width: 911px) {
+  .about-page .about-story > img {
+    margin-top: 24px;
+    translate: none;
+  }
+}
+
+/* Above 1133px the bio and portrait share one vertical center. Stays last so it
+   wins over any align-items: start in the 913–1253 and 1135px column rules. */
+@media (min-width: 1134px) {
+  .about-page .about-story {
+    align-items: center;
   }
 }

@@ -29,7 +29,7 @@ const revealSelector = [
   ".hero-content > *", ".hero-animation",
   ".inner-hero-copy > *", ".inner-frame-media",
   ".works-content > h2", ".work-card", ".directory-card",
-  ".about-intro", ".stats-stack > *", ".experience-panel > *:not(.pixel-bird)",
+  ".about-intro", ".stats-stack > *", ".about-patents > h2", ".patent-grid > a", ".experience-panel > *:not(.pixel-bird)",
   ".service-stage", ".contact-content > *",
   ".wechat-card", ".project-plan", ".scope-tabs",
   ".principles-section > h2",
