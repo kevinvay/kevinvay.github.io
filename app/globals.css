@@ -2782,7 +2782,10 @@ footer nav img {
 }
 .hello-group { display: flex; }
 .hello-group > span { padding-right: 40px; }
-@keyframes hello-move { to { transform: translateX(-50%); } }
+@keyframes hello-move {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
 
 .about-story {
   align-items: center;
@@ -3157,7 +3160,6 @@ footer nav img {
   animation: hello-move 28s linear infinite;
   display: flex;
   width: max-content;
-  will-change: transform;
 }
 .hello-group { display: flex; flex: none; gap: .7em; padding-right: .7em; }
 
@@ -5852,5 +5854,18 @@ html.motion-study .ticker-track {
 @media (min-width: 1134px) {
   .about-page .about-story {
     align-items: center;
+  }
+}
+
+/* On phones, scrolling detaches a transformed marquee from its rounded clip.
+   Keep the clip and the moving track on one layer so the line stays put. */
+@media (max-width: 912px) {
+  .about-page .hello-strip {
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .about-page .hello-track {
+    will-change: auto;
   }
 }
