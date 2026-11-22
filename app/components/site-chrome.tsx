@@ -6,7 +6,6 @@ import {
   DEFAULT_LIQUID_GLASS_CONFIG,
   DEFAULT_MENU_GLASS_BORDER_CONFIG,
   LiquidGlass,
-  LiquidGlassControls,
 } from "./liquid-glass";
 import { LogoMark } from "./logo-mark";
 import { OptimizedImage } from "./optimized-image";
@@ -100,16 +99,12 @@ export function SiteFooter() {
 export function PortfolioNav({
   active = "home",
   liquidGlass = true,
-  glassControls = false,
 }: {
   active?: "home" | "works" | "about" | "contact" | null;
   liquidGlass?: boolean;
-  glassControls?: boolean;
 }) {
   const [docked, setDocked] = useState(false);
   const [glassMode, setGlassMode] = useState<GlassRenderingMode>("fallback");
-  const [glassConfig, setGlassConfig] = useState({ ...DEFAULT_LIQUID_GLASS_CONFIG });
-  const [glassRevision, setGlassRevision] = useState(0);
 
   useEffect(() => {
     if (!liquidGlass) return;
@@ -128,9 +123,9 @@ export function PortfolioNav({
   }, []);
 
   const navStyle = liquidGlass ? {
-    "--glass-tint-opacity": glassConfig.tintOpacity,
-    "--glass-tint-soft": glassConfig.tintOpacity * 0.36,
-    "--glass-menu-opacity": Math.min(0.7, glassConfig.tintOpacity + 0.02),
+    "--glass-tint-opacity": DEFAULT_LIQUID_GLASS_CONFIG.tintOpacity,
+    "--glass-tint-soft": DEFAULT_LIQUID_GLASS_CONFIG.tintOpacity * 0.36,
+    "--glass-menu-opacity": Math.min(0.7, DEFAULT_LIQUID_GLASS_CONFIG.tintOpacity + 0.02),
     "--glass-border-width": `${DEFAULT_GLASS_BORDER_CONFIG.borderWidth}px`,
     "--glass-border-base-opacity": DEFAULT_GLASS_BORDER_CONFIG.baseOpacity,
     "--glass-border-highlight-opacity": DEFAULT_GLASS_BORDER_CONFIG.highlightOpacity,
@@ -156,7 +151,7 @@ export function PortfolioNav({
       style={navStyle}
       aria-label="Portfolio navigation"
     >
-        {liquidGlass && glassMode === "svg" ? <LiquidGlass key={glassRevision} config={glassConfig} /> : null}
+        {liquidGlass && glassMode === "svg" ? <LiquidGlass config={DEFAULT_LIQUID_GLASS_CONFIG} /> : null}
         <a className={`home-link ${active === "home" ? "is-active" : ""}`} href="/">Home <span>/</span></a>
         <div className="nav-menu">
           <a className={active === "works" ? "is-active" : ""} href="/works">Works</a>
@@ -169,14 +164,6 @@ export function PortfolioNav({
   return (
     <div className={`floating-nav-shell${docked ? " is-docked" : ""}`}>
       {nav}
-      {liquidGlass && glassControls && active === "home" ? (
-        <LiquidGlassControls
-          config={glassConfig}
-          onChange={setGlassConfig}
-          onReset={() => setGlassConfig({ ...DEFAULT_LIQUID_GLASS_CONFIG })}
-          onRebuild={() => setGlassRevision((current) => current + 1)}
-        />
-      ) : null}
     </div>
   );
 }

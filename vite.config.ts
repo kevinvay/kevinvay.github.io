@@ -67,6 +67,8 @@ export default defineConfig(async () => {
       cloudflare({
         viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },
         config: localBindingConfig,
+        // Codex's sandbox permits the preview server but not the Worker inspector.
+        inspectorPort: isCodexSeatbeltSandbox ? false : undefined,
       }),
     ],
   };
